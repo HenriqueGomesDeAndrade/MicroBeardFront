@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  urlAddress: 'https://microbeard.azurewebsites.net/'
 };
