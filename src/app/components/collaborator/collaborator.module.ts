@@ -5,9 +5,9 @@ import { CollaboratorRoutingModule } from './collaborator-routing.module';
 import { CollaboratorListComponent } from './collaborator-list/collaborator-list.component';
 import { CollaboratorDetailsComponent } from './collaborator-details/collaborator-details.component';
 import { CollaboratorLicensesComponent } from './collaborator-details/collaborator-licenses/collaborator-licenses.component';
-import { SharedModule } from '../shared/shared.module';
 import { CollaboratorCreateComponent } from './collaborator-create/collaborator-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
