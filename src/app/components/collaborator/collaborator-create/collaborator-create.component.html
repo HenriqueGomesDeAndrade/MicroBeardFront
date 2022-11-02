@@ -1,1 +1,166 @@
-<p>collaborator-create works!</p>
+<div class="container-fluid">
+  <form
+    [formGroup]="collaboratorForm"
+    autocomplete="off"
+    novalidate
+    (ngSubmit)="createCollaborator(collaboratorForm.value)"
+  >
+    <div class="card card-body bg-light mb-2 mt-2">
+      <div class="row mb-3">
+        <label for="name" class="col-form-label col-md-2">Nome: </label>
+        <div class="col-md-5">
+          <input
+            type="text"
+            formControlName="name"
+            id="name"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-5">
+          <em *ngIf="validateControl('name') && hasError('name', 'required')"
+            >O Nome é obrigatório.</em
+          >
+          <em *ngIf="validateControl('name') && hasError('name', 'maxlength')"
+            >O número máximo de caracteres é 100.</em
+          >
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="cpf" class="col-form-label col-md-2">CPF: </label>
+        <div class="col-md-5">
+          <input
+            type="text"
+            formControlName="cpf"
+            id="cpf"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-5">
+          <em *ngIf="validateControl('cpf') && hasError('cpf', 'maxlength')"
+            >O número máximo de caracteres é 60.</em
+          >
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="birthDate" class="col-form-label col-md-2"
+          >Data de nascimento:
+        </label>
+        <div class="col-md-5">
+          <input
+            type="text"
+            formControlName="birthDate"
+            id="birthDate"
+            class="form-control"
+            readonly
+            bsDatepicker
+          />
+        </div>
+        <div class="col-md-5">
+          <em
+            *ngIf="
+              validateControl('birthDate') && hasError('birthDate', 'required')
+            "
+            >Date of birth is required</em
+          >
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="email" class="col-form-label col-md-2">Email: </label>
+        <div class="col-md-5">
+          <input
+            type="text"
+            formControlName="email"
+            id="email"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-5">
+          <em *ngIf="validateControl('email') && hasError('email', 'required')"
+            >Email is required</em
+          >
+          <em *ngIf="validateControl('email') && hasError('email', 'maxlength')"
+            >Maximum allowed length is 100 characters.</em
+          >
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="password" class="col-form-label col-md-2">Senha: </label>
+        <div class="col-md-5">
+          <input
+            type="text"
+            formControlName="password"
+            id="password"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-5">
+          <em
+            *ngIf="
+              validateControl('password') && hasError('password', 'required')
+            "
+            >Senha is required</em
+          >
+          <em
+            *ngIf="
+              validateControl('password') && hasError('password', 'maxlength')
+            "
+            >Maximum allowed length is 100 characters.</em
+          >
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="password" class="col-form-label col-md-2">Senha: </label>
+        <div class="col-md-5">
+          <input
+            type="text"
+            formControlName="password"
+            id="password"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-5">
+          <em
+            *ngIf="
+              validateControl('password') && hasError('password', 'required')
+            "
+            >Senha is required</em
+          >
+          <em
+            *ngIf="
+              validateControl('password') && hasError('password', 'maxlength')
+            "
+            >Maximum allowed length is 100 characters.</em
+          >
+        </div>
+      </div>
+
+      <br /><br />
+
+      <div class="mb-3 row">
+        <div class="offset-5 col-md-1">
+          <button
+            type="submit"
+            class="btn btn-info"
+            [disabled]="!collaboratorForm.valid"
+          >
+            Save
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="redirectToCollaboratorList()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

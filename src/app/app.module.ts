@@ -12,8 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollaboratorModule } from './components/collaborator/collaborator.module';
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
 import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
+import { DatePipe } from '@angular/common';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component
     CollaboratorModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
