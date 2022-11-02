@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="offset-10 col-md-2 mt-2"> <a [routerLink]="['/collaborator/create']">Create collaborator</a> </div>
+    <div class="offset-10 col-md-2 mt-2 btn btn-success"> <a class ="text-decoration-none text-reset" [routerLink]="['/collaborator/create']">Create collaborator</a> </div>
   </div> <br>
   <div class="row">
     <div class="col-md-12">
@@ -21,8 +21,8 @@
               <td>{{collaborator.birthDate | date: 'dd/MM/yyyy'}}</td>
               <td>{{collaborator.cpf}}</td>
               <td><button type="button" id="details" class="btn btn-primary" (click)="getCollaboratorDetails(collaborator.code)">Details</button></td>
-              <td><button type="button" id="update" class="btn btn-success">Update</button></td>
-              <td><button type="button" id="delete" class="btn btn-danger">Delete</button></td>
+              <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(collaborator.code)">Update</button></td>
+              <td><button type="button" id="delete" class="btn btn-danger" (click)="redirectToDeletePage(collaborator.code)" >Delete</button></td>
             </tr>
           </tbody>
         </table>

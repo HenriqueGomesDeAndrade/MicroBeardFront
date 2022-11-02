@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
-import { CollaboratorForCreation } from 'src/app/interfaces/collaborator/collaborator-create.model';
+import { CollaboratorForUpdate } from 'src/app/interfaces/collaborator/collaborator-update.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-collaborator-create',
-  templateUrl: './collaborator-create.component.html',
-  styleUrls: ['./collaborator-create.component.css']
+  selector: 'app-collaborator-update',
+  templateUrl: './collaborator-update.component.html',
+  styleUrls: ['./collaborator-update.component.css']
 })
-export class CollaboratorCreateComponent implements OnInit {
-  errorMessage: string = '';
+export class CollaboratorUpdateComponent implements OnInit {
+  collaborator: Collaborator
   collaboratorForm: FormGroup;
   bsModalRef?: BsModalRef;
 
   constructor(private repository: CollaboratorRepositoryService,
               private errorHandler: ErrorHandlerService,
+              private activeRoute: ActivatedRoute,
               private router: Router,
               private datePipe: DatePipe,
               private modal: BsModalService) { }
@@ -39,6 +40,23 @@ export class CollaboratorCreateComponent implements OnInit {
       commision: new FormControl('',[]),
       isAdmin: new FormControl('',[]),
     });
+
+    this.getCollaboratorByCode();
+  }
+
+  private getCollaboratorByCode = () => {
+    const collaboratorCode: string = this.activeRoute.snapshot.params['code'];
+    const collaboratorByCodeUri: string = `Collaborator/${collaboratorCode}`;
+    this.repository.getCollaborator(collaboratorByCodeUri)
+    .subscribe({
+      next: (own: Collaborator) => {
+        this.collaborator = { ...own, 
+          birthDate: new Date(this.datePipe.transform(own.birthDate, 'MM/dd/yyyy'))
+        };
+        this.collaboratorForm.patchValue(this.collaborator);
+      },
+      error: (err: HttpErrorResponse) => this.errorHandler.handleError(err)
+    })
   }
 
   validateControl = (controlName: string) => {
@@ -55,13 +73,13 @@ export class CollaboratorCreateComponent implements OnInit {
     return false;
   }
 
-  createCollaborator = (collaboratorFormValue) => {
+  public updateCollaborator = (collaboratorFormValue) => {
     if(this.collaboratorForm.valid)
-      this.executeCollaboratorCreation(collaboratorFormValue);
+      this.executeCollaboratorUpdate(collaboratorFormValue)
   }
 
-  private executeCollaboratorCreation = (collaboratorFormValue) => {
-    const collaborator: CollaboratorForCreation = {
+  private executeCollaboratorUpdate = (collaboratorFormValue) => {
+    const collaboratorForUpd: CollaboratorForUpdate = {
       name: collaboratorFormValue.name,
       birthDate: this.datePipe.transform(collaboratorFormValue.birthDate, 'yyyy-MM-dd'),
       cpf: collaboratorFormValue.cpf,
@@ -73,29 +91,29 @@ export class CollaboratorCreateComponent implements OnInit {
       commision: collaboratorFormValue.commision,
       isAdmin: collaboratorFormValue.isAdmin ? collaboratorFormValue.isAdmin : false,
     }
-    const apiUrl = 'Collaborator';
-    this.repository.createCollaborator(apiUrl, collaborator)
+
+    const apiUri: string = `Collaborator/${this.collaborator.code}`;
+
+    this.repository.updateCollaborator(apiUri, collaboratorForUpd)
     .subscribe({
-      next: (own: Collaborator) => {
+      next: (_) => {
         const config: ModalOptions = {
           initialState: {
             modalHeaderText: 'Success Message',
-            modalBodyText: `Collaborator: ${own.name} created successfully`,
+            modalBodyText: 'Owner updated successfully',
             okButtonText: 'OK'
           }
         };
-  
+
         this.bsModalRef = this.modal.show(SuccessModalComponent, config);
         this.bsModalRef.content.redirectOnOk.subscribe(_ => this.redirectToCollaboratorList());
       },
-      error: (err: HttpErrorResponse) => {
-          this.errorHandler.handleError(err);
-          this.errorMessage = this.errorHandler.errorMessage;
-      }
+      error: (err: HttpErrorResponse) => this.errorHandler.handleError(err)
     })
   }
 
-  redirectToCollaboratorList = () => {
-    this.router.navigate(['/collaborator/list']);
+  public redirectToCollaboratorList = () => {
+    this.router.navigate(['/collaborator/list'])
   }
+  
 }

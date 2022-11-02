@@ -35,8 +35,18 @@ export class CollaboratorListComponent implements OnInit {
     })
   }
 
-  private getCollaboratorDetails = (id) =>{
-    const detailsUrl: string = `/collaborator/details/${id}`;
+  private getCollaboratorDetails = (code) =>{
+    const detailsUrl: string = `/collaborator/details/${code}`;
     this.router.navigate([detailsUrl]);
+  }
+
+  public redirectToUpdatePage = (code) => { 
+    const updateUrl: string = `/collaborator/update/${code}`; 
+    this.router.navigate([updateUrl]); 
+  }
+
+  public redirectToDeletePage = (code) => {
+    const deleteUrl: string = `/collaborator/delete/${code}`;
+    this.router.navigate([deleteUrl])
   }
 }
