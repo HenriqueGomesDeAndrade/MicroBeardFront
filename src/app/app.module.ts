@@ -13,6 +13,8 @@ import { CollaboratorModule } from './components/collaborator/collaborator.modul
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
 import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
 import { DatePipe } from '@angular/common';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { DatePipe } from '@angular/common';
     MenuComponent,
     NotFoundComponent,
     InternalServerComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     HttpClientModule,
     CollapseModule.forRoot(),
-    CollaboratorModule
+    CollaboratorModule,
+    NgbModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
