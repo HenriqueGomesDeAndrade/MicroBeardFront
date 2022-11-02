@@ -1,3 +1,10 @@
-.li {
-  margin: 1em;
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+div {
+  text-align: start;
+  border: 1px solid red;
+}
+
+i {
+  padding-right: 1em;
 }
