@@ -1,13 +1,13 @@
 import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { NotFoundComponent } from './components/error-pages/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
-import { UnauthorizedComponent } from './error-pages/unauthorized/unauthorized.component';
+import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
+import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'collaborator', loadChildren: () => import('./collaborator/collaborator.module').then(m => m.CollaboratorModule) },
+  { path: 'collaborator', loadChildren: () => import('./components/collaborator/collaborator.module').then(m => m.CollaboratorModule) },
   { path: '401', component: UnauthorizedComponent},
   { path: '404', component: NotFoundComponent }, 
   { path: '500', component: InternalServerComponent},
