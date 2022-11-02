@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollaboratorModule } from './components/collaborator/collaborator.module';
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
 import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { UnauthorizedComponent } from './components/error-pages/unauthorized/una
     MenuComponent,
     NotFoundComponent,
     InternalServerComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { UnauthorizedComponent } from './components/error-pages/unauthorized/una
     BrowserAnimationsModule,
     HttpClientModule,
     CollapseModule.forRoot(),
-    CollaboratorModule
+    CollaboratorModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

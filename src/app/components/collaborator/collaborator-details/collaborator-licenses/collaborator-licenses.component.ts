@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { License } from 'src/app/_interfaces/license.model';
+import { License } from 'src/app/interfaces/license/license.model';
 
 @Component({
   selector: 'app-collaborator-licenses',
