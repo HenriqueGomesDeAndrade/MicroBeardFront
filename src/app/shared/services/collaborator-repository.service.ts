@@ -2,6 +2,7 @@ import { EnvironmentUrlService } from './environment-url.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
+import { CollaboratorForCreation } from 'src/app/interfaces/collaborator/collaborator-create.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class CollaboratorRepositoryService {
     return this.http.get<Collaborator>(this.createCompleteRoute(route, this.envUrl.urlAddress), this.generateHeaders());
   }
 
-  public createCollaborator = (route: string, collaborator: Collaborator) => {
+  public createCollaborator = (route: string, collaborator: CollaboratorForCreation) => {
     return this.http.post<Collaborator>(this.createCompleteRoute(route, this.envUrl.urlAddress), collaborator, this.generateHeaders());
   }
 

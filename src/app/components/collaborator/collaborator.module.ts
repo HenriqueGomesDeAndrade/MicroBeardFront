@@ -8,6 +8,7 @@ import { CollaboratorLicensesComponent } from './collaborator-details/collaborat
 import { CollaboratorCreateComponent } from './collaborator-create/collaborator-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     CollaboratorRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule
   ]
 })
 export class CollaboratorModule { }

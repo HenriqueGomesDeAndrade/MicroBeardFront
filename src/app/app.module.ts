@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollaboratorModule } from './components/collaborator/collaborator.module';
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
 import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { UnauthorizedComponent } from './components/error-pages/unauthorized/una
     CollapseModule.forRoot(),
     CollaboratorModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
