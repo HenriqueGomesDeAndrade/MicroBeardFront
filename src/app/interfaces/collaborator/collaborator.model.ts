@@ -1,4 +1,4 @@
-import { License } from "./license.model";
+import { License } from "../license.model";
 
 export interface Collaborator{
     code: string;

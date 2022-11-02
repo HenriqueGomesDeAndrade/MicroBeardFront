@@ -1,7 +1,7 @@
-import { Collaborator } from './../../_interfaces/collaborator.model';
 import { EnvironmentUrlService } from './environment-url.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 
 @Injectable({
   providedIn: 'root'

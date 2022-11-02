@@ -1,6 +1,6 @@
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 
 import { NgModule } from '@angular/core';

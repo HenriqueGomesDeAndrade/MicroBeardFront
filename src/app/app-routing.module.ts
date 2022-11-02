@@ -1,4 +1,4 @@
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

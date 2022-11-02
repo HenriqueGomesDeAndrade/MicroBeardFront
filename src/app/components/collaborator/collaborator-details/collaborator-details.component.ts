@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Collaborator } from 'src/app/_interfaces/collaborator.model';
+import { Collaborator } from 'src/app/_interfaces/collaborator/collaborator.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';

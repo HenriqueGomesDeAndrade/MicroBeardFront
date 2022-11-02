@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
-import { Collaborator } from 'src/app/_interfaces/collaborator.model';
+import { Collaborator } from 'src/app/_interfaces/collaborator/collaborator.model';
 
 @Directive({
   selector: '[appAppend]'
