@@ -1,1 +1,36 @@
-<p>sidebar works!</p>
+<div class="d-flex">
+  <ul
+    ngbNav
+    #nav="ngbNav"
+    [(activeId)]="active"
+    class="nav-pills"
+    orientation="vertical"
+  >
+    <li ngbNavItem="home">
+      <a ngbNavLink [routerLink]="['/home']">Painel - Dashboard</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="contact">
+      <a ngbNavLink>Clientes</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="scheduling">
+      <a ngbNavLink>Agendamentos</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="service">
+      <a ngbNavLink>Serviços</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="Collaborator">
+      <a ngbNavLink [routerLink]="['/collaborator/list']">Colaboradores</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="license">
+      <a ngbNavLink>Habilitações</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>
