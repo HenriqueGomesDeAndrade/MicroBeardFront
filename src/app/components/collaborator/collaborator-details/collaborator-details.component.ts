@@ -25,8 +25,8 @@ export class CollaboratorDetailsComponent implements OnInit {
   }
 
   getCollaboratorDetails = () => {
-    const id: string = this.activeRoute.snapshot.params['id'];
-    const apiUrl: string = `Collaborator/${id}`;
+    const code: string = this.activeRoute.snapshot.params['code'];
+    const apiUrl: string = `Collaborator/${code}`;
 
     this.repository.getCollaborator(apiUrl)
     .subscribe({

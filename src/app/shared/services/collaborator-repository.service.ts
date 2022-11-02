@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { CollaboratorForCreation } from 'src/app/interfaces/collaborator/collaborator-create.model';
+import { CollaboratorForUpdate } from 'src/app/interfaces/collaborator/collaborator-update.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class CollaboratorRepositoryService {
     return this.http.post<Collaborator>(this.createCompleteRoute(route, this.envUrl.urlAddress), collaborator, this.generateHeaders());
   }
 
-  public updateCollaborator = (route: string, collaborator: Collaborator) => {
+  public updateCollaborator = (route: string, collaborator: CollaboratorForUpdate) => {
     return this.http.put(this.createCompleteRoute(route, this.envUrl.urlAddress), collaborator, this.generateHeaders());
   }
 
@@ -39,7 +40,7 @@ export class CollaboratorRepositoryService {
     return {
       headers: new HttpHeaders({
          'Content-Type': 'application/json', 
-         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwicm9sZSI6IkNvbGxhYm9yYXRvckFkbWluIiwiQ29kZSI6MSwibmJmIjoxNjY3MzA5NzA3LCJleHAiOjE2Njk5MDE3MDcsImlhdCI6MTY2NzMwOTcwN30.6vpfPAbY6K94qMpVC52r2G_5Hpvkg6sUwFEwKcVke9A'
+         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwicm9sZSI6IkNvbGxhYm9yYXRvckFkbWluIiwiQ29kZSI6MSwibmJmIjoxNjY3NDE5NTg2LCJleHAiOjE2NzAwMTE1ODYsImlhdCI6MTY2NzQxOTU4Nn0.UEztq8W7H-MoyzR4UB9dy1J7X4LsVbt2U5xkSHP4nQU'
         })
     }
   }
