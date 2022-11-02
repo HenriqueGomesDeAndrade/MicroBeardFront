@@ -1,3 +1,5 @@
+import { License } from "./license.model";
+
 export interface Collaborator{
     code: string;
     name: string;
@@ -8,4 +10,7 @@ export interface Collaborator{
     function: string;
     salary: Int32Array;
     commision: Int32Array;
+    isAdmin: boolean;
+
+    licenses?: License[];
 }

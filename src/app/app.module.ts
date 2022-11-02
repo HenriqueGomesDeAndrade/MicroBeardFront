@@ -10,13 +10,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollaboratorModule } from './collaborator/collaborator.module';
+import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
+import { UnauthorizedComponent } from './error-pages/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    InternalServerComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Collaborator } from 'src/app/_interfaces/collaborator.model';
 import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
+
+import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-collaborator-list',
@@ -10,8 +14,11 @@ import { CollaboratorRepositoryService } from 'src/app/shared/services/collabora
 })
 export class CollaboratorListComponent implements OnInit {
   collaborators: Collaborator[];
+  errorMessage: string = '';
 
-  constructor(private repository: CollaboratorRepositoryService) { }
+  constructor(private repository: CollaboratorRepositoryService,
+               private errorHandler: ErrorHandlerService,
+                private router: Router) { }
 
   ngOnInit(): void {
     this.getAllCollaborators();
@@ -20,8 +27,17 @@ export class CollaboratorListComponent implements OnInit {
   private getAllCollaborators = () => {
     const apiAddress: string = 'Collaborator';
     this.repository.getCollaborators(apiAddress)
-    .subscribe(colab => {
-      this.collaborators = colab;
+    .subscribe({
+      next: (colab: Collaborator[]) => this.collaborators = colab,
+      error: (err: HttpErrorResponse) => {
+        this.errorHandler.handleError(err);
+        this.errorMessage = this.errorHandler.errorMessage;
+      }
     })
+  }
+
+  private getCollaboratorDetails = (id) =>{
+    const detailsUrl: string = `/collaborator/details/${id}`;
+    this.router.navigate([detailsUrl]);
   }
 }
