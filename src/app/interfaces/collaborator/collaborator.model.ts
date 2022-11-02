@@ -7,7 +7,7 @@ export interface Collaborator{
     cpf: string;
     email: string;
     phone: string;
-    function: string;
+    function?: string;
     salary: Int32Array;
     commision: Int32Array;
     isAdmin: boolean;

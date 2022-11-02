@@ -44,4 +44,9 @@ export class CollaboratorListComponent implements OnInit {
     const updateUrl: string = `/collaborator/update/${code}`; 
     this.router.navigate([updateUrl]); 
   }
+
+  public redirectToDeletePage = (code) => {
+    const deleteUrl: string = `/collaborator/delete/${code}`;
+    this.router.navigate([deleteUrl])
+  }
 }

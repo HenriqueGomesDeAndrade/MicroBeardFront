@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollaboratorUpdateComponent } from './collaborator-update/collaborator-update.component';
+import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-delete.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CollaboratorUpdateComponent } from './collaborator-update/collaborator-
     CollaboratorDetailsComponent,
     CollaboratorLicensesComponent,
     CollaboratorCreateComponent,
-    CollaboratorUpdateComponent
+    CollaboratorUpdateComponent,
+    CollaboratorDeleteComponent
   ],
   imports: [
     CommonModule,
