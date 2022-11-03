@@ -36,4 +36,8 @@ export class ContactDetailsComponent implements OnInit {
       }
     })
   }
+
+  redirectToContactList = () => {
+    this.router.navigate(['/contact/list']);
+  }
 }

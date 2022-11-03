@@ -33,6 +33,7 @@ export class ContactUpdateComponent implements OnInit {
       address: new FormControl('',[]),
       email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       password: new FormControl('',[]),
+      cpf: new FormControl('', []),
       phone: new FormControl('',[]),
       gender: new FormControl('',[]),
       birthDate: new FormControl('', [Validators.required]),

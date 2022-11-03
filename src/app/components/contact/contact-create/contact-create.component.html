@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <form [formGroup]="contactForm" autocomplete="off" novalidate (ngSubmit)="createContact(contactForm.value)">
-    <div class="card card-body bg-light mb-2 mt-2">
+    <div class="card back">
       <div class="row mb-3">
         <label for="name" class="col-form-label col-md-2">Nome: </label>
         <div class="col-md-5">
@@ -100,14 +100,14 @@
         </div>
       </div>
  
-      <br><br>
+      <br>
  
-      <div class="mb-3 row">
-          <div class="offset-5 col-md-1">
-              <button type="submit" class="btn btn-info" [disabled]="!contactForm.valid">Save</button>
+      <div class="row">
+          <div class="col-md-1 me-3">
+              <button type="submit" [disabled]="!contactForm.valid" [className]="!contactForm.valid ? 'btn btn-warning': 'btn btn-success'">Salvar</button>
           </div>
           <div class="col-md-1">
-              <button type="button" class="btn btn-danger" (click)="redirectToContactList()">Cancel</button>
+              <button type="button" class="btn btn-secondary" (click)="redirectToContactList()">Voltar</button>
           </div>
       </div>
       

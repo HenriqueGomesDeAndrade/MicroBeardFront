@@ -10,7 +10,7 @@
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Data de Nascimento</th>
+                  <th>Email</th>
                   <th>CPF</th>
                   <th>Detalhes</th>
                   <th>Atualizar</th>
@@ -20,7 +20,7 @@
               <tbody>
                 <tr *ngFor="let collaborator of collaborators">
                   <td>{{collaborator.name}}</td>
-                  <td>{{collaborator.birthDate | date: 'dd/MM/yyyy'}}</td>
+                  <td>{{collaborator.email}}</td>
                   <td>{{collaborator.cpf}}</td>
                   <td><button type="button" id="details" class="btn btn-info" (click)="getCollaboratorDetails(collaborator.code)">Detalhes</button></td>
                   <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(collaborator.code)">Atualizar</button></td>
