@@ -3,10 +3,10 @@
       <div class="card back">
         <div class="row mb-3">
           <label for="name" class="col-form-label col-md-4 fontTitleMedium">Nome: </label>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <input type="text" formControlName="name" id="name" class="form-control fontRegular" />
           </div>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <em *ngIf="validateControl('name') 
             && hasError('name', 'required')">O Nome é obrigatório.</em>
             <em *ngIf="validateControl('name') 
@@ -16,11 +16,11 @@
 
         <div class="mb-3 row">
           <label for="birthDate" class="col-form-label col-md-4 fontTitleMedium">Data de nascimento: </label>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <input type="text" formControlName="birthDate" id="birthDate" 
             class="form-control fontRegular" readonly bsDatepicker/>
           </div>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <em *ngIf="validateControl('birthDate') 
             && hasError('birthDate', 'required')">Date of birth is required</em>
           </div>
@@ -28,10 +28,10 @@
    
         <div class="mb-3 row">
           <label for="cpf" class="col-form-label col-md-4 fontTitleMedium">CPF: </label>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <input type="text" formControlName="cpf" id="cpf" class="form-control fontRegular" />
           </div>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <em *ngIf="validateControl('cpf') 
             && hasError('cpf', 'maxlength')">O número máximo de caracteres é 60.</em>
           </div>
@@ -40,10 +40,10 @@
    
         <div class="mb-3 row">
           <label for="email" class="col-form-label col-md-4 fontTitleMedium">Email: </label>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <input type="text" formControlName="email" id="email" class="form-control fontRegular" />
           </div>
-          <div class="col-md-5">
+          <div class="col-fuild">
             <em *ngIf="validateControl('email') 
             && hasError('email', 'required')">Email is required</em>
             <em *ngIf="validateControl('email') 
@@ -53,10 +53,10 @@
 
         <div class="mb-3 row">
             <label for="password" class="col-form-label col-md-4 fontTitleMedium">Senha: </label>
-            <div class="col-md-5">
+            <div class="col-fuild">
                 <input type="text" formControlName="password" id="password" class="form-control fontRegular" />
             </div>
-            <div class="col-md-5">
+            <div class="col-fuild">
                 <em *ngIf="validateControl('password') 
                 && hasError('password', 'required')">Senha is required</em>
                 <em *ngIf="validateControl('password') 
@@ -66,10 +66,10 @@
 
         <div class="mb-3 row">
             <label for="phone" class="col-form-label col-md-4 fontTitleMedium">Telefone: </label>
-            <div class="col-md-5">
+            <div class="col-fuild">
                 <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" />
             </div>
-            <div class="col-md-5">
+            <div class="col-fuild">
                 <em *ngIf="validateControl('phone') 
                 && hasError('phone', 'required')">Telefone is required</em>
                 <em *ngIf="validateControl('phone') 
@@ -79,10 +79,10 @@
 
         <div class="mb-3 row">
             <label for="function" class="col-form-label col-md-4 fontTitleMedium">Função: </label>
-            <div class="col-md-5">
+            <div class="col-fuild">
                 <input type="text" formControlName="function" id="function" class="form-control fontRegular" />
             </div>
-            <div class="col-md-5">
+            <div class="col-fuild">
                 <em *ngIf="validateControl('function') 
                 && hasError('function', 'required')">Função is required</em>
                 <em *ngIf="validateControl('function') 
@@ -92,10 +92,10 @@
 
         <div class="mb-3 row">
           <label for="salary" class="col-form-label col-md-4 fontTitleMedium">Salário: </label>
-          <div class="col-md-5">
+          <div class="col-fuild">
               <input type="text" formControlName="salary" id="salary" class="form-control fontRegular" />
           </div>
-          <div class="col-md-5">
+          <div class="col-fuild">
               <em *ngIf="validateControl('salary') 
               && hasError('salary', 'required')">Salário is required</em>
               <em *ngIf="validateControl('salary') 
@@ -105,10 +105,10 @@
 
       <div class="mb-3 row">
         <label for="commision" class="col-form-label col-md-4 fontTitleMedium">Commisão: </label>
-        <div class="col-md-5">
+        <div class="col-fuild">
             <input type="text" formControlName="commision" id="commision" class="form-control fontRegular" />
         </div>
-        <div class="col-md-5">
+        <div class="col-fuild">
             <em *ngIf="validateControl('commision') 
             && hasError('commision', 'required')">Commisão is required</em>
             <em *ngIf="validateControl('commision') 
@@ -118,10 +118,10 @@
 
     <div class="mb-3 row">
       <label for="isAdmin" class="col-form-label col-md-4 fontTitleMedium">Admin: </label>
-      <div class="col-md-5">
+      <div class="col-fuild">
           <input type="text" formControlName="isAdmin" id="isAdmin" class="form-control fontRegular" />
       </div>
-      <div class="col-md-5">
+      <div class="col-fuild">
           <em *ngIf="validateControl('isAdmin') 
           && hasError('isAdmin', 'required')">Admin is required</em>
           <em *ngIf="validateControl('isAdmin') 

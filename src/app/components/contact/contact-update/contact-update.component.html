@@ -2,11 +2,11 @@
   <form [formGroup]="contactForm" autocomplete="off" novalidate (ngSubmit)="updateContact(contactForm.value)">
     <div class="card back">
       <div class="row mb-3">
-        <label for="name" class="col-form-label col-md-2">Nome: </label>
-        <div class="col-md-5">
-          <input type="text" formControlName="name" id="name" class="form-control" />
+        <label for="name" class="col-form-label col-md-2 fontTitleMedium">Nome: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="name" id="name" class="form-control fontRegular" />
         </div>
-        <div class="col-md-5">
+        <div class="col-fluid">
           <em *ngIf="validateControl('name') 
           && hasError('name', 'required')">O Nome é obrigatório.</em>
           <em *ngIf="validateControl('name') 
@@ -15,22 +15,22 @@
       </div>
 
       <div class="mb-3 row">
-        <label for="address" class="col-form-label col-md-2">Endereço: </label>
-        <div class="col-md-5">
-          <input type="text" formControlName="address" id="address" class="form-control" />
+        <label for="address" class="col-form-label col-md-2 fontTitleMedium">Endereço: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="address" id="address" class="form-control fontRegular" />
         </div>
-        <div class="col-md-5">
+        <div class="col-fluid">
           <em *ngIf="validateControl('address') 
           && hasError('address', 'maxlength')">O número máximo de caracteres é 60.</em>
         </div>
       </div>
 
       <div class="mb-3 row">
-        <label for="email" class="col-form-label col-md-2">Email: </label>
-        <div class="col-md-5">
-          <input type="text" formControlName="email" id="email" class="form-control" />
+        <label for="email" class="col-form-label col-md-2 fontTitleMedium">Email: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="email" id="email" class="form-control fontRegular" />
         </div>
-        <div class="col-md-5">
+        <div class="col-fluid">
           <em *ngIf="validateControl('email') 
           && hasError('email', 'required')">Email is required</em>
           <em *ngIf="validateControl('email') 
@@ -39,11 +39,11 @@
       </div>
 
       <div class="mb-3 row">
-          <label for="password" class="col-form-label col-md-2">Senha: </label>
-          <div class="col-md-5">
-              <input type="text" formControlName="password" id="password" class="form-control" />
+          <label for="password" class="col-form-label col-md-2 fontTitleMedium">Senha: </label>
+          <div class="col-fluid">
+              <input type="text" formControlName="password" id="password" class="form-control fontRegular" />
           </div>
-          <div class="col-md-5">
+          <div class="col-fluid">
               <em *ngIf="validateControl('password') 
               && hasError('password', 'required')">Senha is required</em>
               <em *ngIf="validateControl('password') 
@@ -52,22 +52,22 @@
       </div>
  
       <div class="mb-3 row">
-        <label for="cpf" class="col-form-label col-md-2">CPF: </label>
-        <div class="col-md-5">
-          <input type="text" formControlName="cpf" id="cpf" class="form-control" />
+        <label for="cpf" class="col-form-label col-md-2 fontTitleMedium">CPF: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="cpf" id="cpf" class="form-control fontRegular" />
         </div>
-        <div class="col-md-5">
+        <div class="col-fluid">
           <em *ngIf="validateControl('cpf') 
           && hasError('cpf', 'maxlength')">O número máximo de caracteres é 60.</em>
         </div>
       </div>
 
       <div class="mb-3 row">
-        <label for="phone" class="col-form-label col-md-2">Telefone: </label>
-        <div class="col-md-5">
-            <input type="text" formControlName="phone" id="phone" class="form-control" />
+        <label for="phone" class="col-form-label col-md-2 fontTitleMedium">Telefone: </label>
+        <div class="col-fluid">
+            <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" />
         </div>
-        <div class="col-md-5">
+        <div class="col-fluid">
             <em *ngIf="validateControl('phone') 
             && hasError('phone', 'required')">Telefone is required</em>
             <em *ngIf="validateControl('phone') 
@@ -76,11 +76,11 @@
     </div>
 
     <div class="mb-3 row">
-      <label for="gender" class="col-form-label col-md-2">Gênero: </label>
-      <div class="col-md-5">
-          <input type="text" formControlName="gender" id="gender" class="form-control" />
+      <label for="gender" class="col-form-label col-md-2 fontTitleMedium">Gênero: </label>
+      <div class="col-fluid">
+          <input type="text" formControlName="gender" id="gender" class="form-control fontRegular" />
       </div>
-      <div class="col-md-5">
+      <div class="col-fluid">
           <em *ngIf="validateControl('gender') 
           && hasError('gender', 'required')">Telefone is required</em>
           <em *ngIf="validateControl('gender') 
@@ -89,12 +89,12 @@
   </div>
 
       <div class="mb-3 row">
-        <label for="birthDate" class="col-form-label col-md-2">Data de nascimento: </label>
-        <div class="col-md-5">
+        <label for="birthDate" class="col-form-label col-md-2 fontTitleMedium">Data de nascimento: </label>
+        <div class="col-fluid">
           <input type="text" formControlName="birthDate" id="birthDate" 
-          class="form-control" readonly bsDatepicker/>
+          class="form-control fontRegular" readonly bsDatepicker/>
         </div>
-        <div class="col-md-5">
+        <div class="col-fluid">
           <em *ngIf="validateControl('birthDate') 
           && hasError('birthDate', 'required')">Date of birth is required</em>
         </div>
@@ -104,10 +104,10 @@
  
       <div class="row g-0">
           <div class="col-1 me-3">
-              <button type="submit" [disabled]="!contactForm.valid" [className]="!contactForm.valid ? 'btn btn-warning': 'btn btn-success'">Salvar</button>
+              <button type="submit" [disabled]="!contactForm.valid" [className]="!contactForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
           </div>
           <div class="col">
-              <button type="button" class="btn btn-secondary" (click)="redirectToContactList()">Voltar</button>
+              <button type="button" class="fontButton btn btn-secondary" (click)="redirectToContactList()">Voltar</button>
           </div>
       </div>
       

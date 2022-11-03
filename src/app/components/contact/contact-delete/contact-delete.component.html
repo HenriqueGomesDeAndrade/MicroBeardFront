@@ -3,10 +3,10 @@
     <div class="fillAvailable card back">
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="name" class="control-label">Name:</label>
+          <label for="name" class="control-label fontTitleMedium">Name:</label>
         </div>
         <div class="col-md-7">
-          <span name="name">
+          <span class="fontRegular" name="name">
             {{ contact?.name }}
           </span>
         </div>
@@ -14,10 +14,10 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="address" class="control-label">Enderço:</label>
+          <label for="address" class="control-label fontTitleMedium">Enderço:</label>
         </div>
         <div class="col-md-7">
-          <span name="address">
+          <span class="fontRegular" name="address">
             {{ contact?.address }}
           </span>
         </div>
@@ -25,10 +25,10 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="email" class="control-label">Email:</label>
+          <label for="email" class="control-label fontTitleMedium">Email:</label>
         </div>
         <div class="col-md-7">
-          <span name="name">
+          <span class="fontRegular" name="name">
             {{ contact?.email }}
           </span>
         </div>
@@ -36,10 +36,10 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="cpf" class="control-label">CPF:</label>
+          <label for="cpf" class="control-label fontTitleMedium">CPF:</label>
         </div>
         <div class="col-md-7">
-          <span name="cpf">
+          <span class="fontRegular" name="cpf">
             {{ contact?.cpf }}
           </span>
         </div>
@@ -47,10 +47,10 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="phone" class="control-label">Telefone:</label>
+          <label for="phone" class="control-label fontTitleMedium">Telefone:</label>
         </div>
         <div class="col-md-7">
-          <span name="phone">
+          <span class="fontRegular" name="phone">
             {{ contact?.phone }}
           </span>
         </div>
@@ -58,10 +58,10 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="gender" class="control-label">Gênero:</label>
+          <label for="gender" class="control-label fontTitleMedium">Gênero:</label>
         </div>
         <div class="col-md-7">
-          <span name="gender">
+          <span class="fontRegular" name="gender">
             {{ contact?.gender }}
           </span>
         </div>
@@ -69,10 +69,10 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="birthDate" class="control-label">Data de Nascimento:</label>
+          <label for="birthDate" class="control-label fontTitleMedium">Data de Nascimento:</label>
         </div>
         <div class="col-md-7">
-          <span name="name">
+          <span class="fontRegular" name="name">
             {{ contact?.birthDate }}
           </span>
         </div>
@@ -80,20 +80,19 @@
 
       <br><br>
 
-      <span style="font-family: Georgia, 'times new roman', 'bitstream charter',
-        Times,serif;">Tem certeza?</span>
+      <span class="fontTitle">Tem certeza?</span>
 
       <br />
       <div class="row g-0 justify-content-start">
         <div class="col-1 me-4">
-          <button type="submit" class="btn btn-danger" (click)="deleteContact()">
+          <button type="submit" class="fontButton btn btn-danger" (click)="deleteContact()">
             Apagar
           </button>
         </div>
         <div class="col">
           <button
             type="button"
-            class="btn btn-secondary"
+            class="fontButton btn btn-secondary"
             (click)="redirectToContactList()">
             Voltar
           </button>

@@ -1,27 +1,27 @@
 <div class="card back">
   <div class="card card-body bg-light mb-2 mt-2">
     <div class="row">
-      <div class="col-md-3">
-        <strong>Contact name:</strong>
+      <div class="col-md-4">
+        <strong class="fontTitleMedium">Contact name:</strong>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         {{contact?.name}}
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <strong>Date of birth:</strong>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         {{contact?.birthDate | date: 'dd/MM/yyyy'}}
       </div>
     </div>
     <ng-template #advancedUser>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <strong>Type of user:</strong>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <span [appAppend]="contact" class="text-info">Advanced user.</span>
         </div>
       </div>
@@ -30,6 +30,6 @@
 
   <br>
   <div class="col-md-1">
-    <button type="button" class="btn btn-secondary" (click)="redirectToContactList()">Voltar</button>
+    <button type="button" class="fontButton btn btn-secondary" (click)="redirectToContactList()">Voltar</button>
   </div>
 </div>
