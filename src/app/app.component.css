@@ -1,3 +1,11 @@
+.container-fluid{
+    height: 92.2vh;
+}
+
+.fillPage{
+    height: 100%;
+}
+
 .col{
     padding: inherit;
 }
@@ -12,4 +20,11 @@ em {
 
 .col-2{
     max-width: 221px;
+    background-color: #FFFFFF
+    ;
+}
+
+.col{
+    background-color: #F5F6FF;
+    max-width: inherit;
 }
