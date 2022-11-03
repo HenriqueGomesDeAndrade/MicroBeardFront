@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
+import { CollaboratorRepositoryService } from 'src/app/shared/services/repositories/collaborator-repository.service';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { License } from 'src/app/interfaces/license/license.model';
 

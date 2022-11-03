@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
+import { CollaboratorRepositoryService } from 'src/app/shared/services/repositories/collaborator-repository.service';
 import { Component, OnInit } from '@angular/core';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { BsModalRef, ModalOptions, BsModalService } from 'ngx-bootstrap/modal';

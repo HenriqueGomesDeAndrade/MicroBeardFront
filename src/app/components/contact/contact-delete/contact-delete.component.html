@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 card card-body bg-light mb-2 mt-2">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="name" class="control-label">Name:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="name">
+            {{ contact?.name }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="address" class="control-label">Enderço:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="address">
+            {{ contact?.address }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="email" class="control-label">Email:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="name">
+            {{ contact?.email }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="cpf" class="control-label">CPF:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="cpf">
+            {{ contact?.cpf }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="phone" class="control-label">Telefone:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="phone">
+            {{ contact?.phone }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="gender" class="control-label">Gênero:</label>
+        </div>
+        <div class="col-md-7">
+          <span name="gender">
+            {{ contact?.gender }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="birthDate" class="control-label"
+            >Data de Nascimento:</label
+          >
+        </div>
+        <div class="col-md-7">
+          <span name="name">
+            {{ contact?.birthDate }}
+          </span>
+        </div>
+      </div>
+
+      <br />
+      <div class="row justify-content-start">
+        <div class="col-2">
+          <button type="submit" class="btn btn-info" (click)="deleteContact()">
+            Delete
+          </button>
+        </div>
+        <div class="col-4">
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="redirectToContactList()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+      <br />
+      <span
+        style="
+          font-family: Georgia, 'times new roman', 'bitstream charter', Times,
+            serif;
+        "
+        >Tem certeza?</span
+      >
+    </div>
+  </div>
+</div>

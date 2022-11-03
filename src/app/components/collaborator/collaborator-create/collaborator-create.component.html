@@ -13,17 +13,6 @@
             && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
           </div>
         </div>
-   
-        <div class="mb-3 row">
-          <label for="cpf" class="col-form-label col-md-2">CPF: </label>
-          <div class="col-md-5">
-            <input type="text" formControlName="cpf" id="cpf" class="form-control" />
-          </div>
-          <div class="col-md-5">
-            <em *ngIf="validateControl('cpf') 
-            && hasError('cpf', 'maxlength')">O número máximo de caracteres é 60.</em>
-          </div>
-        </div>
 
         <div class="mb-3 row">
           <label for="birthDate" class="col-form-label col-md-2">Data de nascimento: </label>
@@ -36,6 +25,18 @@
             && hasError('birthDate', 'required')">Date of birth is required</em>
           </div>
         </div>
+   
+        <div class="mb-3 row">
+          <label for="cpf" class="col-form-label col-md-2">CPF: </label>
+          <div class="col-md-5">
+            <input type="text" formControlName="cpf" id="cpf" class="form-control" />
+          </div>
+          <div class="col-md-5">
+            <em *ngIf="validateControl('cpf') 
+            && hasError('cpf', 'maxlength')">O número máximo de caracteres é 60.</em>
+          </div>
+        </div>
+        
    
         <div class="mb-3 row">
           <label for="email" class="col-form-label col-md-2">Email: </label>
@@ -88,6 +89,45 @@
                 && hasError('function', 'maxlength')">Maximum allowed length is 100 characters.</em>
             </div>
         </div>
+
+        <div class="mb-3 row">
+          <label for="salary" class="col-form-label col-md-2">Salário: </label>
+          <div class="col-md-5">
+              <input type="text" formControlName="salary" id="salary" class="form-control" />
+          </div>
+          <div class="col-md-5">
+              <em *ngIf="validateControl('salary') 
+              && hasError('salary', 'required')">Salário is required</em>
+              <em *ngIf="validateControl('salary') 
+              && hasError('salary', 'maxlength')">Maximum allowed length is 100 characters.</em>
+          </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="commision" class="col-form-label col-md-2">Commisão: </label>
+        <div class="col-md-5">
+            <input type="text" formControlName="commision" id="commision" class="form-control" />
+        </div>
+        <div class="col-md-5">
+            <em *ngIf="validateControl('commision') 
+            && hasError('commision', 'required')">Commisão is required</em>
+            <em *ngIf="validateControl('commision') 
+            && hasError('commision', 'maxlength')">Maximum allowed length is 100 characters.</em>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="isAdmin" class="col-form-label col-md-2">Admin: </label>
+      <div class="col-md-5">
+          <input type="text" formControlName="isAdmin" id="isAdmin" class="form-control" />
+      </div>
+      <div class="col-md-5">
+          <em *ngIf="validateControl('isAdmin') 
+          && hasError('isAdmin', 'required')">Admin is required</em>
+          <em *ngIf="validateControl('isAdmin') 
+          && hasError('isAdmin', 'maxlength')">Maximum allowed length is 100 characters.</em>
+      </div>
+  </div>
    
         <br><br>
    
