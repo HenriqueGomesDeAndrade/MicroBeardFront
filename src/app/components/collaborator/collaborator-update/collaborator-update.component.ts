@@ -3,7 +3,7 @@ import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/succe
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
+import { CollaboratorRepositoryService } from 'src/app/shared/services/repositories/collaborator-repository.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { CollaboratorForUpdate } from 'src/app/interfaces/collaborator/collaborator-update.model';
@@ -49,9 +49,9 @@ export class CollaboratorUpdateComponent implements OnInit {
     const collaboratorByCodeUri: string = `Collaborator/${collaboratorCode}`;
     this.repository.getCollaborator(collaboratorByCodeUri)
     .subscribe({
-      next: (own: Collaborator) => {
-        this.collaborator = { ...own, 
-          birthDate: new Date(this.datePipe.transform(own.birthDate, 'MM/dd/yyyy'))
+      next: (collab: Collaborator) => {
+        this.collaborator = { ...collab, 
+          birthDate: new Date(this.datePipe.transform(collab.birthDate, 'MM/dd/yyyy'))
         };
         this.collaboratorForm.patchValue(this.collaborator);
       },

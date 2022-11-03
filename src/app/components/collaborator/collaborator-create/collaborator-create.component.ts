@@ -3,7 +3,7 @@ import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/succe
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-import { CollaboratorRepositoryService } from 'src/app/shared/services/collaborator-repository.service';
+import { CollaboratorRepositoryService } from 'src/app/shared/services/repositories/collaborator-repository.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { CollaboratorForCreation } from 'src/app/interfaces/collaborator/collaborator-create.model';
@@ -76,11 +76,11 @@ export class CollaboratorCreateComponent implements OnInit {
     const apiUrl = 'Collaborator';
     this.repository.createCollaborator(apiUrl, collaborator)
     .subscribe({
-      next: (own: Collaborator) => {
+      next: (collab: Collaborator) => {
         const config: ModalOptions = {
           initialState: {
             modalHeaderText: 'Success Message',
-            modalBodyText: `Collaborator: ${own.name} created successfully`,
+            modalBodyText: `Collaborator: ${collab.name} created successfully`,
             okButtonText: 'OK'
           }
         };

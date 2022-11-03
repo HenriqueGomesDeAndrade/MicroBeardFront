@@ -3,9 +3,14 @@ export interface Contact {
   name: string;
   address: string;
   email: string;
-  password: string;
   cpf: string;
   phone: string;
   gender: string;
-  birthDate: Date;
+  birthDate?: Date;
+  creatorCode?: number;
+  createDate?: string;
+  updaterCode?: number;
+  updateDate?: string;
+  deleterCode?: number;
+  deleteDate?: string;
 }

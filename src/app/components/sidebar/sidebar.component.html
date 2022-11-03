@@ -10,8 +10,8 @@
       <a ngbNavLink [routerLink]="['/home']"> <i class="bi bi-window"></i>Painel inicial</a>
       <ng-template ngbNavContent> </ng-template>
     </li>
-    <li ngbNavItem="contact" class="mb-3">
-      <a ngbNavLink><i class="bi bi-person-lines-fill"></i>Clientes</a>
+    <li ngbNavItem="contact">
+      <a ngbNavLink [routerLink]="['/contact/list']"><i class="bi bi-person"></i>Clientes</a>
       <ng-template ngbNavContent> </ng-template>
     </li>
     <li ngbNavItem="scheduling" class="mb-3">
