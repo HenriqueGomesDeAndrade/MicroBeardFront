@@ -4,14 +4,14 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Code</th>
-              <th>Description</th>
+              <th class="fontTitle">Code</th>
+              <th class="fontTitle">Description</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let license of licenses" (click)="onLicenseClicked(license)">
-              <td>{{license?.code}}</td>
-              <td>{{license?.description}}</td>
+              <td class="fontRegular">{{license?.code}}</td>
+              <td class="fontRegular">{{license?.description}}</td>
             </tr>
           </tbody>
         </table>

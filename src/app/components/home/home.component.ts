@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.homeText = "Welcome to the home"
+    this.homeText = "TO DO"
   }
 
 }

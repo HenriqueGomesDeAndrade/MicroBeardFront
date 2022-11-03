@@ -3,99 +3,99 @@
       <div class="fillAvailable card back">
         
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="name" class="control-label">Name:</label>
+            <div class="col-md-4">
+              <label for="name" class="control-label fontTitleMedium">Name:</label>
             </div>
             <div class="col-md-7">
-              <span name="name">
+              <span class ="fontRegular" name="name">
                 {{collaborator?.name}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="birthDate" class="control-label">Data de Nascimento:</label>
+            <div class="col-md-4">
+              <label for="birthDate" class="control-label fontTitleMedium">Data de Nascimento:</label>
             </div>
             <div class="col-md-7">
-              <span name="birthDate">
+              <span class ="fontRegular" name="birthDate">
                 {{collaborator?.birthDate}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="cpf" class="control-label">CPF:</label>
+            <div class="col-md-4">
+              <label for="cpf" class="control-label fontTitleMedium">CPF:</label>
             </div>
             <div class="col-md-7">
-              <span name="cpf">
+              <span class ="fontRegular" name="cpf">
                 {{collaborator?.cpf}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="email" class="control-label">Email:</label>
+            <div class="col-md-4">
+              <label for="email" class="control-label fontTitleMedium">Email:</label>
             </div>
             <div class="col-md-7">
-              <span name="email">
+              <span class ="fontRegular" name="email">
                 {{collaborator?.email}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="phone" class="control-label">Telefone:</label>
+            <div class="col-md-4">
+              <label for="phone" class="control-label fontTitleMedium">Telefone:</label>
             </div>
             <div class="col-md-7">
-              <span name="phone">
+              <span class ="fontRegular" name="phone">
                 {{collaborator?.phone}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="function" class="control-label">Função:</label>
+            <div class="col-md-4">
+              <label for="function" class="control-label fontTitleMedium">Função:</label>
             </div>
             <div class="col-md-7">
-              <span name="function">
+              <span class ="fontRegular" name="function">
                 {{collaborator?.function}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="salary" class="control-label">Salário:</label>
+            <div class="col-md-4">
+              <label for="salary" class="control-label fontTitleMedium">Salário:</label>
             </div>
             <div class="col-md-7">
-              <span name="salary">
+              <span class ="fontRegular" name="salary">
                 {{collaborator?.salary}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="commission" class="control-label">Comissão:</label>
+            <div class="col-md-4">
+              <label for="commission" class="control-label fontTitleMedium">Comissão:</label>
             </div>
             <div class="col-md-7">
-              <span name="commission">
+              <span class ="fontRegular" name="commission">
                 {{collaborator?.commision}}
               </span>
             </div>
         </div>
 
         <div class="row g-0">
-            <div class="col-md-3">
-              <label for="isAdmin" class="control-label">Asministrador:</label>
+            <div class="col-md-4">
+              <label for="isAdmin" class="control-label fontTitleMedium">Asministrador:</label>
             </div>
             <div class="col-md-7">
-              <span name="isAdmin">
+              <span class ="fontRegular" name="isAdmin">
                 {{collaborator?.isAdmin}}
               </span>
             </div>
@@ -103,15 +103,15 @@
 
         <br><br>
 
-        <span style="font-family: Georgia, 'times new roman', 'bitstream charter', Times, serif;">Tem certeza?</span>
+        <span class="fontTitle" >Tem certeza?</span>
 
         <br>
         <div class="row g-0 justify-content-start">
             <div class="col-1 me-4">
-                <button type="submit" class="btn btn-danger" (click)="deleteCollaborator()">Apagar</button>
+                <button type="submit" class="fontButton btn btn-danger" (click)="deleteCollaborator()">Apagar</button>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>
+                <button type="button" class="fontButton btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>
             </div>
         </div>
       <br>
