@@ -1,10 +1,21 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+.d-flex {
+  background-color: #FFFFFF;
+}
 
 div {
   text-align: start;
-  border: 1px solid red;
 }
 
 i {
   padding-right: 1em;
+}
+
+li {
+  border-radius: 5px;
+
+}
+
+a{
+  color: #484848
 }

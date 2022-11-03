@@ -1,3 +1,8 @@
+.navbar{
+  padding-right: 10px;
+  padding-left: 30px;
+}
+
 .active{ 
     font-weight: bold; 
     font-style: italic; 

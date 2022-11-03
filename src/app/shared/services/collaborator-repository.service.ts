@@ -40,7 +40,7 @@ export class CollaboratorRepositoryService {
     return {
       headers: new HttpHeaders({
          'Content-Type': 'application/json', 
-         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwicm9sZSI6IkNvbGxhYm9yYXRvckFkbWluIiwiQ29kZSI6MSwibmJmIjoxNjY3NDE5NTg2LCJleHAiOjE2NzAwMTE1ODYsImlhdCI6MTY2NzQxOTU4Nn0.UEztq8W7H-MoyzR4UB9dy1J7X4LsVbt2U5xkSHP4nQU'
+         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluMiIsInJvbGUiOiJDb2xsYWJvcmF0b3JBZG1pbiIsIkNvZGUiOjIsIm5iZiI6MTY2NzQzNTM1NCwiZXhwIjoxNjcwMDI3MzU0LCJpYXQiOjE2Njc0MzUzNTR9.RxGda7xgkRYoFHvTwKxkALOtdNgTXcYjWFS19psHRnI'
         })
     }
   }

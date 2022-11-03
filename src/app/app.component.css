@@ -1,3 +1,7 @@
+.col{
+    padding: inherit;
+}
+
 em {
   color: #e71515;
   font-weight: bold;
@@ -6,10 +10,6 @@ em {
   border-color: red;
 }
 
-.col-2 {
-  border: 1px solid black;
-}
-
-.col-10 {
-  border: 1px solid black;
+.col-2{
+    max-width: 221px;
 }
