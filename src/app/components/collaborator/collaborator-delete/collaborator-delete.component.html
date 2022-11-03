@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-10 card card-body bg-light mb-2 mt-2">
+    <div class="row g-0">
+      <div class="fillAvailable card back">
         
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="name" class="control-label">Name:</label>
             </div>
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="birthDate" class="control-label">Data de Nascimento:</label>
             </div>
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="cpf" class="control-label">CPF:</label>
             </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="email" class="control-label">Email:</label>
             </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="phone" class="control-label">Telefone:</label>
             </div>
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="function" class="control-label">Função:</label>
             </div>
@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="salary" class="control-label">Salário:</label>
             </div>
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="commission" class="control-label">Comissão:</label>
             </div>
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row g-0">
             <div class="col-md-3">
               <label for="isAdmin" class="control-label">Asministrador:</label>
             </div>
@@ -101,16 +101,19 @@
             </div>
         </div>
 
+        <br><br>
+
+        <span style="font-family: Georgia, 'times new roman', 'bitstream charter', Times, serif;">Tem certeza?</span>
+
         <br>
-        <div class="row justify-content-start">
-            <div class="col-2">
-                <button type="submit" class="btn btn-info" (click)="deleteCollaborator()">Delete</button>
+        <div class="row g-0 justify-content-start">
+            <div class="col-1 me-4">
+                <button type="submit" class="btn btn-danger" (click)="deleteCollaborator()">Apagar</button>
             </div>
-            <div class="col-4">
-                <button type="button" class="btn btn-danger" (click)="redirectToCollaboratorList()">Cancel</button>
+            <div class="col">
+                <button type="button" class="btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>
             </div>
-      </div>
+        </div>
       <br>
-      <span style="font-family: Georgia, 'times new roman', 'bitstream charter', Times, serif;">Tem certeza?</span>
     </div>
   </div>

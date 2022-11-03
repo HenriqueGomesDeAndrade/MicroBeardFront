@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <form [formGroup]="collaboratorForm" autocomplete="off" novalidate (ngSubmit)="updateCollaborator(collaboratorForm.value)">
-      <div class="card card-body bg-light mb-2 mt-2">
+      <div class="back card">
         
         <div class="row mb-3">
             <label for="name" class="col-form-label col-md-2">Nome: </label>
@@ -90,14 +90,14 @@
               </div>
           </div>
      
-          <br><br>
+          <br>
 
-          <div class="mb-3 row">
-            <div class="offset-5 col-md-1">
-                <button type="submit" class="btn btn-info" [disabled]="!collaboratorForm.valid">Save</button>
+          <div class="row g-0">
+            <div class="col-1 me-3">
+                <button type="submit" [disabled]="!collaboratorForm.valid"  [className]="!collaboratorForm.valid ? 'btn btn-warning': 'btn btn-success'">Salvar</button>
             </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-danger" (click)="redirectToCollaboratorList()">Cancel</button>
+            <div class="col">
+                <button type="button" class="btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>
             </div>
         </div>
       </div>
