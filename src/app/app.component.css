@@ -6,6 +6,11 @@
     height: 100%;
 }
 
+app-sidebar {
+  justify-content: center;
+  display: flex;
+}
+
 .col{
     padding: inherit;
 }
@@ -20,8 +25,7 @@ em {
 
 .col-2{
     max-width: 221px;
-    background-color: #FFFFFF
-    ;
+    background-color: #FFFFFF;
 }
 
 .col{

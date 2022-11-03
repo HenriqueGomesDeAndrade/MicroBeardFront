@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center align-items-center ms-4">
+<div>
   <ul
     ngbNav
     #nav="ngbNav"
@@ -10,7 +10,7 @@
       <a ngbNavLink [routerLink]="['/home']"> <i class="bi bi-window"></i>Painel inicial</a>
       <ng-template ngbNavContent> </ng-template>
     </li>
-    <li ngbNavItem="contact">
+    <li ngbNavItem="contact" class="mb-3">
       <a ngbNavLink [routerLink]="['/contact/list']"><i class="bi bi-person"></i>Clientes</a>
       <ng-template ngbNavContent> </ng-template>
     </li>
