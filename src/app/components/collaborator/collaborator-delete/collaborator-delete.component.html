@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="birthDate">
-                {{collaborator?.birthDate}}
+                {{collaborator?.birthDate | date: 'dd/MM/yyyy'}}
               </span>
             </div>
         </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="function">
-                {{collaborator?.function}
+                {{collaborator?.function}}
               </span>
             </div>
         </div>
@@ -92,11 +92,11 @@
 
         <div class="row g-0">
             <div class="col-md-4">
-              <label for="isAdmin" class="control-label fontTitleMedium">Asministrador:</label>
+              <label for="isAdmin" class="control-label fontTitleMedium">Administrador:</label>
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="isAdmin">
-                {{collaborator?.isAdmin}}
+                {{collaborator?.isAdmin ? 'Verdadeiro' : 'Falso'}}
               </span>
             </div>
         </div>
