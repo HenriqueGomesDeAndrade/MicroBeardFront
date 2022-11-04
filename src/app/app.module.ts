@@ -18,6 +18,9 @@ import { UnauthorizedComponent } from './components/error-pages/unauthorized/una
 import { DatePipe } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { SchedulingModule } from './components/scheduling/scheduling.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CollaboratorModule,
     LicenseModule,
     NgbModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    SchedulingModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

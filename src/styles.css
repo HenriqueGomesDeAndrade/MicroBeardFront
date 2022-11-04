@@ -2,6 +2,9 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nunito:wght@400;600;700&family=Poppins:wght@700&display=swap');
 
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
 html{
     min-height: 100%;
     margin: 0;
