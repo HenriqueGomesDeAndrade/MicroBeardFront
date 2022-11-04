@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <form [formGroup]="licenseForm" autocomplete="off" novalidate (ngSubmit)="updateLicense(licenseForm.value)">
+    <div class="card back">
+
+      <div class="mb-3 row">
+        <label for="description" class="col-form-label col-md-2 fontTitleMedium">Email: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="description" id="description" class="form-control fontRegular" />
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('description') 
+          && hasError('description', 'required')">Description is required</em>
+          <em *ngIf="validateControl('description') 
+          && hasError('description', 'maxlength')">Maximum allowed length is 250 characters.</em>
+        </div>
+      </div>
+
+      <br>
+ 
+      <div class="row g-0">
+          <div class="col-1 me-3">
+              <button type="submit" [disabled]="!licenseForm.valid" [className]="!licenseForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+          </div>
+          <div class="col">
+              <button type="button" class="fontButton btn btn-secondary" (click)="redirectToLicenseList()">Voltar</button>
+          </div>
+      </div>
+      
+    </div>
+  </form>
+</div>
