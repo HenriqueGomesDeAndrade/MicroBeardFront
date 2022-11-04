@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ServiceRoutingModule } from './service-routing.module';
 import { ServiceListComponent } from './service-list/service-list.component';
 import { ServiceDetailsComponent } from './service-details/service-details.component';
 import { ServiceCreateComponent } from './service-create/service-create.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ServiceUpdateComponent } from './service-update/service-update.component';
 import { ServiceDeleteComponent } from './service-delete/service-delete.component';
-import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -21,12 +17,8 @@ import { NgxMaskModule } from 'ngx-mask';
     ServiceDeleteComponent,
   ],
   imports: [
-    CommonModule,
-    ServiceRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    BsDatepickerModule,
-    NgxMaskModule.forChild(),
+    ServiceRoutingModule,
   ],
 })
 export class ServiceModule {}

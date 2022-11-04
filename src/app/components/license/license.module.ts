@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { LicenseRoutingModule } from './license-routing.module';
 import { LicenseListComponent } from './license-list/license-list.component';
 import { LicenseDetailsComponent } from './license-details/license-details.component';
 import { LicenseCreateComponent } from './license-create/license-create.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { LicenseUpdateComponent } from './license-update/license-update.component';
 import { LicenseDeleteComponent } from './license-delete/license-delete.component';
-import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -21,12 +17,8 @@ import { NgxMaskModule } from 'ngx-mask';
     LicenseDeleteComponent,
   ],
   imports: [
-    CommonModule,
-    LicenseRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    BsDatepickerModule,
-    NgxMaskModule.forChild(),
-  ]
+    LicenseRoutingModule,
+  ],
 })
-export class LicenseModule { }
+export class LicenseModule {}
