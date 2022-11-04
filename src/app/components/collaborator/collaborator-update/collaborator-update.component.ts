@@ -31,7 +31,6 @@ export class CollaboratorUpdateComponent implements OnInit {
     this.collaboratorForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       birthDate: new FormControl('', [Validators.required]),
-      cpf: new FormControl('',[]),
       email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       password: new FormControl('',[]),
       phone: new FormControl('',[]),
@@ -82,7 +81,6 @@ export class CollaboratorUpdateComponent implements OnInit {
     const collaboratorForUpd: CollaboratorForUpdate = {
       name: collaboratorFormValue.name,
       birthDate: this.datePipe.transform(collaboratorFormValue.birthDate, 'yyyy-MM-dd'),
-      cpf: collaboratorFormValue.cpf,
       email: collaboratorFormValue.email,
       password: collaboratorFormValue.password,
       phone: collaboratorFormValue.phone,

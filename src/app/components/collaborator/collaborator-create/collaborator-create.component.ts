@@ -28,15 +28,15 @@ export class CollaboratorCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.collaboratorForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      birthDate: new FormControl('', [Validators.required]),
-      cpf: new FormControl('',[]),
-      email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      password: new FormControl('',[]),
-      phone: new FormControl('',[]),
-      function: new FormControl('',[]),
-      salary: new FormControl('',[]),
-      commision: new FormControl('',[]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      birthDate: new FormControl(''),
+      cpf: new FormControl('',[Validators.minLength(11), Validators.maxLength(11), Validators.pattern("\\d{11}")]),
+      email: new FormControl('', [Validators.required, Validators.maxLength(80), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      password: new FormControl('',[Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
+      phone: new FormControl('',[Validators.maxLength(15), Validators.pattern("(\\(?\\d{2}\\)?\\s?)?(9?\\d{4}\\-?\\d{4})")]),
+      function: new FormControl('',[Validators.maxLength(100)]),
+      salary: new FormControl('',[Validators.min(0), Validators.max(999999.99)]),
+      commision: new FormControl('',[Validators.min(0), Validators.max(999999.99)]),
       isAdmin: new FormControl('',[]),
     });
   }

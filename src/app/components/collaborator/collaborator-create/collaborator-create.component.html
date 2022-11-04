@@ -21,8 +21,6 @@
             class="form-control fontRegular" readonly bsDatepicker/>
           </div>
           <div class="col-fuild">
-            <em *ngIf="validateControl('birthDate') 
-            && hasError('birthDate', 'required')">Date of birth is required</em>
           </div>
         </div>
    
@@ -33,7 +31,11 @@
           </div>
           <div class="col-fuild">
             <em *ngIf="validateControl('cpf') 
-            && hasError('cpf', 'maxlength')">O número máximo de caracteres é 60.</em>
+            && hasError('cpf', 'minlength')">O número mínimo de caracteres é 11.</em>
+            <em *ngIf="validateControl('cpf') 
+            && hasError('cpf', 'maxlength')">O número máximo de caracteres é 11.</em>
+            <em *ngIf="validateControl('cpf') 
+            && hasError('cpf', 'maxlength')">CPF inválido. Ele deve conter apenas números</em>
           </div>
         </div>
         
@@ -41,26 +43,30 @@
         <div class="mb-3 row">
           <label for="email" class="col-form-label col-md-4 fontTitleMedium">Email: </label>
           <div class="col-fuild">
-            <input type="text" formControlName="email" id="email" class="form-control fontRegular" />
+            <input type="email" formControlName="email" id="email" class="form-control fontRegular" />
           </div>
           <div class="col-fuild">
             <em *ngIf="validateControl('email') 
-            && hasError('email', 'required')">Email is required</em>
+            && hasError('email', 'required')">Email é obrigatório</em>
             <em *ngIf="validateControl('email') 
-            && hasError('email', 'maxlength')">Maximum allowed length is 100 characters.</em>
+            && hasError('email', 'maxlength')">O número máximo de caracteres é 80.</em>
+            <em *ngIf="validateControl('email') 
+            && hasError('email', 'pattern')">Email inválido.</em>
           </div>
         </div>
 
         <div class="mb-3 row">
             <label for="password" class="col-form-label col-md-4 fontTitleMedium">Senha: </label>
             <div class="col-fuild">
-                <input type="text" formControlName="password" id="password" class="form-control fontRegular" />
+                <input type="password" formControlName="password" id="password" class="form-control fontRegular" />
             </div>
             <div class="col-fuild">
                 <em *ngIf="validateControl('password') 
-                && hasError('password', 'required')">Senha is required</em>
+                && hasError('password', 'required')">Senha is obrigatória.</em>
                 <em *ngIf="validateControl('password') 
-                && hasError('password', 'maxlength')">Maximum allowed length is 100 characters.</em>
+                && hasError('password', 'maxlength')">O tamanho mínimo é de 8 caracteres</em>
+                <em *ngIf="validateControl('password') 
+                && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
             </div>
         </div>
 
@@ -71,9 +77,9 @@
             </div>
             <div class="col-fuild">
                 <em *ngIf="validateControl('phone') 
-                && hasError('phone', 'required')">Telefone is required</em>
+                && hasError('phone', 'maxlength')">O tamanho máximo é de 15 caracteres.</em>
                 <em *ngIf="validateControl('phone') 
-                && hasError('phone', 'maxlength')">Maximum allowed length is 100 characters.</em>
+                && hasError('phone', 'pattern')">Telefone inválido. Tente seguir esse padrão, com ou sem o DDD e o 9: (XX) 9XXXX-XXXX</em>
             </div>
         </div>
 
@@ -84,48 +90,42 @@
             </div>
             <div class="col-fuild">
                 <em *ngIf="validateControl('function') 
-                && hasError('function', 'required')">Função is required</em>
-                <em *ngIf="validateControl('function') 
-                && hasError('function', 'maxlength')">Maximum allowed length is 100 characters.</em>
+                && hasError('function', 'maxlength')">O tamanho máximo é de 100 caracteres.</em>
             </div>
         </div>
 
         <div class="mb-3 row">
           <label for="salary" class="col-form-label col-md-4 fontTitleMedium">Salário: </label>
           <div class="col-fuild">
-              <input type="text" formControlName="salary" id="salary" class="form-control fontRegular" />
+              <input type="number" formControlName="salary" id="salary" class="form-control fontRegular" />
           </div>
           <div class="col-fuild">
               <em *ngIf="validateControl('salary') 
-              && hasError('salary', 'required')">Salário is required</em>
+              && hasError('salary', 'min')">O valor deve ser positivo</em>
               <em *ngIf="validateControl('salary') 
-              && hasError('salary', 'maxlength')">Maximum allowed length is 100 characters.</em>
+              && hasError('salary', 'max')">O valor não pode passar de 999999,99.</em>
           </div>
       </div>
 
       <div class="mb-3 row">
         <label for="commision" class="col-form-label col-md-4 fontTitleMedium">Commisão: </label>
         <div class="col-fuild">
-            <input type="text" formControlName="commision" id="commision" class="form-control fontRegular" />
+            <input type="number" formControlName="commision" id="commision" class="form-control fontRegular" />
         </div>
         <div class="col-fuild">
-            <em *ngIf="validateControl('commision') 
-            && hasError('commision', 'required')">Commisão is required</em>
-            <em *ngIf="validateControl('commision') 
-            && hasError('commision', 'maxlength')">Maximum allowed length is 100 characters.</em>
+          <em *ngIf="validateControl('commision') 
+              && hasError('salary', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('commision') 
+              && hasError('salary', 'max')">O valor não pode passar de 999999,99.</em>
         </div>
     </div>
 
     <div class="mb-3 row">
       <label for="isAdmin" class="col-form-label col-md-4 fontTitleMedium">Admin: </label>
       <div class="col-fuild">
-          <input type="text" formControlName="isAdmin" id="isAdmin" class="form-control fontRegular" />
+          <input type="checkbox" formControlName="isAdmin" id="isAdmin" value="true" />
       </div>
       <div class="col-fuild">
-          <em *ngIf="validateControl('isAdmin') 
-          && hasError('isAdmin', 'required')">Admin is required</em>
-          <em *ngIf="validateControl('isAdmin') 
-          && hasError('isAdmin', 'maxlength')">Maximum allowed length is 100 characters.</em>
       </div>
   </div>
    
