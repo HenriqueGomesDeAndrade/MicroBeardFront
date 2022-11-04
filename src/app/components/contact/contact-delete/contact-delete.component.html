@@ -14,7 +14,7 @@
 
       <div class="row g-0">
         <div class="col-md-3">
-          <label for="address" class="control-label fontTitleMedium">Enderço:</label>
+          <label for="address" class="control-label fontTitleMedium">Endereço:</label>
         </div>
         <div class="col-md-7">
           <span class="fontRegular" name="address">
@@ -74,6 +74,50 @@
         <div class="col-md-7">
           <span class="fontRegular" name="name">
             {{ contact?.birthDate }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-3">
+          <label for="creatorCode" class="control-label fontTitleMedium">Criador:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="creatorCode">
+            {{contact?.creatorCode}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-3">
+          <label for="createDate" class="control-label fontTitleMedium">Data de criação:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="createDate">
+            {{contact?.createDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-3">
+          <label for="updaterCode" class="control-label fontTitleMedium">Atualizador:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="updaterCode">
+            {{contact?.updaterCode ? contact?.updaterCode : contact?.updateDate ? 'Editado pelo cliente' : '' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-3">
+          <label for="updateDate" class="control-label fontTitleMedium">Data de Atualização:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="updateDate">
+            {{contact?.updateDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
           </span>
         </div>
       </div>

@@ -101,6 +101,50 @@
             </div>
         </div>
 
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="creatorCode" class="control-label fontTitleMedium">Criador:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="creatorCode">
+              {{collaborator?.creatorCode}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="createDate" class="control-label fontTitleMedium">Data de criação:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="createDate">
+              {{collaborator?.createDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="updaterCode" class="control-label fontTitleMedium">Atualizador:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="updaterCode">
+              {{collaborator?.updaterCode}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="updateDate" class="control-label fontTitleMedium">Data de Atualização:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="updateDate">
+              {{collaborator?.updateDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+            </span>
+          </div>
+        </div>
+
         <br><br>
 
         <span class="fontTitle" >Tem certeza?</span>
