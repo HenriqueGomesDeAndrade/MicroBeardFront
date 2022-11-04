@@ -2,7 +2,7 @@
     <form [formGroup]="collaboratorForm" autocomplete="off" novalidate (ngSubmit)="createCollaborator(collaboratorForm.value)">
       <div class="card back">
         <div class="row mb-3">
-          <label for="name" class="col-form-label col-md-4 fontTitleMedium">Nome: </label>
+          <label for="name" class="col-form-label col-md-4 fontTitleMedium">*Nome: </label>
           <div class="col-fuild">
             <input type="text" formControlName="name" id="name" class="form-control fontRegular" />
           </div>
@@ -41,7 +41,7 @@
         
    
         <div class="mb-3 row">
-          <label for="email" class="col-form-label col-md-4 fontTitleMedium">Email: </label>
+          <label for="email" class="col-form-label col-md-4 fontTitleMedium">*Email: </label>
           <div class="col-fuild">
             <input type="email" formControlName="email" id="email" class="form-control fontRegular" />
           </div>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="mb-3 row">
-            <label for="password" class="col-form-label col-md-4 fontTitleMedium">Senha: </label>
+            <label for="password" class="col-form-label col-md-4 fontTitleMedium">*Senha: </label>
             <div class="col-fuild">
                 <input type="password" formControlName="password" id="password" class="form-control fontRegular" />
             </div>
