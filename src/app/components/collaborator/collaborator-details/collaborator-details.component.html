@@ -2,6 +2,16 @@
   <div class="card card-body bg-light mb-2 mt-2">
 
     <div class="row g-0">
+      <div class="col-md-4">
+        <label for="code" class="control-label fontTitleMedium">Código:</label>
+      </div>
+      <div class="col-md-7">
+        <span class ="fontRegular" name="code">
+          {{collaborator?.code}}
+        </span>
+      </div>
+    </div>
+    <div class="row g-0">
             <div class="col-md-4">
               <label for="name" class="control-label fontTitleMedium">Name:</label>
             </div>
@@ -117,7 +127,7 @@
           </div>
           <div class="col-md-7">
             <span class ="fontRegular" name="createDate">
-              {{collaborator?.createDate | date: 'dd/MM/yyyy'}}
+              {{collaborator?.createDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
             </span>
           </div>
         </div>
@@ -139,7 +149,7 @@
           </div>
           <div class="col-md-7">
             <span class ="fontRegular" name="updateDate">
-              {{collaborator?.updateDate | date: 'dd/MM/yyyy'}}
+              {{collaborator?.updateDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
             </span>
           </div>
         </div>

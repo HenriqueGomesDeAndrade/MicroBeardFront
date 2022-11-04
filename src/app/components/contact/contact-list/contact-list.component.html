@@ -8,9 +8,9 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th class="fontTitle">Código</th>
               <th class="fontTitle">Nome</th>
               <th class="fontTitle">Email</th>
-              <th class="fontTitle">CPF</th>
               <th class="fontTitle">Detalhes</th>
               <th class="fontTitle">Atualizar</th>
               <th class="fontTitle">Apagar</th>
@@ -18,9 +18,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let contact of contacts">
+              <td class="fontRegular">{{contact.code}}</td>
               <td class="fontRegular">{{contact.name}}</td>
               <td class="fontRegular">{{contact.email}}</td>
-              <td class="fontRegular">{{contact.cpf}}</td>
               <td><button type="button" id="details" class="fontButton btn btn-info" (click)="getContactDetails(contact.code)">Detalhes</button></td>
               <td><button type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(contact.code)">Atualizar</button></td>
               <td><button type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(contact.code)" >Apagar</button></td>

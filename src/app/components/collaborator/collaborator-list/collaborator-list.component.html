@@ -9,9 +9,9 @@
             <table class="table table-striped">
               <thead>
                 <tr>
+                  <th class="fontTitle">Código</th>
                   <th class="fontTitle">Name</th>
                   <th class="fontTitle">Email</th>
-                  <th class="fontTitle">CPF</th>
                   <th class="fontTitle">Detalhes</th>
                   <th class="fontTitle">Atualizar</th>
                   <th class="fontTitle">Apagar</th>
@@ -19,9 +19,9 @@
               </thead>
               <tbody>
                 <tr *ngFor="let collaborator of collaborators">
+                  <td class="fontRegular">{{collaborator.code}}</td>
                   <td class="fontRegular">{{collaborator.name}}</td>
                   <td class="fontRegular">{{collaborator.email}}</td>
-                  <td class="fontRegular">{{collaborator.cpf}}</td>
                   <td><button type="button" id="details" class="fontButton btn btn-info" (click)="getCollaboratorDetails(collaborator.code)">Detalhes</button></td>
                   <td><button type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(collaborator.code)">Atualizar</button></td>
                   <td><button type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(collaborator.code)" >Apagar</button></td>

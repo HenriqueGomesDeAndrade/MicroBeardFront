@@ -1,6 +1,6 @@
 <div class="back card">
   <div class="row g-0">
-    <div class="offset-10 col-md-2 mt-2 btn btn-primary"> <a class ="fontButton text-decoration-none text-reset" [routerLink]="['/service/create']"><i class="bi bi-person-badge-fill"></i>Create service</a> </div>
+    <div class="offset-10 col-md-2 mt-2 btn btn-primary"> <a class ="fontButton text-decoration-none text-reset" [routerLink]="['/service/create']"><i class="bi bi-currency-dollar"></i>Create service</a> </div>
   </div> <br>
   <div class="row g-0">
     <div class="col-md-12">
@@ -11,7 +11,6 @@
               <th class="fontTitle">Código</th>
               <th class="fontTitle">Nome</th>
               <th class="fontTitle">Preço</th>
-              <th class="fontTitle">Tipo</th>
               <th class="fontTitle">Detalhes</th>
               <th class="fontTitle">Atualizar</th>
               <th class="fontTitle">Apagar</th>
@@ -22,7 +21,6 @@
               <td class="fontRegular">{{service.code}}</td>
               <td class="fontRegular">{{service.name}}</td>
               <td class="fontRegular">{{service.price}}</td>
-              <td class="fontRegular">{{service.type}}</td>
               <td><button type="button" id="details" class="fontButton btn btn-info" (click)="getServiceDetails(service.code)">Detalhes</button></td>
               <td><button type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(service.code)">Atualizar</button></td>
               <td><button type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(service.code)" >Apagar</button></td>
