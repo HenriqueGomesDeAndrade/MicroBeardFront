@@ -75,8 +75,8 @@ export class ContactCreateComponent implements OnInit {
       next: (cont: Contact) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: `Contact: ${cont.name} created successfully`,
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: `Cliente: ${cont.name} criado com sucesso!`,
             okButtonText: 'OK'
           }
         };

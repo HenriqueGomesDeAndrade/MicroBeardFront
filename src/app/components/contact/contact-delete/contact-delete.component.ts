@@ -49,8 +49,8 @@ export class ContactDeleteComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'Contact deleted successfully',
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Cliente deletado com sucesso!',
             okButtonText: 'OK'
           }
         };

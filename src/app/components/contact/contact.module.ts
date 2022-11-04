@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ContactUpdateComponent } from './contact-update/contact-update.component';
 import { ContactDeleteComponent } from './contact-delete/contact-delete.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ContactDeleteComponent } from './contact-delete/contact-delete.componen
     ContactRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    NgxMaskModule.forChild(),
   ]
 })
 export class ContactModule { }

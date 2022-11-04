@@ -19,6 +19,11 @@ import { DatePipe } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
+import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -42,10 +47,21 @@ import { NgxMaskModule } from 'ngx-mask';
     LicenseModule,
     NgbModule,
     NgxMaskModule.forRoot({
-      dropSpecialCharacters: false
+      dropSpecialCharacters: false,
     }),
   ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+  providers: [
+    DatePipe,
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt',
+    },
+
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL',
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
