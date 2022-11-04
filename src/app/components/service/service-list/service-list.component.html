@@ -8,6 +8,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th class="fontTitle">Código</th>
               <th class="fontTitle">Nome</th>
               <th class="fontTitle">Preço</th>
               <th class="fontTitle">Tipo</th>
@@ -18,6 +19,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let service of services">
+              <td class="fontRegular">{{service.code}}</td>
               <td class="fontRegular">{{service.name}}</td>
               <td class="fontRegular">{{service.price}}</td>
               <td class="fontRegular">{{service.type}}</td>
