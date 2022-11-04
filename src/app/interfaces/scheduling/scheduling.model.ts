@@ -3,12 +3,13 @@ export interface Scheduling {
   serviceCode: number;
   contactCode: number;
   date: number;
+  cancelled?: boolean;
+  cancellerCode?: number;
+  cancellationDate?: string;
   creatorCode?: number;
   createDate?: string;
   updaterCode?: number;
   updateDate?: string;
-  cancellerCode?: number;
-  cancellationDate?: string;
   deleterCode?: number;
   deleteDate?: string;
 }
