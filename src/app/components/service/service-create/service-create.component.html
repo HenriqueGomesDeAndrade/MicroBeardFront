@@ -19,22 +19,24 @@
         <div class="col-fluid">
           <input type="text" formControlName="price" id="price" class="form-control fontRegular" />
         </div>
-        <div class="col-fluid">
+        <div class="col-fuild">
           <em *ngIf="validateControl('price') 
-          && hasError('price', 'maxlength')">O número máximo de caracteres é 60.</em>
+              && hasError('price', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('price') 
+              && hasError('price', 'max')">O valor não pode passar de 999999,99.</em>
         </div>
       </div>
 
       <div class="mb-3 row">
         <label for="time" class="col-form-label col-md-2 fontTitleMedium">Tempo: </label>
         <div class="col-fluid">
-          <input type="text" formControlName="time" id="time" class="form-control fontRegular" />
+          <input type="text" formControlName="time" id="time" class="form-control fontRegular" mask="000-000"/>
         </div>
-        <div class="col-fluid">
+        <div class="col-fuild">
           <em *ngIf="validateControl('time') 
-          && hasError('time', 'required')">Time is required</em>
-          <em *ngIf="validateControl('time') 
-          && hasError('time', 'maxlength')">Maximum allowed length is 100 characters.</em>
+              && hasError('time', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('time') 
+              && hasError('time', 'max')">O valor não pode passar de 10000.</em>
         </div>
       </div>
 

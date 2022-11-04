@@ -18,6 +18,7 @@ import { UnauthorizedComponent } from './components/error-pages/unauthorized/una
 import { DatePipe } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CollaboratorModule,
     LicenseModule,
     NgbModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false
+    }),
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

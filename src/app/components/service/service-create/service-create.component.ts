@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
-import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { ServiceRepositoryService } from 'src/app/shared/services/repositories/service-repository.service';
@@ -27,11 +26,11 @@ export class ServiceCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.serviceForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      price: new FormControl('',[]),
-      time: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      type: new FormControl('',[]),
-      description: new FormControl('',[]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      price: new FormControl('',[Validators.min(0), Validators.max(999999.99)]),
+      time: new FormControl('',[Validators.min(0), Validators.max(10000)]),
+      type: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(250)]),
     });
   }
 
