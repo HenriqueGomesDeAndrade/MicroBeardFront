@@ -10,13 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactModule } from './components/contact/contact.module';
+import { ServiceModule } from './components/service/service.module';
 import { CollaboratorModule } from './components/collaborator/collaborator.module';
+import { LicenseModule } from './components/license/license.module';
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
 import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
 import { DatePipe } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -35,8 +36,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     CollapseModule.forRoot(),
     ContactModule,
+    ServiceModule,
     CollaboratorModule,
-    NgbModule
+    LicenseModule,
+    NgbModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

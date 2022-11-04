@@ -1,0 +1,48 @@
+<div class="card back">
+  <div class="card card-body bg-light mb-2 mt-2">
+    <div class="row">
+      <div class="col-md-4">
+        <strong class="fontTitleMedium">Service name:</strong>
+      </div>
+      <div class="col-md-4">
+        {{service?.name}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <strong class="fontTitleMedium">Price:</strong>
+      </div>
+      <div class="col-md-4">
+        {{service?.price}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <strong class="fontTitleMedium">Time:</strong>
+      </div>
+      <div class="col-md-4">
+        {{service?.time}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <strong class="fontTitleMedium">Type:</strong>
+      </div>
+      <div class="col-md-4">
+        {{service?.type}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <strong class="fontTitleMedium">Description:</strong>
+      </div>
+      <div class="col-md-4">
+        {{service?.description}}
+      </div>
+    </div>
+
+  <br>
+  <div class="col-md-1">
+    <button type="button" class="fontButton btn btn-secondary" (click)="redirectToServiceList()">Voltar</button>
+  </div>
+</div>
