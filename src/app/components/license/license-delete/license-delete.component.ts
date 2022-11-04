@@ -49,9 +49,9 @@ export class LicenseDeleteComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'License deleted successfully',
-            okButtonText: 'OK'
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Habilitação deletada com sucesso!',
+            okButtonText: 'OK',
           }
         };
 

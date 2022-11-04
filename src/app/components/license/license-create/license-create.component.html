@@ -2,13 +2,13 @@
   <form [formGroup]="licenseForm" autocomplete="off" novalidate (ngSubmit)="createLicense(licenseForm.value)">
     <div class="card back">
       <div class="row mb-3">
-        <label for="description" class="col-form-label col-md-2 fontTitleMedium">Descrição: </label>
+        <label for="description" class="col-form-label col-md-2 fontTitleMedium">*Descrição: </label>
         <div class="col-fluid">
-          <input type="text" formControlName="description" id="description" class="form-control fontRegular" />
+          <input type="text" formControlName="description" id="description" class="form-control fontRegular" placeholder="Ex: Corte de Cabelo"/>
         </div>
         <div class="col-fluid">
           <em *ngIf="validateControl('description') 
-          && hasError('description', 'required')">A descrição é obrigatória.</em>
+          && hasError('description', 'required')">A Descrição é obrigatório.</em>
           <em *ngIf="validateControl('description') 
           && hasError('description', 'maxlength')">O número máximo de caracteres é 250.</em>
         </div>

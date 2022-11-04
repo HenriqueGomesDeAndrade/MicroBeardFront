@@ -1,28 +1,27 @@
 <div class="container-fluid">
   <form [formGroup]="licenseForm" autocomplete="off" novalidate (ngSubmit)="updateLicense(licenseForm.value)">
     <div class="card back">
-
-      <div class="mb-3 row">
-        <label for="description" class="col-form-label col-md-2 fontTitleMedium">Email: </label>
+      <div class="row mb-3">
+        <label for="description" class="col-form-label col-md-2 fontTitleMedium">*Descrição: </label>
         <div class="col-fluid">
-          <input type="text" formControlName="description" id="description" class="form-control fontRegular" />
+          <input type="text" formControlName="description" id="description" class="form-control fontRegular" placeholder="Ex: Corte de Cabelo"/>
         </div>
         <div class="col-fluid">
           <em *ngIf="validateControl('description') 
-          && hasError('description', 'required')">Description is required</em>
+          && hasError('description', 'required')">A Descrição é obrigatório.</em>
           <em *ngIf="validateControl('description') 
-          && hasError('description', 'maxlength')">Maximum allowed length is 250 characters.</em>
+          && hasError('description', 'maxlength')">O número máximo de caracteres é 250.</em>
         </div>
       </div>
-
+ 
       <br>
  
-      <div class="row g-0">
-          <div class="col-1 me-3">
-              <button type="submit" [disabled]="!licenseForm.valid" [className]="!licenseForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+      <div class="row">
+          <div class="col-md-1 me-3">
+              <button type="submit" [disabled]="!licenseForm.valid" [className]="!licenseForm.valid ? 'btn btn-warning': 'btn btn-success'">Salvar</button>
           </div>
-          <div class="col">
-              <button type="button" class="fontButton btn btn-secondary" (click)="redirectToLicenseList()">Voltar</button>
+          <div class="col-md-1">
+              <button type="button" class="btn btn-secondary" (click)="redirectToLicenseList()">Voltar</button>
           </div>
       </div>
       

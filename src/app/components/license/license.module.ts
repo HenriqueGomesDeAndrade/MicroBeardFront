@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { LicenseUpdateComponent } from './license-update/license-update.component';
 import { LicenseDeleteComponent } from './license-delete/license-delete.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LicenseDeleteComponent } from './license-delete/license-delete.componen
     LicenseRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    NgxMaskModule.forChild(),
   ]
 })
 export class LicenseModule { }

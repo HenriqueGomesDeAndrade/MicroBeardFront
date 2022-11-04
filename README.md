@@ -33,3 +33,5 @@ npm i bootstrap
 ng add @ng-bootstrap/ng-bootstrap
 npm i bootstrap-icons
 npm i --save ngx-mask
+npm install --save angular-calendar date-fns
+npm install flatpickr angularx-flatpickr
