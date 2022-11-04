@@ -8,9 +8,9 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th class="fontTitle">Código</th>
               <th class="fontTitle">Nome</th>
               <th class="fontTitle">Preço</th>
-              <th class="fontTitle">Tipo</th>
               <th class="fontTitle">Detalhes</th>
               <th class="fontTitle">Atualizar</th>
               <th class="fontTitle">Apagar</th>
@@ -18,9 +18,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let service of services">
+              <td class="fontRegular">{{service.code}}</td>
               <td class="fontRegular">{{service.name}}</td>
               <td class="fontRegular">{{service.price}}</td>
-              <td class="fontRegular">{{service.type}}</td>
               <td><button type="button" id="details" class="fontButton btn btn-info" (click)="getServiceDetails(service.code)">Detalhes</button></td>
               <td><button type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(service.code)">Atualizar</button></td>
               <td><button type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(service.code)" >Apagar</button></td>
