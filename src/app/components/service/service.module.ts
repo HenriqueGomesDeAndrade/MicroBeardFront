@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ServiceUpdateComponent } from './service-update/service-update.component';
 import { ServiceDeleteComponent } from './service-delete/service-delete.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ServiceDeleteComponent } from './service-delete/service-delete.componen
     ServiceRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    BsDatepickerModule
-  ]
+    BsDatepickerModule,
+    NgxMaskModule.forChild(),
+  ],
 })
-export class ServiceModule { }
+export class ServiceModule {}

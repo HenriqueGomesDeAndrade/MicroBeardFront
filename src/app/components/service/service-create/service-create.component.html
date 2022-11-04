@@ -2,7 +2,7 @@
   <form [formGroup]="serviceForm" autocomplete="off" novalidate (ngSubmit)="createService(serviceForm.value)">
     <div class="card back">
       <div class="row mb-3">
-        <label for="name" class="col-form-label col-md-2 fontTitleMedium">Nome: </label>
+        <label for="name" class="col-form-label col-md-2 fontTitleMedium">*Nome: </label>
         <div class="col-fluid">
           <input type="text" formControlName="name" id="name" class="form-control fontRegular" />
         </div>
@@ -17,7 +17,12 @@
       <div class="mb-3 row">
         <label for="price" class="col-form-label col-md-2 fontTitleMedium">Preço: </label>
         <div class="col-fluid">
-          <input type="text" formControlName="price" id="price" class="form-control fontRegular" />
+          <input type="text" formControlName="price" id="price" class="form-control fontRegular" mask="separator.2"
+          [thousandSeparator]="'.'"
+          [decimalMarker]="','"
+          prefix="R$ "
+          [dropSpecialCharacters]="true"
+        />
         </div>
         <div class="col-fuild">
           <em *ngIf="validateControl('price') 
@@ -30,7 +35,7 @@
       <div class="mb-3 row">
         <label for="time" class="col-form-label col-md-2 fontTitleMedium">Tempo: </label>
         <div class="col-fluid">
-          <input type="text" formControlName="time" id="time" class="form-control fontRegular" mask="000-000"/>
+          <input type="text" formControlName="time" id="time" class="form-control fontRegular" mask="Hh:m0:s0"/>
         </div>
         <div class="col-fuild">
           <em *ngIf="validateControl('time') 
