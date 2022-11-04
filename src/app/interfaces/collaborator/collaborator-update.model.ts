@@ -1,7 +1,6 @@
 export interface CollaboratorForUpdate{
     name: string;
     birthDate?: string;
-    cpf?: string;
     email: string;
     password: string;
     phone?: string;

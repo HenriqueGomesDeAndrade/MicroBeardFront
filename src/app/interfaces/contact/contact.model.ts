@@ -1,11 +1,11 @@
 export interface Contact {
   code: string;
   name: string;
-  address: string;
+  address?: string;
   email: string;
-  cpf: string;
-  phone: string;
-  gender: string;
+  cpf?: string;
+  phone?: string;
+  gender?: string;
   birthDate?: Date;
   creatorCode?: number;
   createDate?: string;
