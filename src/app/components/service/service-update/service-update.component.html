@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <form [formGroup]="serviceForm" autocomplete="off" novalidate (ngSubmit)="updateService(serviceForm.value)">
+    <div class="card back">
+      <div class="row mb-3">
+        <label for="name" class="col-form-label col-md-2 fontTitleMedium">Nome: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="name" id="name" class="form-control fontRegular" />
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('name') 
+          && hasError('name', 'required')">O Nome é obrigatório.</em>
+          <em *ngIf="validateControl('name') 
+          && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="price" class="col-form-label col-md-2 fontTitleMedium">Preço: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="price" id="price" class="form-control fontRegular" />
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('price') 
+          && hasError('price', 'maxlength')">O número máximo de caracteres é 60.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="time" class="col-form-label col-md-2 fontTitleMedium">Tempo: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="time" id="time" class="form-control fontRegular" />
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('time') 
+          && hasError('time', 'required')">Tempo is required</em>
+          <em *ngIf="validateControl('time') 
+          && hasError('time', 'maxlength')">Maximum allowed length is 100 characters.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+          <label for="type" class="col-form-label col-md-2 fontTitleMedium">Tipo: </label>
+          <div class="col-fluid">
+              <input type="text" formControlName="type" id="type" class="form-control fontRegular" />
+          </div>
+          <div class="col-fluid">
+              <em *ngIf="validateControl('type') 
+              && hasError('type', 'required')">Tipo is required</em>
+              <em *ngIf="validateControl('type') 
+              && hasError('type', 'maxlength')">Maximum allowed length is 100 characters.</em>
+          </div>
+      </div>
+ 
+      <div class="mb-3 row">
+        <label for="description" class="col-form-label col-md-2 fontTitleMedium">Descrição: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="description" id="description" class="form-control fontRegular" />
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('description') 
+          && hasError('description', 'maxlength')">O número máximo de caracteres é 250.</em>
+        </div>
+      </div>
+
+      <br>
+ 
+      <div class="row g-0">
+          <div class="col-1 me-3">
+              <button type="submit" [disabled]="!serviceForm.valid" [className]="!serviceForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+          </div>
+          <div class="col">
+              <button type="button" class="fontButton btn btn-secondary" (click)="redirectToServiceList()">Voltar</button>
+          </div>
+      </div>
+      
+    </div>
+  </form>
+</div>

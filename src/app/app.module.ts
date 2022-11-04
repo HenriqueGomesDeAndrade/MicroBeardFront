@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactModule } from './components/contact/contact.module';
+import { ServiceModule } from './components/service/service.module';
 import { CollaboratorModule } from './components/collaborator/collaborator.module';
 import { LicenseModule } from './components/license/license.module';
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
@@ -35,6 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     CollapseModule.forRoot(),
     ContactModule,
+    ServiceModule,
     CollaboratorModule,
     LicenseModule,
     NgbModule,

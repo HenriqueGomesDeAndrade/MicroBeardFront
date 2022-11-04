@@ -8,6 +8,7 @@ import { UnauthorizedComponent } from './components/error-pages/unauthorized/una
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'contact', loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule) },
+  { path: 'service', loadChildren: () => import('./components/service/service.module').then(m => m.ServiceModule) },
   { path: 'collaborator', loadChildren: () => import('./components/collaborator/collaborator.module').then(m => m.CollaboratorModule) },
   { path: 'license', loadChildren: () => import('./components/license/license.module').then(m => m.LicenseModule) },
   { path: '401', component: UnauthorizedComponent},
