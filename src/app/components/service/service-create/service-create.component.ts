@@ -29,8 +29,8 @@ export class ServiceCreateComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       price: new FormControl('',[Validators.min(0), Validators.max(999999.99)]),
       time: new FormControl('',[Validators.min(0), Validators.max(10000)]),
-      type: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(250)]),
+      type: new FormControl('', [Validators.maxLength(50)]),
+      description: new FormControl('', [Validators.maxLength(250)]),
     });
   }
 
@@ -67,8 +67,8 @@ export class ServiceCreateComponent implements OnInit {
       next: (cont: Service) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: `Service: ${cont.name} created successfully`,
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: `Serviço: ${cont.name} criado com sucesso!`,
             okButtonText: 'OK'
           }
         };

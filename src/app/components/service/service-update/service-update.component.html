@@ -20,7 +20,6 @@
           <input type="text" formControlName="price" id="price" class="form-control fontRegular" placeholder="Ex: R$30,00" mask="separator.2"
           [thousandSeparator]="'.'"
           [decimalMarker]="','"
-          prefix="R$ "
           [dropSpecialCharacters]="true"
         />
         </div>
@@ -33,9 +32,9 @@
       </div>
 
       <div class="mb-3 row">
-        <label for="time" class="col-form-label col-md-2 fontTitleMedium">Tempo: </label>
+        <label for="time" class="col-form-label col-md-2 fontTitleMedium">Tempo em minutos: </label>
         <div class="col-fluid">
-          <input type="text" formControlName="time" id="time" class="form-control fontRegular" placeholder="Ex: 00:30:00" mask="00:00:00"/>
+          <input type="number" formControlName="time" id="time" class="form-control fontRegular" placeholder="Ex: 30"/>
         </div>
         <div class="col-fuild">
           <em *ngIf="validateControl('time') 
