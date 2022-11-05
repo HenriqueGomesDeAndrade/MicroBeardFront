@@ -115,6 +115,12 @@
 
           <br>
 
+          <span class="fontTitleBig"><i class="bi bi-award-fill"></i> Habilitações:</span>
+
+        <app-collaborator-update-license [licenses]="collaborator?.licenses"></app-collaborator-update-license>
+
+        <br>
+
           <div class="row g-0">
             <div class="col-1 me-3">
                 <button type="submit" [disabled]="!collaboratorForm.valid"  [className]="!collaboratorForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>

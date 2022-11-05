@@ -9,6 +9,7 @@ import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model
 import { CollaboratorForUpdate } from 'src/app/interfaces/collaborator/collaborator-update.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { License } from 'src/app/interfaces/license/license.model';
 
 @Component({
   selector: 'app-collaborator-update',
@@ -88,6 +89,8 @@ export class CollaboratorUpdateComponent implements OnInit {
       salary: collaboratorFormValue.salary,
       commision: collaboratorFormValue.commision,
       isAdmin: collaboratorFormValue.isAdmin ? collaboratorFormValue.isAdmin : false,
+      licenses: this.collaborator.licenses,
+      services: this.collaborator.services
     }
 
     const apiUri: string = `Collaborator/${this.collaborator.code}`;
@@ -113,5 +116,4 @@ export class CollaboratorUpdateComponent implements OnInit {
   public redirectToCollaboratorList = () => {
     this.router.navigate(['/collaborator/list'])
   }
-  
 }

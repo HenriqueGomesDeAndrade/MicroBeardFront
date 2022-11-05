@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="fontTitle">Code</th>
+              <th class="fontTitle">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let license of licenses" (click)="handleEvent('Clicked', license)">
+              <td class="fontRegular">{{license?.code}}</td>
+              <td class="fontRegular">{{license?.description}}</td>
+              <td><button type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', license)">Remover</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

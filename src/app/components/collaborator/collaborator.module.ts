@@ -8,6 +8,7 @@ import { CollaboratorLicensesComponent } from './collaborator-details/collaborat
 import { CollaboratorCreateComponent } from './collaborator-create/collaborator-create.component';
 import { CollaboratorUpdateComponent } from './collaborator-update/collaborator-update.component';
 import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-delete.component';
+import { CollaboratorUpdateLicenseComponent } from './collaborator-update/collaborator-update-license/collaborator-update-license.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-
     CollaboratorLicensesComponent,
     CollaboratorCreateComponent,
     CollaboratorUpdateComponent,
-    CollaboratorDeleteComponent
+    CollaboratorDeleteComponent,
+    CollaboratorUpdateLicenseComponent
   ],
   imports: [
     SharedModule,

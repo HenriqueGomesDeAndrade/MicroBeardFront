@@ -1,4 +1,5 @@
 import { License } from "../license/license.model";
+import { Service } from "../service/service.model";
 
 export interface Collaborator{
     code: string;
@@ -19,4 +20,5 @@ export interface Collaborator{
     desactivationDate?: string;
 
     licenses?: License[];
+    services?: Service[];
 }

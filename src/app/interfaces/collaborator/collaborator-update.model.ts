@@ -1,3 +1,6 @@
+import { License } from "../license/license.model";
+import { Service } from "../service/service.model";
+
 export interface CollaboratorForUpdate{
     name: string;
     birthDate?: string;
@@ -8,4 +11,7 @@ export interface CollaboratorForUpdate{
     salary: number;
     commision: number;
     isAdmin: boolean;
+
+    licenses?: License[];
+    services?: Service[];
 }
