@@ -99,6 +99,7 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         color: scheduling.cancelled ? colors.red: colors.blue,
         contactCode: scheduling.contactCode,
         serviceCode: scheduling.serviceCode,
+        collaboratorCode: scheduling.collaboratorCode,
         actions: this.actions,
         draggable: false,
         resizable: {

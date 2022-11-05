@@ -1,8 +1,11 @@
+import { Collaborator } from "../collaborator/collaborator.model";
+
 export interface Scheduling {
   code: string;
   title: string;
   serviceCode?: number;
   contactCode?: number;
+  collaboratorCode?: number;
   date: Date;
   endDate: Date;
   cancelled?: boolean;
@@ -12,6 +15,4 @@ export interface Scheduling {
   createDate?: string;
   updaterCode?: number;
   updateDate?: string;
-  deleterCode?: number;
-  deleteDate?: string;
 }

@@ -25,7 +25,11 @@ import { NgxMaskModule } from 'ngx-mask';
 import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { deLocale } from 'ngx-bootstrap/locale';
 
+
+defineLocale('pt-br', deLocale);
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
@@ -56,6 +60,10 @@ registerLocaleData(localePt, 'pt');
     }),
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    },
     DatePipe,
     {
       provide: LOCALE_ID,

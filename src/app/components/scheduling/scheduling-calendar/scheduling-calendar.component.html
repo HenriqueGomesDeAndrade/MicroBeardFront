@@ -4,59 +4,59 @@
         <div class="col-md-4">
           <div class="btn-group">
             <div
-              class="btn btn-primary"
+              class="btn btn-primary fontMediumn"
               mwlCalendarPreviousView
               [view]="view"
               [(viewDate)]="viewDate"
               (viewDateChange)="closeOpenMonthViewDay()"
             >
-              Previous
+              Anterior
             </div>
             <div
-              class="btn btn-outline-secondary"
+              class="btn btn-outline-secondary fontMediumn "
               mwlCalendarToday
               [(viewDate)]="viewDate"
             >
-              Today
+              Hoje
             </div>
             <div
-              class="btn btn-primary"
+              class="btn btn-primary fontMediumn "
               mwlCalendarNextView
               [view]="view"
               [(viewDate)]="viewDate"
               (viewDateChange)="closeOpenMonthViewDay()"
             >
-              Next
+              Próximo
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+          <h3 class="fontBig" >{{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-BR' }}</h3>
         </div>
 
         <div class="col-md-4">
           <div class="btn-group">
             <div
-              class="btn btn-primary"
+              class="btn btn-primary fontMediumn "
               (click)="setView(CalendarView.Month)"
               [class.active]="view === CalendarView.Month"
             >
-              Month
+              Mês
             </div>
             <div
-              class="btn btn-primary"
+              class="btn btn-primary fontMediumn "
               (click)="setView(CalendarView.Week)"
               [class.active]="view === CalendarView.Week"
             >
-              Week
+              Semana
             </div>
             <div
-              class="btn btn-primary"
+              class="btn btn-primary fontMediumn "
               (click)="setView(CalendarView.Day)"
               [class.active]="view === CalendarView.Day"
             >
-              Day
+              Dia
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
       <br />
 
       <div [ngSwitch]="view">
-        <mwl-calendar-month-view
+        <mwl-calendar-month-view class="fontCalendar"
           *ngSwitchCase="CalendarView.Month"
           [viewDate]="viewDate"
           [events]="events"
@@ -76,7 +76,7 @@
           (eventTimesChanged)="eventTimesChanged($event)"
         >
         </mwl-calendar-month-view>
-        <mwl-calendar-week-view
+        <mwl-calendar-week-view class="fontCalendar"
           *ngSwitchCase="CalendarView.Week"
           [viewDate]="viewDate"
           [events]="events"
@@ -85,7 +85,7 @@
           (eventTimesChanged)="eventTimesChanged($event)"
         >
         </mwl-calendar-week-view>
-        <mwl-calendar-day-view
+        <mwl-calendar-day-view class="fontCalendar"
           *ngSwitchCase="CalendarView.Day"
           [viewDate]="viewDate"
           [events]="events"

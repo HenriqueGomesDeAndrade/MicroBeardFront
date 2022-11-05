@@ -12,11 +12,14 @@ import { SchedulingCreateComponent } from './scheduling-create/scheduling-create
 import { SchedulingUpdateComponent } from './scheduling-update/scheduling-update.component';
 import { SchedulingDetailsComponent } from './scheduling-details/scheduling-details.component';
 import { SchedulingDeleteComponent } from './scheduling-delete/scheduling-delete.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 
 
 @NgModule({
   imports: [
+    SharedModule,
     SchedulingRoutingModule,
     CommonModule,
     FormsModule,
