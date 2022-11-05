@@ -15,6 +15,14 @@ import { DatePipe } from '@angular/common';
 import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
 import { PhonePipe } from './pipes/phone.pipe';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +46,14 @@ import { PhonePipe } from './pipes/phone.pipe';
     SuccessModalComponent,
     CpfCnpjPipe,
     PhonePipe,
+
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSnackBarModule,
   ],
   providers: [
     DatePipe,

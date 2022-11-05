@@ -1,0 +1,67 @@
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                    style="width: 185px;" alt="logo">
+                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                </div>
+
+                <form [formGroup]="loginForm" novalidate (ngSubmit)="login(loginForm)">
+                  <label class="form-label">Login</label>
+                  <div class="form-outline mb-4">
+                    <input type="email" formControlName="email" class="form-control"
+                      placeholder="Email, Telefone ou CPF"/>
+                  </div>
+                  <div class="col-fuild">
+                    <em *ngIf="validateControl('email') 
+                    && hasError('email', 'required')">O Email é obrigatório.</em>
+                    <em *ngIf="validateControl('email') 
+                    && hasError('email', 'maxlength')">O número máximo de caracteres é 80.</em>
+                    <em *ngIf="validateControl('email') 
+                    && hasError('email', 'pattern')">Email inválido.</em>
+                  </div>
+                  <label class="form-label">Senha</label>
+                  <div class="form-outline mb-4">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Senha de usuário"/>
+                  </div>
+                  <em *ngIf="validateControl('password') 
+                  && hasError('password', 'required')">A Senha é obrigatória.</em>
+                 <em *ngIf="validateControl('password') 
+                 && hasError('password', 'maxlength')">O tamanho mínimo é de 8 caracteres</em>
+                 <em *ngIf="validateControl('password') 
+                 && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
+          
+                  <a class="text-muted" href="#!">Esqueceu a senha?</a>
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <button class="btn btn-primary btn-block fa-lg gradient fontButton" type="submit">Logar como funcionário</button>
+                  </div>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <button type="button" class="btn btn-outline-danger">Logar como cliente</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
