@@ -19,12 +19,19 @@ import { ContactModule } from './components/contact/contact.module';
 import { ServiceModule } from './components/service/service.module';
 import { CollaboratorModule } from './components/collaborator/collaborator.module';
 import { LicenseModule } from './components/license/license.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { SchedulingModule } from './components/scheduling/scheduling.module';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { deLocale } from 'ngx-bootstrap/locale';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+defineLocale('pt-br', deLocale);
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
@@ -50,6 +57,9 @@ registerLocaleData(localePt, 'pt');
     ServiceModule,
     CollaboratorModule,
     LicenseModule,
+    NgbModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    SchedulingModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),

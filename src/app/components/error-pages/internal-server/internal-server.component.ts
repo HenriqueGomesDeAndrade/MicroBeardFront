@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./internal-server.component.css']
 })
 export class InternalServerComponent implements OnInit {
-  errorMessage: string = "500 An error has occured"
+  errorMessage: string = "500 Ocorreu um erro"
   constructor() { }
 
   ngOnInit(): void {

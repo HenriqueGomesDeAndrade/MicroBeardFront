@@ -18,7 +18,7 @@
           <label for="birthDate" class="col-form-label col-md-4 fontTitleMedium">Data de nascimento: </label>
           <div class="col-fuild">
             <input type="text" formControlName="birthDate" id="birthDate" 
-            class="form-control fontRegular" readonly bsDatepicker placeholder="Ex: 17/01/2000"/>
+            class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue'}" />
           </div>
           <div class="col-fuild">
           </div>
