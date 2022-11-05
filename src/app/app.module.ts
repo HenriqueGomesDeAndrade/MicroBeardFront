@@ -4,6 +4,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { NotFoundComponent } from './components/error-pages/not-found/not-found.component';
 
 import { NgModule } from '@angular/core';
+import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,9 +16,8 @@ import { CollaboratorModule } from './components/collaborator/collaborator.modul
 import { LicenseModule } from './components/license/license.module';
 import { InternalServerComponent } from './components/error-pages/internal-server/internal-server.component';
 import { UnauthorizedComponent } from './components/error-pages/unauthorized/unauthorized.component';
-import { DatePipe } from '@angular/common';
+
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMaskModule } from 'ngx-mask';
 import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
@@ -36,6 +36,7 @@ registerLocaleData(localePt, 'pt');
     SidebarComponent,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -45,13 +46,11 @@ registerLocaleData(localePt, 'pt');
     ServiceModule,
     CollaboratorModule,
     LicenseModule,
-    NgbModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),
   ],
   providers: [
-    DatePipe,
     {
       provide: LOCALE_ID,
       useValue: 'pt',
