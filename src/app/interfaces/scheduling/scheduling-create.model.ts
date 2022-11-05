@@ -1,5 +1,7 @@
 export interface SchedulingForCreation {
+  title: string;
   serviceCode: number;
   contactCode: number;
-  date: number;
+  date: string;
+  endDate: string;
 }

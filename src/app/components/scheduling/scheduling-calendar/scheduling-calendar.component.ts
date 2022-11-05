@@ -1,9 +1,17 @@
-import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, AfterViewInit, } from '@angular/core';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours,} from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView,} from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
+import { Options } from '@popperjs/core/lib/modifiers/computeStyles';
+import { SchedulingRepositoryService } from 'src/app/shared/services/repositories/scheduling-repository.service';
+import { Scheduling } from 'src/app/interfaces/scheduling/scheduling.model';
+import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -19,21 +27,6 @@ const colors: Record<string, EventColor> = {
     secondary: '#FDF1BA',
   },
 };
-
-// @Component({
-//   selector: 'app-scheduling-calendar',
-//   templateUrl: './scheduling-calendar.component.html',
-//   styleUrls: ['./scheduling-calendar.component.css']
-// })
-
-// export class SchedulingCalendarComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 
 @Component({
   selector: 'scheduling-calendar-component',
@@ -52,98 +45,114 @@ const colors: Record<string, EventColor> = {
   ],
   templateUrl: './scheduling-calendar.component.html',
 })
-export class SchedulingCalendarComponent {
+export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
+  errorMessage: string = '';
+  events: CalendarEvent[] = [];
+  refresh = new Subject<void>();
+  activeDayIsOpen: boolean = true;
+
+
+  constructor(private modal: NgbModal,
+                private repository: SchedulingRepositoryService,
+                private errorHandler: ErrorHandlerService,
+                private router: Router) {}
+
+  ngOnInit(): void {
+    this.getAllSchedulings();    
+  }
+
+  ngAfterViewInit(): void {
+    this.refreshView();                                                                             
+  }
+
+  private getAllSchedulings = () => {
+    const apiAddress: string = 'Scheduling';
+    this.repository.getSchedulings(apiAddress)
+    .subscribe({
+      next: (schedulings: Scheduling[]) => {
+        schedulings.forEach(scheduling => {
+          this.addEvent(scheduling);
+        });
+      },
+      error: (err: HttpErrorResponse) => {
+        this.errorHandler.handleError(err);
+        this.errorMessage = this.errorHandler.errorMessage;
+      }
+    })
+  }
+
+  addEvent(scheduling: Scheduling): void {
+    this.events = [
+      ...this.events,
+      {
+        code: scheduling.code,
+        title: `${scheduling.title}   ${new Date(scheduling.date).toLocaleTimeString('pt-BR')}`,
+        start: new Date(scheduling.date),
+        end: new Date(scheduling.endDate),
+        cancelled: scheduling.cancelled,
+        color: scheduling.cancelled ? colors.red: colors.blue,
+        contactCode: scheduling.contactCode,
+        serviceCode: scheduling.serviceCode,
+        actions: this.actions,
+        draggable: false,
+        resizable: {
+          beforeStart: false,
+          afterEnd: false,
+        },
+      },
+    ];
+    console.log(this.events)
+  }
+
+  actions: CalendarEventAction[] = [
+    {
+      label: '<i class="bi bi-pen-fill"></i>',
+      a11yLabel: 'Atualizar',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
+      },
+    },
+    {
+      label: '<i class="bi bi-trash3-fill"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        //this.events = this.events.filter((iEvent) => iEvent !== event);
+        this.handleEvent('Deleted', event);
+      },
+    },
+  ];
+ 
+  handleEvent(action: string, event: CalendarEvent): void {
+    switch(action){
+      case 'Clicked':{
+        this.router.navigate([`/scheduling/details/${event.code}`])
+        break;
+      }
+      case 'Edited':{
+        this.router.navigate([`/scheduling/update/${event.code}`])
+        break;
+      }
+      case 'Deleted':{
+        this.router.navigate([`/scheduling/delete/${event.code}`])
+        break;
+      }
+    }
+
+    console.log(action);
+    console.log(event);
+  }
 
   modalData: {
     action: string;
     event: CalendarEvent;
   };
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
-
-  refresh = new Subject<void>();
-
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: { ...colors.red },
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: { ...colors.yellow },
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: { ...colors.blue },
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: { ...colors.yellow },
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
-
-  activeDayIsOpen: boolean = true;
-
-  constructor(private modal: NgbModal) {}
-
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-      this.viewDate = date;
-    }
-  }
 
   eventTimesChanged({
     event,
@@ -163,30 +172,18 @@ export class SchedulingCalendarComponent {
     this.handleEvent('Dropped or resized', event);
   }
 
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
-
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
-  }
-
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+      }
+      this.viewDate = date;
+    }
   }
 
   setView(view: CalendarView) {
@@ -196,5 +193,8 @@ export class SchedulingCalendarComponent {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
-}
 
+  refreshView(): void{
+    this.refresh.next()
+  }
+}

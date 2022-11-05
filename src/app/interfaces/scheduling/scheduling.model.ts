@@ -1,8 +1,10 @@
 export interface Scheduling {
   code: string;
-  serviceCode: number;
-  contactCode: number;
-  date: number;
+  title: string;
+  serviceCode?: number;
+  contactCode?: number;
+  date: Date;
+  endDate: Date;
   cancelled?: boolean;
   cancellerCode?: number;
   cancellationDate?: string;
