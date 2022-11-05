@@ -4,15 +4,16 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th class="fontTitle">Code</th>
-              <th class="fontTitle">Description</th>
+              <th class="fontTitle">Código</th>
+              <th class="fontTitle">Descrição</th>
+              <th class="buttonT fontTitle"><button type="button" class="fontButton btn btn-primary" (click)="open()">Adicionar</button></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let license of licenses" (click)="handleEvent('Clicked', license)">
               <td class="fontRegular">{{license?.code}}</td>
               <td class="fontRegular">{{license?.description}}</td>
-              <td><button type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', license)">Remover</button></td>
+              <td class="buttonT"><button type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', license)">Remover</button></td>
             </tr>
           </tbody>
         </table>

@@ -9,6 +9,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
 import { PhonePipe } from './pipes/phone.pipe';
 import { NgxMaskModule } from 'ngx-mask';
+import { LicenseAddModalComponent } from './modals/license-add-modal/license-add-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NgxMaskModule } from 'ngx-mask';
     AppendDirective,
     CpfCnpjPipe,
     PhonePipe,
+    LicenseAddModalComponent,
   ],
   imports: [
     ModalModule.forRoot(),

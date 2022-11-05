@@ -18,7 +18,7 @@ export class RepositoryService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluIiwicm9sZSI6IkNvbGxhYm9yYXRvckFkbWluIiwiQ29kZSI6MSwibmJmIjoxNjY3NDM2MzY3LCJleHAiOjE2NzAwMjgzNjcsImlhdCI6MTY2NzQzNjM2N30.9KU4zm5nUL6kBzVOsxasu6RCTabE5_-BliidNAmehDo',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkFkbWluMiIsInJvbGUiOiJDb2xsYWJvcmF0b3JBZG1pbiIsIkNvZGUiOjIsIm5iZiI6MTY2NzY3OTM3MywiZXhwIjoxNjcwMjcxMzczLCJpYXQiOjE2Njc2NzkzNzN9.1F3977Lo-4IYMyx6WLOG_CJ203Il3HR3xnMRLy1PivI',
       }),
     };
   };

@@ -9,6 +9,7 @@ import { CollaboratorCreateComponent } from './collaborator-create/collaborator-
 import { CollaboratorUpdateComponent } from './collaborator-update/collaborator-update.component';
 import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-delete.component';
 import { CollaboratorUpdateLicenseComponent } from './collaborator-update/collaborator-update-license/collaborator-update-license.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { CollaboratorUpdateLicenseComponent } from './collaborator-update/collab
     CollaboratorCreateComponent,
     CollaboratorUpdateComponent,
     CollaboratorDeleteComponent,
-    CollaboratorUpdateLicenseComponent
+    CollaboratorUpdateLicenseComponent,
   ],
   imports: [
     SharedModule,
     CollaboratorRoutingModule,
+    FormsModule
   ]
 })
 export class CollaboratorModule { }
