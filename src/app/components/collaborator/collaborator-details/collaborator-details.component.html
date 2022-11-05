@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="cpf">
-                {{collaborator?.cpf}}
+                {{collaborator?.cpf | cpfcnpj}}
               </span>
             </div>
         </div>
@@ -83,7 +83,7 @@
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="salary">
-                {{collaborator?.salary}}
+                {{collaborator?.salary | currency}}
               </span>
             </div>
         </div>
@@ -94,7 +94,7 @@
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="commission">
-                {{collaborator?.commision}}
+                {{collaborator?.commision | currency}}
               </span>
             </div>
         </div>

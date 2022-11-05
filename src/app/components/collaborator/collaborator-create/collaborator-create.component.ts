@@ -79,7 +79,7 @@ export class CollaboratorCreateComponent implements OnInit {
       next: (collab: Collaborator) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
+            modalHeaderText: 'Mensagem de Sucesso',
             modalBodyText: `Collaborator: ${collab.name} created successfully`,
             okButtonText: 'OK'
           }

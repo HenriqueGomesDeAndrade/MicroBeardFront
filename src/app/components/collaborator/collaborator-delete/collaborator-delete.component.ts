@@ -49,8 +49,8 @@ export class CollaboratorDeleteComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'Collaborator deleted successfully',
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Colaborador excluído com sucesso!',
             okButtonText: 'OK'
           }
         };

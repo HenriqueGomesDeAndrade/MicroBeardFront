@@ -4,7 +4,7 @@
         <div class="row mb-3">
           <label for="name" class="col-form-label col-md-4 fontTitleMedium">*Nome: </label>
           <div class="col-fuild">
-            <input type="text" formControlName="name" id="name" class="form-control fontRegular" />
+            <input type="text" formControlName="name" id="name" class="form-control fontRegular" placeholder="Ex: Jõao"/>
           </div>
           <div class="col-fuild">
             <em *ngIf="validateControl('name') 
@@ -18,7 +18,7 @@
           <label for="birthDate" class="col-form-label col-md-4 fontTitleMedium">Data de nascimento: </label>
           <div class="col-fuild">
             <input type="text" formControlName="birthDate" id="birthDate" 
-            class="form-control fontRegular" readonly bsDatepicker/>
+            class="form-control fontRegular" readonly bsDatepicker placeholder="Ex: 17/01/2000"/>
           </div>
           <div class="col-fuild">
           </div>
@@ -27,7 +27,7 @@
         <div class="mb-3 row">
           <label for="cpf" class="col-form-label col-md-4 fontTitleMedium">CPF: </label>
           <div class="col-fuild">
-            <input type="text" formControlName="cpf" id="cpf" class="form-control fontRegular" />
+            <input type="text" formControlName="cpf" id="cpf" class="form-control fontRegular" placeholder="Ex: 000.000.000-00" mask="000.000.000-99"/>
           </div>
           <div class="col-fuild">
             <em *ngIf="validateControl('cpf') 
@@ -43,7 +43,7 @@
         <div class="mb-3 row">
           <label for="email" class="col-form-label col-md-4 fontTitleMedium">*Email: </label>
           <div class="col-fuild">
-            <input type="email" formControlName="email" id="email" class="form-control fontRegular" />
+            <input type="email" formControlName="email" id="email" class="form-control fontRegular" placeholder="Ex: usuario@teste.com"/>
           </div>
           <div class="col-fuild">
             <em *ngIf="validateControl('email') 
@@ -58,7 +58,7 @@
         <div class="mb-3 row">
             <label for="password" class="col-form-label col-md-4 fontTitleMedium">*Senha: </label>
             <div class="col-fuild">
-                <input type="password" formControlName="password" id="password" class="form-control fontRegular" />
+                <input type="password" formControlName="password" id="password" class="form-control fontRegular" placeholder="Ex: 123456@aA"/>
             </div>
             <div class="col-fuild">
                 <em *ngIf="validateControl('password') 
@@ -73,7 +73,7 @@
         <div class="mb-3 row">
             <label for="phone" class="col-form-label col-md-4 fontTitleMedium">Telefone: </label>
             <div class="col-fuild">
-                <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" />
+                <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" placeholder="Ex: (00) 00000-0000" mask="(00) 0000-0000||(00) 00000-0000"/>
             </div>
             <div class="col-fuild">
                 <em *ngIf="validateControl('phone') 
@@ -86,7 +86,7 @@
         <div class="mb-3 row">
             <label for="function" class="col-form-label col-md-4 fontTitleMedium">Função: </label>
             <div class="col-fuild">
-                <input type="text" formControlName="function" id="function" class="form-control fontRegular" />
+                <input type="text" formControlName="function" id="function" class="form-control fontRegular" placeholder="Ex: Cabeleireiro"/>
             </div>
             <div class="col-fuild">
                 <em *ngIf="validateControl('function') 
@@ -97,7 +97,10 @@
         <div class="mb-3 row">
           <label for="salary" class="col-form-label col-md-4 fontTitleMedium">Salário: </label>
           <div class="col-fuild">
-              <input type="number" formControlName="salary" id="salary" class="form-control fontRegular" />
+              <input type="text" formControlName="salary" id="salary" class="form-control fontRegular" placeholder="Ex: R$1000,00" mask="separator.2"
+              [thousandSeparator]="'.'"
+              [decimalMarker]="','"
+              [dropSpecialCharacters]="true"/>
           </div>
           <div class="col-fuild">
               <em *ngIf="validateControl('salary') 
@@ -110,13 +113,16 @@
       <div class="mb-3 row">
         <label for="commision" class="col-form-label col-md-4 fontTitleMedium">Commisão: </label>
         <div class="col-fuild">
-            <input type="number" formControlName="commision" id="commision" class="form-control fontRegular" />
+            <input type="text" formControlName="commision" id="commision" class="form-control fontRegular" placeholder="Ex: R$200,00" mask="separator.2"
+          [thousandSeparator]="'.'"
+          [decimalMarker]="','"
+          [dropSpecialCharacters]="true"/>
         </div>
         <div class="col-fuild">
           <em *ngIf="validateControl('commision') 
-              && hasError('salary', 'min')">O valor deve ser positivo</em>
+              && hasError('commision', 'min')">O valor deve ser positivo</em>
               <em *ngIf="validateControl('commision') 
-              && hasError('salary', 'max')">O valor não pode passar de 999999,99.</em>
+              && hasError('commision', 'max')">O valor não pode passar de 999999,99.</em>
         </div>
     </div>
 
