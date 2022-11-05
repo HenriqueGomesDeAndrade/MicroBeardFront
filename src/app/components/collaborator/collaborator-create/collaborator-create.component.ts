@@ -9,6 +9,8 @@ import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model
 import { CollaboratorForCreation } from 'src/app/interfaces/collaborator/collaborator-create.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { License } from 'src/app/interfaces/license/license.model';
+
 
 @Component({
   selector: 'app-collaborator-create',
@@ -16,6 +18,7 @@ import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./collaborator-create.component.css']
 })
 export class CollaboratorCreateComponent implements OnInit {
+  licenses: License[] = []
   errorMessage: string = '';
   collaboratorForm: FormGroup;
   bsModalRef?: BsModalRef;
@@ -72,6 +75,7 @@ export class CollaboratorCreateComponent implements OnInit {
       salary: collaboratorFormValue.salary,
       commision: collaboratorFormValue.commision,
       isAdmin: collaboratorFormValue.isAdmin ? collaboratorFormValue.isAdmin : false,
+      licenses: this.licenses,
     }
     const apiUrl = 'Collaborator';
     this.repository.createCollaborator(apiUrl, collaborator)

@@ -5,11 +5,11 @@ import { LicenseAddModalComponent } from 'src/app/shared/modals/license-add-moda
 import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-collaborator-update-license',
-  templateUrl: './collaborator-update-license.component.html',
-  styleUrls: ['./collaborator-update-license.component.css']
+  selector: 'app-collaborator-manage-license',
+  templateUrl: './collaborator-manage-license.component.html',
+  styleUrls: ['./collaborator-manage-license.component.css']
 })
-export class CollaboratorUpdateLicenseComponent implements OnInit {
+export class CollaboratorManageLicenseComponent implements OnInit {
   @Input() licenses: License[];
 
   constructor(config: NgbModalConfig, private modalService: NgbModal,private modalService2: BsModalService) { }
@@ -21,7 +21,6 @@ export class CollaboratorUpdateLicenseComponent implements OnInit {
     switch(event){
       case 'Remove':
         this.licenses.splice(this.licenses.indexOf(license), 1)
-        console.log('LICENSES AUTIA', this.licenses)
         break;
       case 'Clicked':
         break;

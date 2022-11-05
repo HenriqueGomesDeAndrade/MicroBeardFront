@@ -8,7 +8,7 @@ import { CollaboratorLicensesComponent } from './collaborator-details/collaborat
 import { CollaboratorCreateComponent } from './collaborator-create/collaborator-create.component';
 import { CollaboratorUpdateComponent } from './collaborator-update/collaborator-update.component';
 import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-delete.component';
-import { CollaboratorUpdateLicenseComponent } from './collaborator-update/collaborator-update-license/collaborator-update-license.component';
+import { CollaboratorManageLicenseComponent } from './collaborator-manage-license/collaborator-manage-license.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
     CollaboratorCreateComponent,
     CollaboratorUpdateComponent,
     CollaboratorDeleteComponent,
-    CollaboratorUpdateLicenseComponent,
+    CollaboratorManageLicenseComponent,
   ],
   imports: [
     SharedModule,
