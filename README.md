@@ -28,7 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Dependências para instalar
 
-npm install -g @angular/cli
-npm install bootstrap
+npm i -g @angular/cli
+npm i bootstrap
 ng add @ng-bootstrap/ng-bootstrap
 npm i bootstrap-icons
+npm i --save ngx-mask
+npm install --save angular-calendar date-fns
+npm install flatpickr angularx-flatpickr

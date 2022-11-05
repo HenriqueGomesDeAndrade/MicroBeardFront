@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
-import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { LicenseRepositoryService } from 'src/app/shared/services/repositories/license-repository.service';
@@ -84,8 +83,8 @@ export class LicenseUpdateComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'Owner updated successfully',
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Habilitação alterada com sucesso!',
             okButtonText: 'OK',
           },
         };

@@ -60,9 +60,9 @@ export class LicenseCreateComponent implements OnInit {
       next: (cont: License) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: `License: ${cont.description} created successfully`,
-            okButtonText: 'OK'
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: `Habilitação ${cont.description} criada com sucesso!`,
+            okButtonText: 'OK',
           }
         };
   

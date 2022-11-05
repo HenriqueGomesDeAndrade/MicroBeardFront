@@ -21,6 +21,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { SchedulingModule } from './components/scheduling/scheduling.module';
+import { NgxMaskModule } from 'ngx-mask';
+import { LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -44,9 +50,23 @@ import { SchedulingModule } from './components/scheduling/scheduling.module';
     LicenseModule,
     NgbModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    SchedulingModule
+    SchedulingModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false,
+    }),
   ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+  providers: [
+    DatePipe,
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt',
+    },
+
+    {
+      provide: DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL',
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

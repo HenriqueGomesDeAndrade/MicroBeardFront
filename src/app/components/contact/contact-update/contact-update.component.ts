@@ -29,13 +29,12 @@ export class ContactUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      address: new FormControl('',[]),
-      email: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      password: new FormControl('',[]),
-      cpf: new FormControl('', []),
-      phone: new FormControl('',[]),
-      gender: new FormControl('',[]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      address: new FormControl('',[Validators.maxLength(200)]),
+      email: new FormControl('', [Validators.required, Validators.maxLength(80), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      password: new FormControl('',[Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
+      phone: new FormControl('',[Validators.maxLength(15), Validators.pattern("(\\(?\\d{2}\\)?\\s?)?(9?\\d{4}\\-?\\d{4})")]),
+      gender: new FormControl('',[Validators.maxLength(1), Validators.pattern("[MFmf]")]),
       birthDate: new FormControl('', [Validators.required]),
     });
 
@@ -94,8 +93,8 @@ export class ContactUpdateComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'Owner updated successfully',
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Cliente alterado com sucesso!',
             okButtonText: 'OK'
           }
         };

@@ -49,8 +49,8 @@ export class ServiceDeleteComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'Service deleted successfully',
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Serviço deletado com sucesso!',
             okButtonText: 'OK'
           }
         };
