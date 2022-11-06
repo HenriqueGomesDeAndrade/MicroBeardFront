@@ -19,14 +19,14 @@ export class ServiceRepositoryService {
   public getServices = (route: string) => {
     return this.http.get<Service[]>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
   public getService = (route: string) => {
     return this.http.get<Service>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -34,7 +34,7 @@ export class ServiceRepositoryService {
     return this.http.post<Service>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       service,
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -42,14 +42,14 @@ export class ServiceRepositoryService {
     return this.http.put(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       service,
-      this.repo.generateHeaders()
+      
     );
   };
 
   public deleteService = (route: string) => {
     return this.http.delete(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 }

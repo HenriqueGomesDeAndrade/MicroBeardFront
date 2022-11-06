@@ -19,14 +19,14 @@ export class LicenseRepositoryService {
   public getLicenses = (route: string) => {
     return this.http.get<License[]>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
   public getLicense = (route: string) => {
     return this.http.get<License>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -34,7 +34,7 @@ export class LicenseRepositoryService {
     return this.http.post<License>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       license,
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -42,14 +42,14 @@ export class LicenseRepositoryService {
     return this.http.put(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       license,
-      this.repo.generateHeaders()
+      
     );
   };
 
   public deleteLicense = (route: string) => {
     return this.http.delete(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 }

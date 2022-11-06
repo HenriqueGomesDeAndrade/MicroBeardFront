@@ -7,10 +7,12 @@ import { NotFoundComponent } from './components/error-pages/not-found/not-found.
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PrincipalComponent } from './components/principal/principal.component';
+import { NotAuthenticatedUserGuard } from './shared/services/guards/not-authenticated-user.guard';
+import { AuthenticatedUserGuard } from './shared/services/guards/authenticated-user.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
-  { path: '', component: PrincipalComponent, children: [
+  { path: 'login', component: LoginComponent, canActivate: [NotAuthenticatedUserGuard]},
+  { path: '', component: PrincipalComponent, canActivate: [AuthenticatedUserGuard], children: [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'contact', loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule) },

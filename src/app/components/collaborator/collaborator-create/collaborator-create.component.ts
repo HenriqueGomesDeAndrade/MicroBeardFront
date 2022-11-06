@@ -30,7 +30,7 @@ export class CollaboratorCreateComponent implements OnInit {
     this.collaboratorForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       birthDate: new FormControl(''),
-      cpf: new FormControl('',[Validators.minLength(11), Validators.maxLength(11), Validators.pattern("\\d{11}")]),
+      cpf: new FormControl('',[Validators.minLength(13), Validators.maxLength(14)]),
       email: new FormControl('', [Validators.required, Validators.maxLength(80), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       password: new FormControl('',[Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
       phone: new FormControl('',[Validators.maxLength(15), Validators.pattern("(\\(?\\d{2}\\)?\\s?)?(9?\\d{4}\\-?\\d{4})")]),
@@ -60,11 +60,15 @@ export class CollaboratorCreateComponent implements OnInit {
       this.executeCollaboratorCreation(collaboratorFormValue);
   }
 
+  getCpf(cpf: string): string{
+    return cpf.replace(/[.-]/g, "");
+  }
+
   private executeCollaboratorCreation = (collaboratorFormValue) => {
     const collaborator: CollaboratorForCreation = {
       name: collaboratorFormValue.name,
       birthDate: this.datePipe.transform(collaboratorFormValue.birthDate, 'yyyy-MM-dd'),
-      cpf: collaboratorFormValue.cpf,
+      cpf: this.getCpf(collaboratorFormValue.cpf),
       email: collaboratorFormValue.email,
       password: collaboratorFormValue.password,
       phone: collaboratorFormValue.phone,

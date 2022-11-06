@@ -19,14 +19,14 @@ export class ContactRepositoryService {
   public getContacts = (route: string) => {
     return this.http.get<Contact[]>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
   public getContact = (route: string) => {
     return this.http.get<Contact>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -34,7 +34,7 @@ export class ContactRepositoryService {
     return this.http.post<Contact>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       contact,
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -42,14 +42,14 @@ export class ContactRepositoryService {
     return this.http.put(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       contact,
-      this.repo.generateHeaders()
+      
     );
   };
 
   public deleteContact = (route: string) => {
     return this.http.delete(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 }

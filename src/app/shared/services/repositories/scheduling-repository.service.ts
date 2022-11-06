@@ -18,14 +18,14 @@ export class SchedulingRepositoryService {
   public getSchedulings = (route: string) => {
     return this.http.get<Scheduling[]>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
   public getScheduling = (route: string) => {
     return this.http.get<Scheduling>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -36,7 +36,7 @@ export class SchedulingRepositoryService {
     return this.http.post<Scheduling>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       scheduling,
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -47,14 +47,14 @@ export class SchedulingRepositoryService {
     return this.http.put(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       scheduling,
-      this.repo.generateHeaders()
+      
     );
   };
 
   public deleteScheduling = (route: string) => {
     return this.http.delete(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 }

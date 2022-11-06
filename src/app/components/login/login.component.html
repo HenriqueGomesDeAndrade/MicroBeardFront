@@ -1,23 +1,27 @@
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-10">
+      <div class="col-xl-12">
         <div class="card rounded-3 text-black">
           <div class="row g-0">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                    style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                  <img src="./../../../assets/logo.png" alt="logo" class="logo img-fluid">
+                  <h4 class="mt-1 mb-5 pb-1">MicroBeard</h4>
                 </div>
 
-                <form [formGroup]="loginForm" novalidate (ngSubmit)="login(loginForm)">
-                  <label class="form-label">Login</label>
-                  <div class="form-outline mb-4">
-                    <input type="email" formControlName="email" class="form-control"
-                      placeholder="Email, Telefone ou CPF"/>
+                <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)">
+                  <label for="email" class="form-label pt-3">Login</label>
+                  <div class="row g-0 form-outline mb-2 align-items-center">
+                    <div class="col">
+                      <input type="email" formControlName="email" id="email" class="form-control"
+                      placeholder="Email"/>
+                    </div>
+                      <div class="col-1 input-icon align-items-center justify-content-center">
+                        <i class="bi bi-envelope"></i>
+                      </div>
                   </div>
                   <div class="col-fuild">
                     <em *ngIf="validateControl('email') 
@@ -27,9 +31,14 @@
                     <em *ngIf="validateControl('email') 
                     && hasError('email', 'pattern')">Email inválido.</em>
                   </div>
-                  <label class="form-label">Senha</label>
-                  <div class="form-outline mb-4">
-                    <input type="password" formControlName="password" class="form-control" placeholder="Senha de usuário"/>
+                  <label for="password" class="form-label pt-3">Senha</label>
+                  <div class="row g-0 form-outline mb-2 align-items-center">
+                    <div class="col">
+                      <input type="password" formControlName="password" id="password" class="form-control" placeholder="Senha de usuário"/>
+                    </div>
+                    <div class="col-1 input-icon align-items-center justify-content-center">
+                      <i class="bi bi-lock"></i>
+                    </div>
                   </div>
                   <em *ngIf="validateControl('password') 
                   && hasError('password', 'required')">A Senha é obrigatória.</em>
@@ -37,26 +46,24 @@
                  && hasError('password', 'maxlength')">O tamanho mínimo é de 8 caracteres</em>
                  <em *ngIf="validateControl('password') 
                  && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
-          
-                  <a class="text-muted" href="#!">Esqueceu a senha?</a>
-                  <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient fontButton" type="submit">Logar como funcionário</button>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4 pt-4">
+                    <button type="submit" class="btn btn-danger btn-block fa-lg fontButton">Logar</button>
                   </div>
+
+                  <!-- <br>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
                     <button type="button" class="btn btn-outline-danger">Logar como cliente</button>
-                  </div>
+                  </div> -->
 
                 </form>
 
               </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">We are more than just a company</h4>
-                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div class="col-lg-8 align-items-left background-image">
+              <div class="px-3 py-4 p-md-5 mx-md-4">
+                  <img src="./../../../assets/svg/login-image.svg" alt="logo" class="logo img-fluid">
               </div>
             </div>
           </div>

@@ -32,7 +32,7 @@ export class ContactCreateComponent implements OnInit {
       address: new FormControl('',[Validators.maxLength(200)]),
       email: new FormControl('', [Validators.required, Validators.maxLength(80), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       password: new FormControl('',[Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
-      cpf: new FormControl('',[Validators.minLength(11), Validators.maxLength(11), Validators.pattern("\\d{11}")]),
+      cpf: new FormControl('',[Validators.minLength(13), Validators.maxLength(14)]),
       phone: new FormControl('',[Validators.maxLength(15), Validators.pattern("(\\(?\\d{2}\\)?\\s?)?(9?\\d{4}\\-?\\d{4})")]),
       gender: new FormControl('',[Validators.maxLength(1), Validators.pattern("[MFmf]")]),
       birthDate: new FormControl('', [Validators.required]),
@@ -58,17 +58,23 @@ export class ContactCreateComponent implements OnInit {
       this.executeContactCreation(contactFormValue);
   }
 
+  getCpf(cpf: string): string{
+    return cpf.replace(/[.-]/g, "");
+  }
+
+
   private executeContactCreation = (contactFormValue) => {
     const contact: ContactForCreation = {
       name: contactFormValue.name,
       address: contactFormValue.address,
       email: contactFormValue.email,
       password: contactFormValue.password,
-      cpf: contactFormValue.cpf,
+      cpf: this.getCpf(contactFormValue.cpf),
       phone: contactFormValue.phone,
       gender: contactFormValue.gender,
       birthDate: this.datePipe.transform(contactFormValue.birthDate, 'yyyy-MM-dd'),
     }
+
     const apiUrl = 'Contact';
     this.repository.createContact(apiUrl, contact)
     .subscribe({

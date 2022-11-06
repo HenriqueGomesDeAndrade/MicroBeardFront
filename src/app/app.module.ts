@@ -12,7 +12,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactModule } from './components/contact/contact.module';
@@ -30,6 +30,7 @@ import { registerLocaleData } from '@angular/common';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { deLocale } from 'ngx-bootstrap/locale';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {TokenInterceptor} from './shared/services/interceptors/token.interceptor'
 
 defineLocale('pt-br', deLocale);
 registerLocaleData(localePt, 'pt');
@@ -73,6 +74,12 @@ registerLocaleData(localePt, 'pt');
     {
       provide: DEFAULT_CURRENCY_CODE,
       useValue: 'BRL',
+    },
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
     },
   ],
   bootstrap: [AppComponent],

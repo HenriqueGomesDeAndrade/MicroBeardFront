@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   constructor(private repository: AuthRepositoryService,
               private errorHandler: ErrorHandlerService,
               private router: Router,
-              private snackBar: MatSnackBar,
               private modal: BsModalService) { }
 
   ngOnInit(): void {
@@ -49,7 +48,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login = (loginFormValue) => {
-    console.log('entrou na função');
     if(this.loginForm.valid)
       this.executeLogin(loginFormValue)
   }
@@ -62,7 +60,7 @@ export class LoginComponent implements OnInit {
 
     const apiUri: string = `Collaborator/Login`;
 
-    this.repository.loginTeste(apiUri, login).subscribe({
+    this.repository.login(apiUri, login).subscribe({
       next: (user: AuthForUser) => {
         const config: ModalOptions = {
           initialState: {
