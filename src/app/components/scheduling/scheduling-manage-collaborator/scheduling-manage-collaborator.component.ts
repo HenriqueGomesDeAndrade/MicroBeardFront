@@ -1,66 +1,65 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { Contact } from 'src/app/interfaces/contact/contact.model';
+import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ServiceAddModalComponent } from 'src/app/shared/modals/service-add-modal/service-add-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
-import { ContactAddModalComponent } from 'src/app/shared/modals/contact-add-modal/contact-add-modal.component';
+import { CollaboratorAddModalComponent } from 'src/app/shared/modals/collaborator-add-modal/collaborator-add-modal.component';
 
 
 @Component({
-  selector: 'app-scheduling-manage-contact',
-  templateUrl: './scheduling-manage-contact.component.html',
-  styleUrls: ['./scheduling-manage-contact.component.css'],
+  selector: 'app-scheduling-manage-collaborator',
+  templateUrl: './scheduling-manage-collaborator.component.html',
+  styleUrls: ['./scheduling-manage-collaborator.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi:true,
-      useExisting: forwardRef(() => SchedulingManageContactComponent) 
+      useExisting: forwardRef(() => SchedulingManageCollaboratorComponent) 
     },
     {
       provide: NG_VALIDATORS,
       multi: true,
-      useExisting: SchedulingManageContactComponent
+      useExisting: SchedulingManageCollaboratorComponent
     }
   ]
 })
-export class SchedulingManageContactComponent implements OnInit {
+export class SchedulingManageCollaboratorComponent implements OnInit {
 
-  @Input() contact: Contact;
+  @Input() collaborator: Collaborator;
 
-  constructor(config: NgbModalConfig, private modalContact: NgbModal,private modalContact2: BsModalService, private router: Router) { }
+  constructor(config: NgbModalConfig, private modalCollaborator: NgbModal,private modalCollaborator2: BsModalService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  handleEvent = (event: string, contact: Contact) =>{
+  handleEvent = (event: string, collaborator: Collaborator) =>{
     switch(event){
       case 'Remove':
-        this.contact = null
-        this.onChanged(this.contact);
+        this.collaborator = null
+        this.onChanged(this.collaborator);
         this.onValidationChange();
         break;
       case 'Clicked':
-        const detailsUrl: string = `/contact/details/${contact.code}`;
+        const detailsUrl: string = `/collaborator/details/${collaborator.code}`;
         this.router.navigate([detailsUrl]);
         break;
     }
   }
 
   open() {
-    const modalRef = this.modalContact.open(ContactAddModalComponent)
+    const modalRef = this.modalCollaborator.open(CollaboratorAddModalComponent)
     modalRef.componentInstance.returnEntry.subscribe((receivedEntry) => {
-        this.contact = receivedEntry;
+        this.collaborator = receivedEntry;
         modalRef.close();
-        this.onChanged(this.contact);
+        this.onChanged(this.collaborator);
         this.onValidationChange();
     })
     
   }
   //FORM VALIDATIONS
 
-  onChanged = (contact) => {};
+  onChanged = (collaborator) => {};
 
   onTouched = () => {};
 
@@ -71,19 +70,19 @@ export class SchedulingManageContactComponent implements OnInit {
   onAdd() {
     this.markAsTouched();
     if (!this.disabled) {
-      this.onChanged(this.contact);
+      this.onChanged(this.collaborator);
     }
   }
 
   onRemove() {
     this.markAsTouched();
     if (!this.disabled) {
-      this.onChanged(this.contact);
+      this.onChanged(this.collaborator);
     }
   }
 
-  writeValue(contactWritten: Contact) {
-    this.contact = contactWritten;
+  writeValue(collaboratorWritten: Collaborator) {
+    this.collaborator = collaboratorWritten;
   }
 
   registerOnChange(onChange: any) {
@@ -106,8 +105,8 @@ export class SchedulingManageContactComponent implements OnInit {
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    const contact = control.value;
-    if (contact ==  null) {
+    const collaborator = control.value;
+    if (collaborator ==  null) {
       return {
         mustBeFilled: true
       };
@@ -121,4 +120,5 @@ export class SchedulingManageContactComponent implements OnInit {
   registerOnValidatorChange?(fn: () => void): void {
     this.onValidationChange = fn;
 }
+
 }

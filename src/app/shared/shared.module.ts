@@ -16,6 +16,8 @@ import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
 import { PhonePipe } from './pipes/phone.pipe';
 import { LicenseAddModalComponent } from './modals/license-add-modal/license-add-modal.component';
 import { ServiceAddModalComponent } from './modals/service-add-modal/service-add-modal.component';
+import { ContactAddModalComponent } from './modals/contact-add-modal/contact-add-modal.component';
+import { CollaboratorAddModalComponent } from './modals/collaborator-add-modal/collaborator-add-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ServiceAddModalComponent } from './modals/service-add-modal/service-add
     PhonePipe,
     LicenseAddModalComponent,
     ServiceAddModalComponent,
+    ContactAddModalComponent,
+    CollaboratorAddModalComponent,
   ],
   imports: [
     ModalModule.forRoot(),

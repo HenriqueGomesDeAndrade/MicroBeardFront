@@ -35,41 +35,25 @@
               <em *ngIf="schedulingForm.errors?.dateValid && (schedulingForm.touched ||schedulingForm.dirty)">A data de encerramento não pode ser menor que a data de início</em>
             </div>
           </div>
-     
-          <div class="mb-3 row">
-            <label for="contactCode" class="col-form-label col-md-4 fontTitleMedium">Código do cliente: </label>
-            <div class="col-fuild">
-                <input type="number" formControlName="contactCode" id="contactCode" class="form-control fontRegular" />
-            </div>
-            <div class="col-fuild">
-                <em *ngIf="validateControl('contactCode') 
-                && hasError('contactCode', 'required')">O Código do cliente é obrigatório</em>
-                <em *ngIf="validateControl('contactCode') 
-                && hasError('contactCode', 'min')">O valor deve ser positivo.</em>
-            </div>
-        </div>
-
-        <div class="mb-3 row">
-            <label for="collaboratorCode" class="col-form-label col-md-4 fontTitleMedium">Código do colaborador: </label>
-            <div class="col-fuild">
-                <input type="number" formControlName="collaboratorCode" id="collaboratorCode" class="form-control fontRegular" />
-            </div>
-            <div class="col-fuild">
-                <em *ngIf="validateControl('collaboratorCode') 
-                && hasError('collaboratorCode', 'required')">O Código do colaborador é obrigatório</em>
-                <em *ngIf="validateControl('collaboratorCode') 
-                && hasError('collaboratorCode', 'min')">O valor deve ser positivo.</em>
-            </div>
-        </div>
 
           <br>
 
-          <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+          <span class="fontTitleBig"><i class="bi bi-person-badge-fill"></i> Cliente:</span>
+          <app-scheduling-manage-contact formControlName = "contact" [contact]="scheduling?.contact"></app-scheduling-manage-contact>
+          <em *ngIf="schedulingForm.get('contact').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Cliente é obrigatório</em>
 
-          
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviço:</span>
           <app-scheduling-manage-service formControlName = "service" [service]="scheduling?.service"></app-scheduling-manage-service>
-
           <em *ngIf="schedulingForm.get('service').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Serviço é obrigatório</em>
+          
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaborador:</span>
+          <app-scheduling-manage-collaborator formControlName = "collaborator" [collaborator]="scheduling?.collaborator"></app-scheduling-manage-collaborator>
+          <em *ngIf="schedulingForm.get('collaborator').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Colaborador é obrigatório</em>
+
           <br>
 
           <div class="row g-0">

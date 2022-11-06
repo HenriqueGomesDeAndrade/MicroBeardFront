@@ -10,10 +10,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngIf="contact != null" (click)="handleEvent('Clicked', contact)">
-              <td class="fontRegular">{{contact?.code}}</td>
-              <td class="fontRegular">{{contact?.name}}</td>
-              <td class="buttonT"><button type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', contact)">Remover</button></td>
+            <tr *ngIf="collaborator != null" (click)="handleEvent('Clicked', collaborator)">
+              <td class="fontRegular">{{collaborator?.code}}</td>
+              <td class="fontRegular">{{collaborator?.name}}</td>
+              <td class="buttonT"><button type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', collaborator)">Remover</button></td>
             </tr>
           </tbody>
         </table>

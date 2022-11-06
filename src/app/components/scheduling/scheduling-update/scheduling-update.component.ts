@@ -10,6 +10,7 @@ import { Scheduling } from 'src/app/interfaces/scheduling/scheduling.model';
 import { SchedulingForUpdate } from 'src/app/interfaces/scheduling/scheduling-update.model';
 import { SchedulingRepositoryService } from 'src/app/shared/services/repositories/scheduling-repository.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { ServiceRepositoryService } from 'src/app/shared/services/repositories/service-repository.service';
 
 
 @Component({
@@ -33,17 +34,18 @@ export class SchedulingUpdateComponent implements OnInit {
               private datePipe: DatePipe,
               private modal: BsModalService,
               private localeService: BsLocaleService,
-              fb: FormBuilder) { }
+              fb: FormBuilder,
+              private serviceRepository: ServiceRepositoryService) { }
 
   ngOnInit(): void {
     this.schedulingForm = new FormGroup({
       title: new FormControl('', [Validators.maxLength(100)]),
       date: new FormControl('',[Validators.required]),
       endDate: new FormControl('',[]),
-      contactCode: new FormControl('',[Validators.required, Validators.min(0)]),
+      contact: new FormControl('',[Validators.required]),
       service: new FormControl('',[Validators.required]),
-      collaboratorCode: new FormControl('',[Validators.required, Validators.min(0)]),
-    }, {validators: dateValidator});
+      collaborator: new FormControl('',[Validators.required]),
+    }, {validators: [dateValidator, collaboratorValidator]});
 
     this.localeService.use('pt-br')
     this.getSchedulingByCode();
@@ -91,7 +93,7 @@ export class SchedulingUpdateComponent implements OnInit {
       endDate: schedulingFormValue.endDate,
       contactCode: schedulingFormValue.contactCode,
       serviceCode: schedulingFormValue.service.code,
-      collaboratorCode: schedulingFormValue.collaboratorCode,
+      collaboratorCode: schedulingFormValue.collaborator.code,
     }
 
     const apiUri: string = `Scheduling/${this.scheduling.code}`;
@@ -123,4 +125,18 @@ export const dateValidator: ValidatorFn = (control: AbstractControl): Validation
   const start = control.get('date');
   const end = control.get('endDate');
   return start.value !== null && end.value !== null && start.value < end.value ? null :{ dateValid:true };
+}
+
+export const collaboratorValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const collaborator = control.get('collaborator').value;
+  const service = control.get('service').value;
+
+  if(service == null){
+    return {isServiceEmpty: true, errorMessage: "O serviço deve ser preenchido antes do colaborador"}
+  } 
+  else {
+    console.log(service)
+  }
+
+  return null
 }
