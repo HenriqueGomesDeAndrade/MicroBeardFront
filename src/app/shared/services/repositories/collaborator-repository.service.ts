@@ -18,14 +18,14 @@ export class CollaboratorRepositoryService {
   public getCollaborators = (route: string) => {
     return this.http.get<Collaborator[]>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
   public getCollaborator = (route: string) => {
     return this.http.get<Collaborator>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -36,7 +36,7 @@ export class CollaboratorRepositoryService {
     return this.http.post<Collaborator>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       collaborator,
-      this.repo.generateHeaders()
+      
     );
   };
 
@@ -47,14 +47,14 @@ export class CollaboratorRepositoryService {
     return this.http.put(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       collaborator,
-      this.repo.generateHeaders()
+      
     );
   };
 
   public deleteCollaborator = (route: string) => {
     return this.http.delete(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
-      this.repo.generateHeaders()
+      
     );
   };
 }

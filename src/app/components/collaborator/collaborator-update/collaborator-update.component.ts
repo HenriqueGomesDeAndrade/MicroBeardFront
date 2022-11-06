@@ -100,8 +100,8 @@ export class CollaboratorUpdateComponent implements OnInit {
       next: (_) => {
         const config: ModalOptions = {
           initialState: {
-            modalHeaderText: 'Success Message',
-            modalBodyText: 'Owner updated successfully',
+            modalHeaderText: 'Mensagem de Sucesso',
+            modalBodyText: 'Colaborador alterado com sucesso!',
             okButtonText: 'OK'
           }
         };

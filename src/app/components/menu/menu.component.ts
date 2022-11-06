@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthRepositoryService } from 'src/app/shared/services/repositories/auth-repository.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   isCollapsed: boolean = false;
-  constructor() { }
+  constructor(private authRepo: AuthRepositoryService) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.authRepo.logout()
   }
 
 }
