@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Scheduling } from 'src/app/interfaces/scheduling/scheduling.model';
@@ -21,6 +21,10 @@ export class SchedulingUpdateComponent implements OnInit {
   scheduling: Scheduling
   schedulingForm: FormGroup;
   bsModalRef?: BsModalRef;
+  dateError: boolean = false;
+
+  @Input() startDate: Date = new Date();
+  @Input() endDate: Date = new Date();
 
   constructor(private repository: SchedulingRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -28,17 +32,18 @@ export class SchedulingUpdateComponent implements OnInit {
               private router: Router,
               private datePipe: DatePipe,
               private modal: BsModalService,
-              private localeService: BsLocaleService) { }
+              private localeService: BsLocaleService,
+              fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.schedulingForm = new FormGroup({
       title: new FormControl('', [Validators.maxLength(100)]),
       date: new FormControl('',[Validators.required]),
-      endDate: new FormControl(''),
+      endDate: new FormControl('',[]),
       contactCode: new FormControl('',[Validators.required, Validators.min(0)]),
       serviceCode: new FormControl('',[Validators.required, Validators.min(0)]),
       collaboratorCode: new FormControl('',[Validators.required, Validators.min(0)]),
-    });
+    }, {validators: dateValidator});
 
     this.localeService.use('pt-br')
     this.getSchedulingByCode();
@@ -112,4 +117,11 @@ export class SchedulingUpdateComponent implements OnInit {
   public redirectToSchedulingList = () => {
     this.router.navigate(['/scheduling/calendar'])
   }
+}
+
+export const dateValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const start = control.get('date');
+  const end = control.get('endDate');
+  console.log("validators called                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ");  
+  return start.value !== null && end.value !== null && start.value < end.value ? null :{ dateValid:true };
 }

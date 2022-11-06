@@ -28,10 +28,11 @@
           <div class="mb-3 row">
             <label for="endDate" class="fontTitleMedium col-form-label col-md-4">Data de Encerramento </label>
             <div class="col-fuild">
-              <input type="text" formControlName="endDate" id="endDate" 
+              <input type="text" formControlName="endDate" id="endDate" placeholder="Opcional" 
               class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY HH:mm', containerClass: 'theme-dark-blue', withTimepicker: 'true' }" />
             </div>
             <div class="col-fuild">
+              <em *ngIf="schedulingForm.errors?.dateValid && (schedulingForm.touched ||schedulingForm.dirty)">A data de encerramento não pode ser menor que a data de início</em>
             </div>
           </div>
      
