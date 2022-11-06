@@ -138,14 +138,15 @@
         <br>
 
         <span class="fontTitleBig"><i class="bi bi-award-fill"></i> Habilitações:</span>
-        <app-collaborator-manage-license [licenses]="(licenses)"></app-collaborator-manage-license>
+        <app-collaborator-manage-license formControlName = "licenses" [licenses]="(licenses)"></app-collaborator-manage-license>
 
         <br>
 
         <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
 
-        <app-collaborator-manage-service [services]="(services)"></app-collaborator-manage-service>
-
+        <app-collaborator-manage-service formControlName = "services" [services]="(services)"></app-collaborator-manage-service>
+        <em *ngIf="collaboratorForm.errors?.servicesError">{{collaboratorForm.errors?.errorMessage}}</em>
+        
         <br>
    
         <div class="row">

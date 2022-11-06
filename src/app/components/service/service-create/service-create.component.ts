@@ -15,6 +15,7 @@ import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./service-create.component.css']
 })
 export class ServiceCreateComponent implements OnInit {
+  service: Service;
   errorMessage: string = '';
   serviceForm: FormGroup;
   bsModalRef?: BsModalRef;
@@ -31,7 +32,10 @@ export class ServiceCreateComponent implements OnInit {
       time: new FormControl('',[Validators.min(0), Validators.max(10000)]),
       type: new FormControl('', [Validators.maxLength(50)]),
       description: new FormControl('', [Validators.maxLength(250)]),
+      license: new FormControl('',[Validators.required]),
     });
+
+    this.serviceForm.get('license').setValue(null)
   }
 
   validateControl = (controlName: string) => {
@@ -60,6 +64,7 @@ export class ServiceCreateComponent implements OnInit {
       time: serviceFormValue.time,
       type: serviceFormValue.type,
       description: serviceFormValue.description,
+      licenseCode: serviceFormValue.license,
       }
     const apiUrl = 'Service';
     this.repository.createService(apiUrl, service)

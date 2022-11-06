@@ -8,6 +8,8 @@ import { ServiceCreateComponent } from './service-create/service-create.componen
 import { ServiceUpdateComponent } from './service-update/service-update.component';
 import { ServiceDeleteComponent } from './service-delete/service-delete.component';
 import { ServiceCollaboratorsComponent } from './service-details/service-collaborators/service-collaborators.component';
+import { ServiceLicenseComponent } from './service-details/service-license/service-license.component';
+import { ServiceManageLicenseComponent } from './service-manage-license/service-manage-license.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { ServiceCollaboratorsComponent } from './service-details/service-collabo
     ServiceUpdateComponent,
     ServiceDeleteComponent,
     ServiceCollaboratorsComponent,
+    ServiceLicenseComponent,
+    ServiceManageLicenseComponent,
   ],
   imports: [
     SharedModule,

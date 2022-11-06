@@ -32,6 +32,7 @@ export class ServiceUpdateComponent implements OnInit {
       time: new FormControl('',[Validators.min(0), Validators.max(10000)]),
       type: new FormControl('', [Validators.maxLength(50)]),
       description: new FormControl('', [Validators.maxLength(250)]),
+      license: new FormControl('',[Validators.required]),
     });
 
     this.getServiceByCode();
@@ -57,6 +58,8 @@ export class ServiceUpdateComponent implements OnInit {
       return true;
     
     return false;
+
+    console.log(this.serviceForm)
   } 
   
   hasError = (controlName: string, errorName: string) => {
@@ -78,6 +81,7 @@ export class ServiceUpdateComponent implements OnInit {
       time: serviceFormValue.time,
       type: serviceFormValue.type,
       description: serviceFormValue.description,
+      licenseCode: serviceFormValue.license.code,
       }
 
     const apiUri: string = `Service/${this.service.code}`;

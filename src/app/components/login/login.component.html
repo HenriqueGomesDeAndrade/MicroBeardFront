@@ -9,14 +9,14 @@
 
                 <div class="text-center">
                   <img src="./../../../assets/logo.png" alt="logo" class="logo img-fluid">
-                  <h4 class="mt-1 mb-5 pb-1">MicroBeard</h4>
+                  <h4 class="fontTitleBig mt-1 mb-4 pb-1">MicroBeard</h4>
                 </div>
 
                 <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)">
-                  <label for="email" class="form-label pt-3">Login</label>
+                  <label for="email" class="fontTitle form-label pt-3">Login</label>
                   <div class="row g-0 form-outline mb-2 align-items-center">
                     <div class="col">
-                      <input type="email" formControlName="email" id="email" class="form-control"
+                      <input type="email" formControlName="email" id="email" class="fontRegular form-control"
                       placeholder="Email"/>
                     </div>
                       <div class="col-1 input-icon align-items-center justify-content-center">
@@ -31,10 +31,10 @@
                     <em *ngIf="validateControl('email') 
                     && hasError('email', 'pattern')">Email inválido.</em>
                   </div>
-                  <label for="password" class="form-label pt-3">Senha</label>
+                  <label for="password" class="fontTitle form-label pt-3">Senha</label>
                   <div class="row g-0 form-outline mb-2 align-items-center">
                     <div class="col">
-                      <input type="password" formControlName="password" id="password" class="form-control" placeholder="Senha de usuário"/>
+                      <input type="password" formControlName="password" id="password" class="fontRegular form-control" placeholder="Senha de usuário"/>
                     </div>
                     <div class="col-1 input-icon align-items-center justify-content-center">
                       <i class="bi bi-lock"></i>
@@ -48,7 +48,7 @@
                  && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
 
                   <div class="d-flex align-items-center justify-content-center pb-4 pt-4">
-                    <button type="submit" class="btn btn-danger btn-block fa-lg fontButton">Logar</button>
+                    <button type="submit" class="fontTitle btn btn-danger btn-block fa-lg fontButton">Logar</button>
                   </div>
 
                   <!-- <br>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="col-lg-8 align-items-left background-image">
-              <div class="px-3 py-4 p-md-5 mx-md-4">
+              <div class="px-3 py-4 p-md-5 mx-md-4 divImg">
                   <img src="./../../../assets/svg/login-image.svg" alt="logo" class="logo img-fluid">
               </div>
             </div>

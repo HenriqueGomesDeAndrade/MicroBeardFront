@@ -7,6 +7,7 @@ export interface ServiceForUpdate{
   time: number;
   type: string;
   description: string;
+  licenseCode: number;
 
   collaborators?: Collaborator[];
   scheduling?: Scheduling[];

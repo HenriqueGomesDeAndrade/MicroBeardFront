@@ -69,6 +69,17 @@
 
         <div class="row g-0">
           <div class="col-md-4">
+            <label for="licenseCode" class="control-label fontTitleMedium">Código da Habilitação</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="licenseCode">
+              {{service?.licenseCode}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
             <label for="creatorCode" class="control-label fontTitleMedium">Criador:</label>
           </div>
           <div class="col-md-7">
@@ -118,6 +129,13 @@
   <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaboradores:</span>
 
   <app-service-collaborators [collaborators]="service?.collaborators"></app-service-collaborators>
+
+  <br>
+
+  <span class="fontTitleBig"><i class="bi bi-award-fill"></i> Habilitação:</span>
+
+  <app-service-license [license]="service?.license"></app-service-license>
+
 
 
 

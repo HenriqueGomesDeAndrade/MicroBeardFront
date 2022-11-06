@@ -50,19 +50,6 @@
         </div>
 
         <div class="mb-3 row">
-            <label for="serviceCode" class="col-form-label col-md-4 fontTitleMedium">Código do serviço: </label>
-            <div class="col-fuild">
-                <input type="number" formControlName="serviceCode" id="serviceCode" class="form-control fontRegular" />
-            </div>
-            <div class="col-fuild">
-                <em *ngIf="validateControl('serviceCode') 
-                && hasError('serviceCode', 'required')">O Código do serviço é obrigatório</em>
-                <em *ngIf="validateControl('serviceCode') 
-                && hasError('serviceCode', 'min')">O valor deve ser positivo.</em>
-            </div>
-        </div>
-
-        <div class="mb-3 row">
             <label for="collaboratorCode" class="col-form-label col-md-4 fontTitleMedium">Código do colaborador: </label>
             <div class="col-fuild">
                 <input type="number" formControlName="collaboratorCode" id="collaboratorCode" class="form-control fontRegular" />
@@ -75,6 +62,14 @@
             </div>
         </div>
 
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+          
+          <app-scheduling-manage-service formControlName = "service" [service]="scheduling?.service"></app-scheduling-manage-service>
+
+          <em *ngIf="schedulingForm.get('service').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Serviço é obrigatório</em>
           <br>
 
           <div class="row g-0">

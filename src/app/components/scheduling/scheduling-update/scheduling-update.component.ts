@@ -41,7 +41,7 @@ export class SchedulingUpdateComponent implements OnInit {
       date: new FormControl('',[Validators.required]),
       endDate: new FormControl('',[]),
       contactCode: new FormControl('',[Validators.required, Validators.min(0)]),
-      serviceCode: new FormControl('',[Validators.required, Validators.min(0)]),
+      service: new FormControl('',[Validators.required]),
       collaboratorCode: new FormControl('',[Validators.required, Validators.min(0)]),
     }, {validators: dateValidator});
 
@@ -90,7 +90,7 @@ export class SchedulingUpdateComponent implements OnInit {
       date: schedulingFormValue.date,
       endDate: schedulingFormValue.endDate,
       contactCode: schedulingFormValue.contactCode,
-      serviceCode: schedulingFormValue.serviceCode,
+      serviceCode: schedulingFormValue.service.code,
       collaboratorCode: schedulingFormValue.collaboratorCode,
     }
 
@@ -122,6 +122,5 @@ export class SchedulingUpdateComponent implements OnInit {
 export const dateValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const start = control.get('date');
   const end = control.get('endDate');
-  console.log("validators called                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ");  
   return start.value !== null && end.value !== null && start.value < end.value ? null :{ dateValid:true };
 }

@@ -1,4 +1,6 @@
 import { Collaborator } from "../collaborator/collaborator.model";
+import { Contact } from "../contact/contact.model";
+import { Service } from "../service/service.model";
 
 export interface Scheduling {
   code: string;
@@ -15,4 +17,8 @@ export interface Scheduling {
   createDate?: string;
   updaterCode?: number;
   updateDate?: string;
+
+  contact?: Contact;
+  service?: Service;
+  collaborator?: Collaborator;
 }
