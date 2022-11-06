@@ -7,6 +7,7 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 import { ContactCreateComponent } from './contact-create/contact-create.component';
 import { ContactUpdateComponent } from './contact-update/contact-update.component';
 import { ContactDeleteComponent } from './contact-delete/contact-delete.component';
+import { ContactSchedulingComponent } from './contact-details/contact-scheduling/contact-scheduling.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ContactDeleteComponent } from './contact-delete/contact-delete.componen
     ContactCreateComponent,
     ContactUpdateComponent,
     ContactDeleteComponent,
+    ContactSchedulingComponent,
   ],
   imports: [
     SharedModule,

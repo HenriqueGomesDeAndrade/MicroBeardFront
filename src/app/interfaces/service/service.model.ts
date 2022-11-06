@@ -1,3 +1,5 @@
+import { Collaborator } from "../collaborator/collaborator.model";
+
 export interface Service {
   code: string;
   name: string;
@@ -11,4 +13,6 @@ export interface Service {
   updateDate?: string;
   deleterCode?: number;
   deleteDate?: string;
+  
+  collaborators?: Collaborator[];
 }

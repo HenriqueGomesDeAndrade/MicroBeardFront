@@ -121,6 +121,12 @@
 
         <br>
 
+        <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+        <app-collaborator-manage-service [services]="collaborator?.services"></app-collaborator-manage-service>
+
+        <br>
+
           <div class="row g-0">
             <div class="col-1 me-3">
                 <button type="submit" [disabled]="!collaboratorForm.valid"  [className]="!collaboratorForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>

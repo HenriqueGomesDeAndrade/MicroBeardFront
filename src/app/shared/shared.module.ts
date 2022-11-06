@@ -10,6 +10,7 @@ import { CpfCnpjPipe } from './pipes/cpf-cnpj.pipe';
 import { PhonePipe } from './pipes/phone.pipe';
 import { NgxMaskModule } from 'ngx-mask';
 import { LicenseAddModalComponent } from './modals/license-add-modal/license-add-modal.component';
+import { ServiceAddModalComponent } from './modals/service-add-modal/service-add-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LicenseAddModalComponent } from './modals/license-add-modal/license-add
     CpfCnpjPipe,
     PhonePipe,
     LicenseAddModalComponent,
+    ServiceAddModalComponent,
   ],
   imports: [
     ModalModule.forRoot(),

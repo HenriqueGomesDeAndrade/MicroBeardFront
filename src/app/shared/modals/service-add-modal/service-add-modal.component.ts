@@ -1,39 +1,40 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { License } from 'src/app/interfaces/license/license.model';
-import { LicenseRepositoryService } from 'src/app/shared/services/repositories/license-repository.service';
+import { Service } from 'src/app/interfaces/service/service.model';
+import { ServiceRepositoryService } from '../../services/repositories/service-repository.service';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
-  selector: 'app-license-add-modal',
-  templateUrl: './license-add-modal.component.html',
-  styleUrls: ['./license-add-modal.component.css']
+  selector: 'app-service-add-modal',
+  templateUrl: './service-add-modal.component.html',
+  styleUrls: ['./service-add-modal.component.css']
 })
-export class LicenseAddModalComponent{
+export class ServiceAddModalComponent implements OnInit {
+
   @Output() returnEntry: EventEmitter<any> = new EventEmitter();
-  licenses: License[];
+  services: Service[];
   errorMessage: string = '';
   closeResult = '';
 
   constructor(private modalService: NgbModal,
-              private repository: LicenseRepositoryService,
+              private repository: ServiceRepositoryService,
                private errorHandler: ErrorHandlerService,
                 private router: Router,
                 private bsModalRef: BsModalRef) { }
-  
+
   ngOnInit(): void {
-    this.getAllLicenses();
+    this.getAllServices();
   }
 
-  private getAllLicenses = () => {
-    const apiAddress: string = 'License';
-    this.repository.getLicenses(apiAddress)
+  private getAllServices = () => {
+    const apiAddress: string = 'Service';
+    this.repository.getServices(apiAddress)
     .subscribe({
-      next: (colab: License[]) => this.licenses = colab,
+      next: (colab: Service[]) => this.services = colab,
       error: (err: HttpErrorResponse) => {
         this.errorHandler.handleError(err);
         this.errorMessage = this.errorHandler.errorMessage;
@@ -45,8 +46,8 @@ export class LicenseAddModalComponent{
     this.modalService.dismissAll();
   }
 
-  public returnLicense = (license:License) => {
-    this.returnEntry.emit(license);
+  public returnService = (service:Service) => {
+    this.returnEntry.emit(service);
   }
 
 }

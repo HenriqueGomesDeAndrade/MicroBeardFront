@@ -3,6 +3,7 @@ import { License } from 'src/app/interfaces/license/license.model';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LicenseAddModalComponent } from 'src/app/shared/modals/license-add-modal/license-add-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collaborator-manage-license',
@@ -12,7 +13,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class CollaboratorManageLicenseComponent implements OnInit {
   @Input() licenses: License[];
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal,private modalService2: BsModalService) { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal,private modalService2: BsModalService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,8 @@ export class CollaboratorManageLicenseComponent implements OnInit {
         this.licenses.splice(this.licenses.indexOf(license), 1)
         break;
       case 'Clicked':
+        const detailsUrl: string = `/license/details/${license.code}`;
+        this.router.navigate([detailsUrl]);
         break;
     }
   }

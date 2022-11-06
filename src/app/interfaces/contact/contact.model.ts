@@ -1,3 +1,5 @@
+import { Scheduling } from "../scheduling/scheduling.model";
+
 export interface Contact {
   code: string;
   name: string;
@@ -13,4 +15,6 @@ export interface Contact {
   updateDate?: string;
   deleterCode?: number;
   deleteDate?: string;
+
+  schedulings?: Scheduling[];
 }

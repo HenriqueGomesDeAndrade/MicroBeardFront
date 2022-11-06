@@ -7,6 +7,7 @@ import { ServiceDetailsComponent } from './service-details/service-details.compo
 import { ServiceCreateComponent } from './service-create/service-create.component';
 import { ServiceUpdateComponent } from './service-update/service-update.component';
 import { ServiceDeleteComponent } from './service-delete/service-delete.component';
+import { ServiceCollaboratorsComponent } from './service-details/service-collaborators/service-collaborators.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ServiceDeleteComponent } from './service-delete/service-delete.componen
     ServiceCreateComponent,
     ServiceUpdateComponent,
     ServiceDeleteComponent,
+    ServiceCollaboratorsComponent,
   ],
   imports: [
     SharedModule,
