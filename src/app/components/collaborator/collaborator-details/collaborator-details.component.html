@@ -160,7 +160,13 @@
 
   <span class="fontTitleBig"><i class="bi bi-award-fill"></i> Habilitações:</span>
 
-  <app-collaborator-licenses [licenses]="collaborator?.licenses" (onLicenseClick)="printToConsole($event)"></app-collaborator-licenses>
+  <app-collaborator-licenses [licenses]="collaborator?.licenses"></app-collaborator-licenses>
+
+  <br>
+
+  <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+  <app-collaborator-service [services]="collaborator?.services"></app-collaborator-service>
 
   <div class="col-md-1">
     <button type="button" class="fontButton btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>

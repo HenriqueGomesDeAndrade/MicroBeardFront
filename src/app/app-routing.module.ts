@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: '', component: PrincipalComponent, canActivate: [AuthenticatedUserGuard], children: [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
+    { path: 'scheduling', loadChildren: () => import('./components/scheduling/scheduling.module').then(m => m.SchedulingModule) },
     { path: 'contact', loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule) },
     { path: 'service', loadChildren: () => import('./components/service/service.module').then(m => m.ServiceModule) },
     { path: 'collaborator', loadChildren: () => import('./components/collaborator/collaborator.module').then(m => m.CollaboratorModule) },

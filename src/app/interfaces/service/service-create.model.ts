@@ -1,5 +1,6 @@
 import { Collaborator } from "../collaborator/collaborator.model";
 import { Scheduling } from "../scheduling/scheduling.model";
+import { License } from "../license/license.model";
 
 export interface ServiceForCreation{
   name: string;
@@ -7,6 +8,7 @@ export interface ServiceForCreation{
   time: number;
   type: string;
   description: string;
+  licenseCode: number;
 
   collaborators?: Collaborator[];
   scheduling?: Scheduling[];

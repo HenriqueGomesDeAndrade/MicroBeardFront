@@ -38,10 +38,6 @@ export class CollaboratorDetailsComponent implements OnInit {
     })
   } 
 
-  printToConsole= (param: License) => {
-    console.log('Account parameter from the child component', param)
-  }
-
   public redirectToCollaboratorList = () => {
     this.router.navigate(['/collaborator/list'])
   }

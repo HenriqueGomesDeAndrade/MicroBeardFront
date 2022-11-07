@@ -8,6 +8,10 @@ import { CollaboratorLicensesComponent } from './collaborator-details/collaborat
 import { CollaboratorCreateComponent } from './collaborator-create/collaborator-create.component';
 import { CollaboratorUpdateComponent } from './collaborator-update/collaborator-update.component';
 import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-delete.component';
+import { CollaboratorManageLicenseComponent } from './collaborator-manage-license/collaborator-manage-license.component';
+import { FormsModule } from '@angular/forms';
+import { CollaboratorServiceComponent } from './collaborator-details/collaborator-service/collaborator-service.component';
+import { CollaboratorManageServiceComponent } from './collaborator-manage-service/collaborator-manage-service.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { CollaboratorDeleteComponent } from './collaborator-delete/collaborator-
     CollaboratorLicensesComponent,
     CollaboratorCreateComponent,
     CollaboratorUpdateComponent,
-    CollaboratorDeleteComponent
+    CollaboratorDeleteComponent,
+    CollaboratorManageLicenseComponent,
+    CollaboratorServiceComponent,
+    CollaboratorManageServiceComponent,
   ],
   imports: [
     SharedModule,
     CollaboratorRoutingModule,
+    FormsModule
   ]
 })
 export class CollaboratorModule { }

@@ -4,11 +4,13 @@ import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { CollaboratorRepositoryService } from 'src/app/shared/services/repositories/collaborator-repository.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
 import { CollaboratorForUpdate } from 'src/app/interfaces/collaborator/collaborator-update.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { License } from 'src/app/interfaces/license/license.model';
+import { LinkedList } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-collaborator-update',
@@ -38,7 +40,9 @@ export class CollaboratorUpdateComponent implements OnInit {
       salary: new FormControl('',[Validators.min(0), Validators.max(999999.99)]),
       commision: new FormControl('',[Validators.min(0), Validators.max(999999.99)]),
       isAdmin: new FormControl('',[]),
-    });
+      services: new FormControl('', []),
+      licenses: new FormControl('', []),
+    }, {validators: servicesValidator});
 
     this.getCollaboratorByCode();
   }
@@ -88,6 +92,8 @@ export class CollaboratorUpdateComponent implements OnInit {
       salary: collaboratorFormValue.salary,
       commision: collaboratorFormValue.commision,
       isAdmin: collaboratorFormValue.isAdmin ? collaboratorFormValue.isAdmin : false,
+      licenses: collaboratorFormValue.licenses,
+      services: collaboratorFormValue.services
     }
 
     const apiUri: string = `Collaborator/${this.collaborator.code}`;
@@ -113,5 +119,36 @@ export class CollaboratorUpdateComponent implements OnInit {
   public redirectToCollaboratorList = () => {
     this.router.navigate(['/collaborator/list'])
   }
+}
+
+export const servicesValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const services = control.get('services').value;
+  const licenses = control.get('licenses').value;
+
+  if(services.length != 0){
+    if(licenses.length == 0){
+      return {servicesError: true, errorMessage: 'O colaborador não tem as habilitações necessária para esses serviços'}
+    }
+    else{
+      let serviceErrorInfo = null;
+      services.forEach(service => {
+        let isLicenseAllowedOnService = false;
+        licenses.forEach(license => {
+          if(service.licenseCode == license.code){
+            isLicenseAllowedOnService = true;
+          }
+        });
+
+        if(isLicenseAllowedOnService == false){
+          serviceErrorInfo = `O colaborador não tem a habilitação de código ${service.licenseCode}, necessária para o serviço de código ${service.code}`
+        }
+      });
+
+      if(serviceErrorInfo != null){
+        return {servicesError: true, errorMessage:  serviceErrorInfo}
+      }
+    }
+  }
   
+  return null
 }

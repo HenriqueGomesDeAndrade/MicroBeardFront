@@ -1,3 +1,6 @@
+import { Collaborator } from "../collaborator/collaborator.model";
+import { Service } from "../service/service.model";
+
 export interface License {
   code: string;
   description: string;
@@ -7,4 +10,7 @@ export interface License {
   updateDate?: string;
   desactivatorCode?: number;
   desactivationDate?: string;
+
+  collaborators?: Collaborator[];
+  services?: Service[];
 }

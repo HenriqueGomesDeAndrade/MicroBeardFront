@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { License } from 'src/app/interfaces/license/license.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collaborator-licenses',
@@ -8,14 +9,13 @@ import { License } from 'src/app/interfaces/license/license.model';
 })
 export class CollaboratorLicensesComponent implements OnInit {
   @Input() licenses: License[];
-  @Output() onLicenseClick: EventEmitter<License> = new EventEmitter();
-
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onLicenseClicked = (license: License) => {
-    this.onLicenseClick.emit(license);
+    const detailsUrl: string = `/license/details/${license.code}`;
+    this.router.navigate([detailsUrl]);
   }
 }

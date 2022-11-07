@@ -13,6 +13,12 @@ import { SchedulingUpdateComponent } from './scheduling-update/scheduling-update
 import { SchedulingDetailsComponent } from './scheduling-details/scheduling-details.component';
 import { SchedulingDeleteComponent } from './scheduling-delete/scheduling-delete.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SchedulingContactComponent } from './scheduling-details/scheduling-contact/scheduling-contact.component';
+import { SchedulingServiceComponent } from './scheduling-details/scheduling-service/scheduling-service.component';
+import { SchedulingCollaboratorComponent } from './scheduling-details/scheduling-collaborator/scheduling-collaborator.component';
+import { SchedulingManageServiceComponent } from './scheduling-manage-service/scheduling-manage-service.component';
+import { SchedulingManageContactComponent } from './scheduling-manage-contact/scheduling-manage-contact.component';
+import { SchedulingManageCollaboratorComponent } from './scheduling-manage-collaborator/scheduling-manage-collaborator.component';
 
 
 
@@ -30,7 +36,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
       useFactory: adapterFactory,
     }),
   ],
-  declarations: [SchedulingCalendarComponent, SchedulingCreateComponent, SchedulingUpdateComponent, SchedulingDetailsComponent, SchedulingDeleteComponent],
+  declarations: [SchedulingCalendarComponent, SchedulingCreateComponent, SchedulingUpdateComponent, SchedulingDetailsComponent, SchedulingDeleteComponent, SchedulingContactComponent, SchedulingServiceComponent, SchedulingCollaboratorComponent, SchedulingManageServiceComponent, SchedulingManageContactComponent, SchedulingManageCollaboratorComponent],
   exports: [SchedulingCalendarComponent],
 })
 export class SchedulingModule { }

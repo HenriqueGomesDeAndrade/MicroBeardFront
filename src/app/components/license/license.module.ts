@@ -7,6 +7,8 @@ import { LicenseDetailsComponent } from './license-details/license-details.compo
 import { LicenseCreateComponent } from './license-create/license-create.component';
 import { LicenseUpdateComponent } from './license-update/license-update.component';
 import { LicenseDeleteComponent } from './license-delete/license-delete.component';
+import { LicenseCollaboratorsComponent } from './license-details/license-collaborators/license-collaborators.component';
+import { LicenseServicesComponent } from './license-details/license-services/license-services.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { LicenseDeleteComponent } from './license-delete/license-delete.componen
     LicenseCreateComponent,
     LicenseUpdateComponent,
     LicenseDeleteComponent,
+    LicenseCollaboratorsComponent,
+    LicenseServicesComponent,
   ],
   imports: [
     SharedModule,

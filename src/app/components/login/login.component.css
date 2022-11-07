@@ -58,9 +58,14 @@ i {
   background: #f1f3f6;
 }
 
+.img-fluid, .divImg {
+  height: 100%;
+}
+
 .input-icon {
   width: 40px;
-  height: 100%;
+  padding: 6px;
+  height: 36.5px;
   align-self: center;
   text-align: center;
   background: #cd250f;

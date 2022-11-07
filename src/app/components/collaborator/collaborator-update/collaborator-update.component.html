@@ -56,7 +56,7 @@
       <div class="mb-3 row">
           <label for="phone" class="col-form-label col-md-4 fontTitleMedium">Telefone: </label>
           <div class="col-fuild">
-              <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" placeholder="Ex: (00) 00000-0000" mask="(00) 0000-0000||(00) 00000-0000"/>
+              <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" placeholder="Ex: (00) 00000-0000" mask="(00) 0000-0000||(00) 00000-0000 ||0000-0000||00000-0000"/>
           </div>
           <div class="col-fuild">
               <em *ngIf="validateControl('phone') 
@@ -93,6 +93,8 @@
         </div>
     </div>
 
+
+         
     <div class="mb-3 row">
       <label for="commision" class="col-form-label col-md-4 fontTitleMedium">Commisão: </label>
       <div class="col-fuild">
@@ -116,18 +118,31 @@
     </div>
     <div class="col-fuild">
     </div>
-</div>
+  </div>
  
-      <br>
- 
-      <div class="row">
-          <div class="col-md-1 me-3">
-              <button type="submit" [disabled]="!collaboratorForm.valid" [className]="!collaboratorForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
-          </div>
-          <div class="col-md-1">
-              <button type="button" class="fontButton btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>
-          </div>
-      </div>
+  <br>
+
+  <span class="fontTitleBig"><i class="bi bi-award-fill"></i> Habilitações:</span>
+
+  <app-collaborator-manage-license formControlName = "licenses" [licenses]="collaborator?.licenses"></app-collaborator-manage-license>
+
+  <br>
+
+  <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+  <app-collaborator-manage-service formControlName = "services" [services]="collaborator?.services"></app-collaborator-manage-service>
+  <em *ngIf="collaboratorForm.errors?.servicesError">{{collaboratorForm.errors?.errorMessage}}</em>
+
+  <br>
+
+  <div class="row g-0">
+    <div class="col-1 me-3">
+        <button type="submit" [disabled]="!collaboratorForm.valid"  [className]="!collaboratorForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+    </div>
+    <div class="col">
+        <button type="button" class="fontButton btn btn-secondary" (click)="redirectToCollaboratorList()">Voltar</button>
+    </div>
+  </div>
       
     </div>
   </form>

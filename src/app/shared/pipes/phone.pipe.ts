@@ -25,7 +25,6 @@ export class PhonePipe implements PipeTransform {
 
       } else if (value.length > 5) {
         foneFormatado = value.replace(/^(\d{2})?(\d{4})?(\d{0,4})/, '($1) $2-$3');
-
       } else if (value.length > 1) {
         foneFormatado = value.replace(/^(\d{2})?(\d{0,5})/, '($1) $2');
       } else {

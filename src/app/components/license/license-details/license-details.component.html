@@ -69,6 +69,17 @@
     
   <br>
 
+  <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaboradores:</span>
+
+  <app-license-collaborators [collaborators]="license?.collaborators"></app-license-collaborators>
+
+  <br>
+
+  <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+  <app-license-services [services]="license?.services"></app-license-services>
+
+
   <div class="col-md-1">
     <button type="button" class="fontButton btn btn-secondary" (click)="redirectToLicenseList()">Voltar</button>
   </div>

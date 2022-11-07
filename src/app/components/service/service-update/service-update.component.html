@@ -67,6 +67,14 @@
       </div>
  
       <br>
+
+      <span class="fontTitleBig"><i class="bi bi-award-fill"></i> Habilitação:</span>
+
+          
+          <app-service-manage-license formControlName = "license" [license]="service?.license"></app-service-manage-license>
+
+          <em *ngIf="serviceForm.get('license').errors?.licenseValid && (serviceForm.touched ||serviceForm.dirty)">É obrigatório vincular uma habilitação com o serviço</em>
+          <br>
  
       <div class="row">
           <div class="col-md-1 me-3">

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Scheduling } from 'src/app/interfaces/scheduling/scheduling.model';
 import { SchedulingForUpdate } from 'src/app/interfaces/scheduling/scheduling-update.model';
 import { SchedulingRepositoryService } from 'src/app/shared/services/repositories/scheduling-repository.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { ServiceRepositoryService } from 'src/app/shared/services/repositories/service-repository.service';
 
 
 @Component({
@@ -21,6 +22,10 @@ export class SchedulingUpdateComponent implements OnInit {
   scheduling: Scheduling
   schedulingForm: FormGroup;
   bsModalRef?: BsModalRef;
+  dateError: boolean = false;
+
+  @Input() startDate: Date = new Date();
+  @Input() endDate: Date = new Date();
 
   constructor(private repository: SchedulingRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -28,17 +33,19 @@ export class SchedulingUpdateComponent implements OnInit {
               private router: Router,
               private datePipe: DatePipe,
               private modal: BsModalService,
-              private localeService: BsLocaleService) { }
+              private localeService: BsLocaleService,
+              fb: FormBuilder,
+              private serviceRepository: ServiceRepositoryService) { }
 
   ngOnInit(): void {
     this.schedulingForm = new FormGroup({
       title: new FormControl('', [Validators.maxLength(100)]),
       date: new FormControl('',[Validators.required]),
-      endDate: new FormControl(''),
-      contactCode: new FormControl('',[Validators.required, Validators.min(0)]),
-      serviceCode: new FormControl('',[Validators.required, Validators.min(0)]),
-      collaboratorCode: new FormControl('',[Validators.required, Validators.min(0)]),
-    });
+      endDate: new FormControl('',[]),
+      contact: new FormControl('',[Validators.required]),
+      service: new FormControl('',[Validators.required]),
+      collaborator: new FormControl('',[Validators.required]),
+    }, {validators: [dateValidator, collaboratorValidator]});
 
     this.localeService.use('pt-br')
     this.getSchedulingByCode();
@@ -85,8 +92,8 @@ export class SchedulingUpdateComponent implements OnInit {
       date: schedulingFormValue.date,
       endDate: schedulingFormValue.endDate,
       contactCode: schedulingFormValue.contactCode,
-      serviceCode: schedulingFormValue.serviceCode,
-      collaboratorCode: schedulingFormValue.collaboratorCode,
+      serviceCode: schedulingFormValue.service.code,
+      collaboratorCode: schedulingFormValue.collaborator.code,
     }
 
     const apiUri: string = `Scheduling/${this.scheduling.code}`;
@@ -112,4 +119,24 @@ export class SchedulingUpdateComponent implements OnInit {
   public redirectToSchedulingList = () => {
     this.router.navigate(['/scheduling/calendar'])
   }
+}
+
+export const dateValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const start = control.get('date');
+  const end = control.get('endDate');
+  return start.value !== null && end.value !== null && start.value < end.value ? null :{ dateValid:true };
+}
+
+export const collaboratorValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const collaborator = control.get('collaborator').value;
+  const service = control.get('service').value;
+
+  if(service == null){
+    return {isServiceEmpty: true, errorMessage: "O serviço deve ser preenchido antes do colaborador"}
+  } 
+  else {
+    console.log(service)
+  }
+
+  return null
 }

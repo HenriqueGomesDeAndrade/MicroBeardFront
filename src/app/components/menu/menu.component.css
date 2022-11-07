@@ -34,3 +34,8 @@ a{
   margin-right: 5px;
   border: 1px solid rgb(0, 0, 0);
 }
+
+.logout a:hover{
+  cursor: pointer;
+  color: rgb(25, 93, 176) ;
+}
