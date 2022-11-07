@@ -18,7 +18,7 @@ export class ServiceLicenseComponent implements OnInit {
   }
 
   onLicenseClicked = (license: License) => {
-    const detailsUrl: string = `/service/details/${license.code}`;
+    const detailsUrl: string = `/license/details/${license.code}`;
     this.router.navigate([detailsUrl]);
   }
 }
