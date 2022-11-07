@@ -9,6 +9,7 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ErrorModalComponent } from 'src/app/shared/modals/error-modal/error-modal.component';
 
 
 @Component({
@@ -74,21 +75,37 @@ export class LoginComponent implements OnInit {
         this.bsModalRef.content.redirectOnOk.subscribe(_ => this.redirectToHome());
       },
       error: (err: HttpErrorResponse) => {
+        console.log(err);
+        if(err.status == 401) {
+          const config: ModalOptions = {
+            initialState: {
+              modalHeaderText: 'Mensagem de Erro',
+              modalBodyText: 'Senha inválida',
+              okButtonText: 'OK'
+            }
+          };
+
+          return this.bsModalRef = this.modal.show(ErrorModalComponent, config);
+          
+        } else if(err.status == 404) {
+          const config: ModalOptions = {
+            initialState: {
+              modalHeaderText: 'Mensagem de Erro',
+              modalBodyText: 'Email não existente',
+              okButtonText: 'OK'
+            }
+          };
+
+          return this.bsModalRef = this.modal.show(ErrorModalComponent, config);
+
+        }
+        
+        else {
           this.errorHandler.handleError(err);
           this.errorMessage = this.errorHandler.errorMessage;
+        }        
       }
     });
-
-    //var user = this.loginForm.getRawValue() as AuthForUser;
-
-    // this.repository.login(user)
-    // this.authService.login(user).subscribe((response) => {
-    //     if(!response.sucesso){
-    //       this.snackBar.open('Falha na autenticação', 'Usuário ou senha incorretos.', {
-    //         duration: 3000
-    //       });
-    //     }
-    // })
   }
 
   redirectToHome = () => {
