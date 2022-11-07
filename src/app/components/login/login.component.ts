@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
         this.bsModalRef.content.redirectOnOk.subscribe(_ => this.redirectToHome());
       },
       error: (err: HttpErrorResponse) => {
-        console.log(err);
         if(err.status == 401) {
           const config: ModalOptions = {
             initialState: {

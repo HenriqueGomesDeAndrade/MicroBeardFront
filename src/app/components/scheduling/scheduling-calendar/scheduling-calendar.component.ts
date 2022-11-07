@@ -108,7 +108,6 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         },
       },
     ];
-    console.log(this.events)
   }
 
   actions: CalendarEventAction[] = [
@@ -144,9 +143,6 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         break;
       }
     }
-
-    console.log(action);
-    console.log(event);
   }
 
   modalData: {
