@@ -13,7 +13,7 @@ import { AuthenticatedUserGuard } from './shared/services/guards/authenticated-u
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [NotAuthenticatedUserGuard]},
   { path: '', component: PrincipalComponent, canActivate: [AuthenticatedUserGuard], children: [
-    { path: '', redirectTo: '/scheduling', pathMatch: 'full' },
+    { path: '', redirectTo: '/scheduling/calendar', pathMatch: 'full' },
     //{ path: 'home', component: HomeComponent },
     { path: 'scheduling', loadChildren: () => import('./components/scheduling/scheduling.module').then(m => m.SchedulingModule) },
     { path: 'contact', loadChildren: () => import('./components/contact/contact.module').then(m => m.ContactModule) },
