@@ -100,13 +100,15 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
   }
 
   addEvent(scheduling: Scheduling): void {
+    console.log('utc hour', scheduling.date.getUTCHours)
+    console.log('get hour', scheduling.date.getHours)
     this.events = [
       ...this.events,
       {
         code: scheduling.code,
         title: `${scheduling.title}   ${this.datePipe.transform(scheduling.date, 'HH:mm', 'UTC-6')} - ${this.datePipe.transform(scheduling.endDate, 'HH:mm', 'UTC-6')}`,
-        start: new Date(scheduling.date),
-        end: new Date(scheduling.endDate),
+        start: new Date(scheduling.date+'-00:00'),
+        end: new Date(scheduling.endDate+'-00:00'),
         cancelled: scheduling.cancelled,
         color: scheduling.cancelled ? colors.red: colors.blue,
         contactCode: scheduling.contactCode,

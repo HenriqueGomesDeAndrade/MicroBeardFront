@@ -71,8 +71,8 @@ export class SchedulingUpdateComponent implements OnInit {
     .subscribe({
       next: (sched: Scheduling) => {
         this.scheduling = { ...sched, 
-          date: new Date(sched.date),
-          endDate: new Date(sched.endDate)
+          date: new Date(sched.date+'-00:00'),
+          endDate: new Date(sched.endDate+'-00:00')
         };
         console.log(this.scheduling.service)
         if(this.scheduling.service  != null || this.scheduling.service != undefined){
