@@ -48,8 +48,6 @@ export class CollaboratorManageLicenseComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(LicenseAddModalComponent)
     modalRef.componentInstance.returnEntry.subscribe((receivedEntry) => {
-      console.log(receivedEntry)
-      console.log(this.licenses)
       if(!this.licenses.some(license => license.code == receivedEntry.code)){
         this.licenses.push(receivedEntry);
         this.onChanged(this.licenses);

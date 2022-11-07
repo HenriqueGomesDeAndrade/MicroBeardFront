@@ -58,8 +58,6 @@ export class ServiceUpdateComponent implements OnInit {
       return true;
     
     return false;
-
-    console.log(this.serviceForm)
   } 
   
   hasError = (controlName: string, errorName: string) => {

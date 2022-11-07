@@ -28,10 +28,16 @@ export class AuthRepositoryService {
     }));
   };
 
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['login']);
-  }
+  public logout = (route: string) => {
+    return this.http.post<any>(
+      this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
+      {},
+     ).pipe(tap(() => {
+      localStorage.clear();
+      this.router.navigate(['login']);
+    }));
+  };
+
   // get getLoggedUser(): AuthForUser {
   //   return localStorage.getItem('user')
   //     ? JSON.parse(localStorage.getItem('user'))

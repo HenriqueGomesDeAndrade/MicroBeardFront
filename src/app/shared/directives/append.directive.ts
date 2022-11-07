@@ -10,7 +10,6 @@ export class AppendDirective implements OnChanges {
   constructor(private element: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     if(changes.collaboratorParam.currentValue){
       const licenseNum = changes.collaboratorParam.currentValue.licenses.length;
       const span = this.renderer.createElement('span');

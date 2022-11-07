@@ -56,7 +56,6 @@ export class ErrorHandlerService {
   }
   
   private createErrorMessage = (error: HttpErrorResponse) => {
-    console.log(error)
     this.errorMessage = error.error ? JSON.stringify(error.error)  : error.statusText;
   }
 }
