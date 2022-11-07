@@ -5,6 +5,7 @@ import { ServiceAddModalComponent } from 'src/app/shared/modals/service-add-moda
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors } from '@angular/forms';
+import { ServiceRepositoryService } from 'src/app/shared/services/repositories/service-repository.service';
 
 @Component({
   selector: 'app-scheduling-manage-service',
@@ -27,7 +28,8 @@ export class SchedulingManageServiceComponent implements OnInit, ControlValueAcc
 
   @Input() service: Service;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal,private modalService2: BsModalService, private router: Router) { }
+  constructor(config: NgbModalConfig, private modalService: NgbModal,private modalService2: BsModalService, private router: Router,
+      private serviceRepository: ServiceRepositoryService) { }
 
   ngOnInit(): void {
   }
@@ -49,10 +51,17 @@ export class SchedulingManageServiceComponent implements OnInit, ControlValueAcc
   open() {
     const modalRef = this.modalService.open(ServiceAddModalComponent)
     modalRef.componentInstance.returnEntry.subscribe((receivedEntry) => {
-        this.service = receivedEntry;
-        modalRef.close();
-        this.onChanged(this.service);
-        this.onValidationChange();
+        const apiUrl: string = `Service/${receivedEntry.code}`;
+
+        this.serviceRepository.getService(apiUrl)
+        .subscribe({
+          next: (serv: Service) => {
+            this.service = serv
+            modalRef.close();
+            this.onChanged(this.service);
+            this.onValidationChange();
+          }
+        })
     })
     
   }

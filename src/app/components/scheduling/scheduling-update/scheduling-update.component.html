@@ -3,7 +3,7 @@
       <div class="back card">
         
         <div class="row mb-3">
-            <label for="title" class="fontTitleMedium col-form-label col-md-4">Título: </label>
+            <label for="title" class="fontTitleMedium col-form-label col-md-4">*Título: </label>
             <div class="col-fluid">
               <input type="text" formControlName="title" id="title" class="fontRegular form-control" />
             </div>
@@ -14,7 +14,7 @@
           </div>
   
           <div class="mb-3 row">
-            <label for="date" class="fontTitleMedium col-form-label col-md-4">Data de início: </label>
+            <label for="date" class="fontTitleMedium col-form-label col-md-4">*Data de início: </label>
             <div class="col-fuild">
               <input type="text" formControlName="date" id="date" 
               class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY HH:mm', containerClass: 'theme-dark-blue', withTimepicker: 'true' }" />
@@ -28,11 +28,11 @@
           <div class="mb-3 row">
             <label for="endDate" class="fontTitleMedium col-form-label col-md-4">Data de Encerramento </label>
             <div class="col-fuild">
-              <input type="text" formControlName="endDate" id="endDate" placeholder="Opcional" 
+              <input type="text" formControlName="endDate" id="endDate"
               class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY HH:mm', containerClass: 'theme-dark-blue', withTimepicker: 'true' }" />
             </div>
             <div class="col-fuild">
-              <em *ngIf="schedulingForm.errors?.dateValid && (schedulingForm.touched ||schedulingForm.dirty)">A data de encerramento não pode ser menor que a data de início</em>
+              <em *ngIf="schedulingForm.errors?.dateValid && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.dateErrorMessage}}</em>
             </div>
           </div>
 
@@ -51,8 +51,10 @@
           <br>
 
           <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaborador:</span>
-          <app-scheduling-manage-collaborator formControlName = "collaborator" [collaborator]="scheduling?.collaborator"></app-scheduling-manage-collaborator>
+          <app-scheduling-manage-collaborator formControlName = "collaborator" [collaborator]="scheduling?.collaborator"  [isServiceEmpty]="schedulingForm.errors?.isServiceEmpty" ></app-scheduling-manage-collaborator>
           <em *ngIf="schedulingForm.get('collaborator').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Colaborador é obrigatório</em>
+          <em *ngIf="(schedulingForm.errors?.isServiceEmpty || schedulingForm.errors?.unauthorizedService) && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.errorMessage}}</em>
+
 
           <br>
 

@@ -27,6 +27,7 @@ import { CollaboratorAddModalComponent } from 'src/app/shared/modals/collaborato
 export class SchedulingManageCollaboratorComponent implements OnInit {
 
   @Input() collaborator: Collaborator;
+  @Input() isServiceEmpty: Boolean;
 
   constructor(config: NgbModalConfig, private modalCollaborator: NgbModal,private modalCollaborator2: BsModalService, private router: Router) { }
 

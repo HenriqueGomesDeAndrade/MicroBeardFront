@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-7">
               <span class ="fontRegular" name="birthDate">
-                {{collaborator?.birthDate | date: 'dd/MM/yyyy'}}
+                {{collaborator?.birthDate | date: 'dd/MM/yyyy':'UTC-6'}}
               </span>
             </div>
         </div>

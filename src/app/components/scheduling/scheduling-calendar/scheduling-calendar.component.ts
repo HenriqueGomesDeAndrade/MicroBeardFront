@@ -10,6 +10,8 @@ import { Scheduling } from 'src/app/interfaces/scheduling/scheduling.model';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 
 
@@ -41,6 +43,10 @@ const colors: Record<string, EventColor> = {
         background-color: #f5f5f5;
         padding: 15px;
       }
+
+      i {
+        margin-right: 5px;
+      }
     `,
   ],
   templateUrl: './scheduling-calendar.component.html',
@@ -61,7 +67,8 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
   constructor(private modal: NgbModal,
                 private repository: SchedulingRepositoryService,
                 private errorHandler: ErrorHandlerService,
-                private router: Router) {}
+                private router: Router,
+                private datePipe: DatePipe,) {}
 
   ngOnInit(): void {
     this.getAllSchedulings();    
@@ -70,6 +77,11 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.refreshView();                                                                             
   }
+
+  ngAfterViewChecked(): void {
+    this.refreshView();   
+  }
+
 
   private getAllSchedulings = () => {
     const apiAddress: string = 'Scheduling';
@@ -92,7 +104,7 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
       ...this.events,
       {
         code: scheduling.code,
-        title: `${scheduling.title}   ${new Date(scheduling.date).toLocaleTimeString('pt-BR')}`,
+        title: `${scheduling.title}   ${this.datePipe.transform(scheduling.date, 'HH:mm', 'UTC-6')} - ${this.datePipe.transform(scheduling.endDate, 'HH:mm', 'UTC-6')}`,
         start: new Date(scheduling.date),
         end: new Date(scheduling.endDate),
         cancelled: scheduling.cancelled,
@@ -108,7 +120,6 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         },
       },
     ];
-    console.log(this.events)
   }
 
   actions: CalendarEventAction[] = [
@@ -144,9 +155,6 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         break;
       }
     }
-
-    console.log(action);
-    console.log(event);
   }
 
   modalData: {

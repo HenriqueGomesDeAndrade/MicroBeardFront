@@ -11,7 +11,19 @@ import { SchedulingForUpdate } from 'src/app/interfaces/scheduling/scheduling-up
 import { SchedulingRepositoryService } from 'src/app/shared/services/repositories/scheduling-repository.service';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ServiceRepositoryService } from 'src/app/shared/services/repositories/service-repository.service';
+import { Service } from 'src/app/interfaces/service/service.model';
+import { Collaborator } from 'src/app/interfaces/collaborator/collaborator.model';
+import { delay } from 'rxjs';
 
+import * as locales from 'ngx-bootstrap/locale';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+
+
+function defineLocales() {
+  for (const locale in locales) {
+      defineLocale(locales[locale].abbr, locales[locale]);
+  }
+}
 
 @Component({
   selector: 'app-scheduling-update',
@@ -45,8 +57,9 @@ export class SchedulingUpdateComponent implements OnInit {
       contact: new FormControl('',[Validators.required]),
       service: new FormControl('',[Validators.required]),
       collaborator: new FormControl('',[Validators.required]),
-    }, {validators: [dateValidator, collaboratorValidator]});
+    }, {validators: [dateValidator,  collaboratorValidator()]});
 
+    defineLocales();
     this.localeService.use('pt-br')
     this.getSchedulingByCode();
   }
@@ -56,12 +69,23 @@ export class SchedulingUpdateComponent implements OnInit {
     const schedulingByCodeUri: string = `Scheduling/${schedulingCode}`;
     this.repository.getScheduling(schedulingByCodeUri)
     .subscribe({
-      next: (collab: Scheduling) => {
-        this.scheduling = { ...collab, 
-          date: new Date(this.datePipe.transform(collab.date, 'dd/MM/yyyy HH:mm')),
-          endDate: collab.endDate ? new Date(this.datePipe.transform(collab.endDate, 'dd/MM/yyyy HH:mm')) : null,
+      next: (sched: Scheduling) => {
+        this.scheduling = { ...sched, 
+          date: new Date(sched.date),
+          endDate: new Date(sched.endDate)
         };
-        this.schedulingForm.patchValue(this.scheduling);
+        console.log(this.scheduling.service)
+        if(this.scheduling.service  != null || this.scheduling.service != undefined){
+          const apiUrl: string = `Service/${this.scheduling.service.code}`;
+          this.serviceRepository.getService(apiUrl)
+          .subscribe({
+            next: (serv: Service) => {
+              this.scheduling.service = serv
+              console.log(this.scheduling.service)
+              this.schedulingForm.patchValue(this.scheduling);
+            }
+          })
+        }
       },
       error: (err: HttpErrorResponse) => this.errorHandler.handleError(err)
     })
@@ -91,7 +115,7 @@ export class SchedulingUpdateComponent implements OnInit {
       title: schedulingFormValue.title,
       date: schedulingFormValue.date,
       endDate: schedulingFormValue.endDate,
-      contactCode: schedulingFormValue.contactCode,
+      contactCode: schedulingFormValue.contact.code,
       serviceCode: schedulingFormValue.service.code,
       collaboratorCode: schedulingFormValue.collaborator.code,
     }
@@ -122,21 +146,47 @@ export class SchedulingUpdateComponent implements OnInit {
 }
 
 export const dateValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  const start = control.get('date');
-  const end = control.get('endDate');
-  return start.value !== null && end.value !== null && start.value < end.value ? null :{ dateValid:true };
+  const start = control.get('date').value;
+  const end = control.get('endDate').value;
+
+  var diff = Math.abs(new Date(start).getTime() - new Date(end).getTime()) / 3600000;
+
+  if(start.value !== null && end.value !== null && start > end ){
+    return { dateValid:true, dateErrorMessage: 'A data de encerramento não pode ser menor que a data de início' }
+  }
+  else if(start.value !== null && end.value !== null && diff > 24){
+    return { dateValid: true, dateErrorMessage: 'Não é possível marcar um agendamento com mais de 24 horas de diferença'}
+  }
+  else {
+    return null
+  }
 }
 
-export const collaboratorValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  const collaborator = control.get('collaborator').value;
-  const service = control.get('service').value;
+export  function collaboratorValidator() : ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null  => {
 
-  if(service == null){
-    return {isServiceEmpty: true, errorMessage: "O serviço deve ser preenchido antes do colaborador"}
-  } 
-  else {
-    console.log(service)
+    const collaborator = control.get('collaborator').value;
+    const service = control.get('service').value;
+
+    if(service === null || service === undefined || service === ''){
+      return {isServiceEmpty: true, errorMessage: "O serviço deve ser preenchido antes do colaborador", unauthorizedService: false}
+    } 
+    else if (collaborator === null || collaborator === undefined || collaborator === ''){
+      return null
+    }
+    else {
+      let isAuthorizedOnService = false;
+      if(service.collaborators != null || service.collaborators != undefined){
+        service.collaborators.forEach(serviceCollaborator => {
+          if(serviceCollaborator.code == collaborator.code){
+            isAuthorizedOnService = true;
+          }
+        });
+
+        if(isAuthorizedOnService == false){
+          return {unauthorizedService: true, errorMessage: "Esse colaborador não está autorizado nesse serviço selecionado", isServiceEmpty: false}
+        }
+      }
+    }
   }
-
-  return null
 }

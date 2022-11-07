@@ -6,6 +6,7 @@
             <tr>
               <th class="fontTitle">Código</th>
               <th class="fontTitle">Descrição</th>
+              <th class="fontTitle">Tempo Estimado (m)</th>
               <th class="buttonT fontTitle"><button type="button" class="fontButton btn btn-primary" (click)="open()">Adicionar</button></th>
             </tr>
           </thead>
@@ -13,6 +14,7 @@
             <tr *ngIf="service != null" (click)="handleEvent('Clicked', service)">
               <td class="fontRegular">{{service?.code}}</td>
               <td class="fontRegular">{{service?.name}}</td>
+              <td class="fontRegular">{{service?.time}}</td>
               <td class="buttonT"><button type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', service)">Remover</button></td>
             </tr>
           </tbody>

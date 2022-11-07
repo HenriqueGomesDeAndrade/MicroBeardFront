@@ -1,1 +1,71 @@
-<p>scheduling-create works!</p>
+<div class="container-fluid">
+    <form [formGroup]="schedulingForm" autocomplete="off" novalidate (ngSubmit)="createScheduling(schedulingForm.value)">
+      <div class="back card">
+        
+        <div class="row mb-3">
+            <label for="title" class="fontTitleMedium col-form-label col-md-4">*Título: </label>
+            <div class="col-fluid">
+              <input type="text" formControlName="title" id="title" class="fontRegular form-control" />
+            </div>
+            <div class="col-fuild">
+              <em *ngIf="validateControl('title') 
+              && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
+            </div>
+          </div>
+  
+          <div class="mb-3 row">
+            <label for="date" class="fontTitleMedium col-form-label col-md-4">*Data de início: </label>
+            <div class="col-fuild">
+              <input type="text" formControlName="date" id="date" 
+              class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY HH:mm', containerClass: 'theme-dark-blue', withTimepicker: 'true' }" />
+            </div>
+            <div class="col-fuild">
+                <em *ngIf="validateControl('date') 
+              && hasError('date', 'required')">Data de início é obrigatória</em>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="endDate" class="fontTitleMedium col-form-label col-md-4">Data de Encerramento </label>
+            <div class="col-fuild">
+              <input type="text" formControlName="endDate" id="endDate"
+              class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY HH:mm', containerClass: 'theme-dark-blue', withTimepicker: 'true' }" />
+            </div>
+            <div class="col-fuild">
+              <em *ngIf="schedulingForm.errors?.dateValid && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.dateErrorMessage}}</em>
+            </div>
+          </div>
+
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-person-badge-fill"></i> Cliente:</span>
+          <app-scheduling-manage-contact formControlName = "contact" [contact]="scheduling?.contact"></app-scheduling-manage-contact>
+          <em *ngIf="schedulingForm.get('contact').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Cliente é obrigatório</em>
+
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviço:</span>
+          <app-scheduling-manage-service formControlName = "service" [service]="scheduling?.service"></app-scheduling-manage-service>
+          <em *ngIf="schedulingForm.get('service').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Serviço é obrigatório</em>
+          
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaborador:</span>
+          <app-scheduling-manage-collaborator formControlName = "collaborator" [collaborator]="scheduling?.collaborator"  [isServiceEmpty]="schedulingForm.errors?.isServiceEmpty" ></app-scheduling-manage-collaborator>
+          <em *ngIf="schedulingForm.get('collaborator').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Colaborador é obrigatório</em>
+          <em *ngIf="(schedulingForm.errors?.isServiceEmpty || schedulingForm.errors?.unauthorizedService) && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.errorMessage}}</em>
+
+
+          <br>
+
+          <div class="row g-0">
+            <div class="col-1 me-3">
+                <button type="submit" [disabled]="!schedulingForm.valid"  [className]="!schedulingForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+            </div>
+            <div class="col">
+                <button type="button" class="fontButton btn btn-secondary" (click)="redirectToSchedulingList()">Voltar</button>
+            </div>
+        </div>
+      </div>
+    </form>
+</div>

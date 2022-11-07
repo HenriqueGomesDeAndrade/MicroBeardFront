@@ -83,7 +83,7 @@
           </div>
           <div class="col-md-7">
             <span class ="fontRegular" name="birthDate">
-              {{contact?.birthDate | date: 'dd/MM/yyyy'}}
+              {{contact?.birthDate | date: 'dd/MM/yyyy':'UTC-6'}}
             </span>
           </div>
       </div>
