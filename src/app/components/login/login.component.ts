@@ -92,6 +92,6 @@ export class LoginComponent implements OnInit {
   }
 
   redirectToHome = () => {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/scheduling']);
   }
 }
