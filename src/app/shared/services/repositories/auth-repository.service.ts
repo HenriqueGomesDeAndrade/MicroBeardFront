@@ -36,6 +36,7 @@ export class AuthRepositoryService {
   };
 
   public logout = (route: string) => {
+    console.log('logout')
     return this.http.post<any>(
       this.repo.createCompleteRoute(route, this.envUrl.urlAddress),
       {},
@@ -81,6 +82,7 @@ export class AuthRepositoryService {
   }
 
   public goToLogin(): void {
+    console.log('entrou na função')
     localStorage.clear();
     this.router.navigate(['login']);
   }
