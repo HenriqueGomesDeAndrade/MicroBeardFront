@@ -10,7 +10,7 @@ import {
 import { Observable } from 'rxjs';
 import { AuthRepositoryService } from '../repositories/auth-repository.service';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs/internal/observable/throwError';
+import { throwError } from 'rxjs';
 import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ErrorHandlerService } from 'src/app/shared/services/error-handler.service';
 import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
@@ -43,7 +43,7 @@ export class TokenInterceptor implements HttpInterceptor {
       });
       return next.handle(request).pipe(
         catchError((error) => {
-          if (error instanceof HttpErrorResponse && error.status === 401)
+          if (error instanceof HttpErrorResponse && error.status === 401) {
             this.userService.logout(logoutUrl).subscribe({
               next: () => {
                 const config: ModalOptions = {
@@ -60,16 +60,12 @@ export class TokenInterceptor implements HttpInterceptor {
                 );
               },
               error: (err: HttpErrorResponse) => {
-                this.errorHandler.handleError(err);
-                this.errorMessage =
-                  this.errorHandler.errorMessage !== ''
-                    ? this.errorHandler.errorMessage
-                    : 'Parece que alguém entrou com o mesmo login que o seu';
-                this.errorHandler.errorMessage = this.errorMessage;
                 this.userService.goToLogin();
               },
             });
-          else return throwError(() => error.message);
+          } else {
+            return throwError(() => error.message);
+          }
         })
       );
     } else {

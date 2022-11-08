@@ -38,13 +38,9 @@ export class MenuComponent implements OnInit {
         this.bsModalRef = this.modal.show(SuccessModalComponent, config);
       },
       error: (err: HttpErrorResponse) => {
-        this.errorHandler.handleError(err);
-        this.errorMessage =
-          this.errorHandler.errorMessage !== ''
-            ? this.errorHandler.errorMessage
-            : 'Parece que alguém entrou com o mesmo login que o seu';
-        this.errorHandler.errorMessage = this.errorMessage;
         this.authRepo.goToLogin();
+        this.errorHandler.handleError(err);
+        this.errorMessage = this.errorHandler.errorMessage;
       },
     });
   }
