@@ -61,7 +61,12 @@ export class TokenInterceptor implements HttpInterceptor {
               },
               error: (err: HttpErrorResponse) => {
                 this.errorHandler.handleError(err);
-                this.errorMessage = this.errorHandler.errorMessage;
+                this.errorMessage =
+                  this.errorHandler.errorMessage !== ''
+                    ? this.errorHandler.errorMessage
+                    : 'Parece que alguém entrou com o mesmo login que o seu';
+                this.errorHandler.errorMessage = this.errorMessage;
+                this.userService.goToLogin();
               },
             });
           else return throwError(() => error.message);

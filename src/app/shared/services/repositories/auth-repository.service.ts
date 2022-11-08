@@ -79,4 +79,9 @@ export class AuthRepositoryService {
   get isLogged(): boolean {
     return localStorage.getItem('token') ? true : false;
   }
+
+  public goToLogin(): void {
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 }
