@@ -39,15 +39,6 @@ export class ContactUpdateComponent implements OnInit {
     });
 
     this.getContactByCode();
-    this.role = localStorage.getItem('userRole');
-  }
-
-  role: string;
-
-  ngAfterContentChecked(): void {
-    this.role !== 'Collaborator' 
-    ? null
-    : this.router.navigate(['contact/list']);
   }
 
   private getContactByCode = () => {

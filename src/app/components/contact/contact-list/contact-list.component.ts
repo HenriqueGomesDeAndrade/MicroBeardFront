@@ -14,7 +14,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
   errorMessage: string = '';
-  role: string;
 
   constructor(private repository: ContactRepositoryService,
                private errorHandler: ErrorHandlerService,
@@ -22,7 +21,6 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllContacts();
-    this.role = localStorage.getItem('userRole');
   }
 
   private getAllContacts = () => {

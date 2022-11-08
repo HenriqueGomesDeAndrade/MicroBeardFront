@@ -23,6 +23,7 @@ export class CollaboratorCreateComponent implements OnInit {
   errorMessage: string = '';
   collaboratorForm: FormGroup;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: CollaboratorRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -49,6 +50,13 @@ export class CollaboratorCreateComponent implements OnInit {
     this.collaboratorForm.get('licenses').setValue([])
     this.collaboratorForm.get('services').setValue([])
 
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['collaborator/list']);
   }
 
   validateControl = (controlName: string) => {
