@@ -74,14 +74,12 @@ export class SchedulingUpdateComponent implements OnInit {
           date: new Date(sched.date+'-00:00'),
           endDate: new Date(sched.endDate+'-00:00')
         };
-        console.log(this.scheduling.service)
         if(this.scheduling.service  != null || this.scheduling.service != undefined){
           const apiUrl: string = `Service/${this.scheduling.service.code}`;
           this.serviceRepository.getService(apiUrl)
           .subscribe({
             next: (serv: Service) => {
               this.scheduling.service = serv
-              console.log(this.scheduling.service)
               this.schedulingForm.patchValue(this.scheduling);
             }
           })
