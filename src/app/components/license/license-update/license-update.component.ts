@@ -18,6 +18,7 @@ export class LicenseUpdateComponent implements OnInit {
   license: License;
   licenseForm: FormGroup;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(
     private repository: LicenseRepositoryService,
@@ -36,6 +37,13 @@ export class LicenseUpdateComponent implements OnInit {
     });
 
     this.getLicenseByCode();
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['license/list']);
   }
 
   private getLicenseByCode = () => {
