@@ -15,6 +15,7 @@ import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/succe
 export class ServiceDeleteComponent implements OnInit {
   service: Service;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: ServiceRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -24,6 +25,13 @@ export class ServiceDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getServiceByCode();
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['service/list']);
   }
 
   private getServiceByCode = () => {
