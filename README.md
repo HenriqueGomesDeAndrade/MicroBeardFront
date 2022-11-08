@@ -35,3 +35,4 @@ npm i bootstrap-icons
 npm i --save ngx-mask
 npm install --save angular-calendar date-fns
 npm install flatpickr angularx-flatpickr
+npm install jwt-decode
