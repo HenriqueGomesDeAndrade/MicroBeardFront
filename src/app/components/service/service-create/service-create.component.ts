@@ -64,7 +64,7 @@ export class ServiceCreateComponent implements OnInit {
       time: serviceFormValue.time,
       type: serviceFormValue.type,
       description: serviceFormValue.description,
-      licenseCode: serviceFormValue.license,
+      licenseCode: serviceFormValue.license.code,
       }
     const apiUrl = 'Service';
     this.repository.createService(apiUrl, service)
