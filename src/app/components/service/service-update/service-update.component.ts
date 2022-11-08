@@ -18,6 +18,7 @@ export class ServiceUpdateComponent implements OnInit {
   service: Service
   serviceForm: FormGroup;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: ServiceRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -36,6 +37,13 @@ export class ServiceUpdateComponent implements OnInit {
     });
 
     this.getServiceByCode();
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['service/list']);
   }
 
   private getServiceByCode = () => {

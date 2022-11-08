@@ -100,8 +100,6 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
   }
 
   addEvent(scheduling: Scheduling): void {
-    console.log('utc hour', scheduling.date.getUTCHours)
-    console.log('get hour', scheduling.date.getHours)
     this.events = [
       ...this.events,
       {

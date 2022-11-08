@@ -21,6 +21,7 @@ export class CollaboratorUpdateComponent implements OnInit {
   collaborator: Collaborator
   collaboratorForm: FormGroup;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: CollaboratorRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -45,6 +46,13 @@ export class CollaboratorUpdateComponent implements OnInit {
     }, {validators: servicesValidator});
 
     this.getCollaboratorByCode();
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['collaborator/list']);
   }
 
   private getCollaboratorByCode = () => {

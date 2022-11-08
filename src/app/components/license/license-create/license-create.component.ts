@@ -19,6 +19,7 @@ export class LicenseCreateComponent implements OnInit {
   errorMessage: string = '';
   licenseForm: FormGroup;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: LicenseRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -29,6 +30,13 @@ export class LicenseCreateComponent implements OnInit {
     this.licenseForm = new FormGroup({
       description: new FormControl('', [Validators.required, Validators.maxLength(250)]),
     });
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['license/list']);
   }
 
   validateControl = (controlName: string) => {

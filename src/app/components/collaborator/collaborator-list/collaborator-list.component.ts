@@ -14,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class CollaboratorListComponent implements OnInit {
   collaborators: Collaborator[];
   errorMessage: string = '';
+  role: string;
 
   constructor(private repository: CollaboratorRepositoryService,
                private errorHandler: ErrorHandlerService,
@@ -21,6 +22,7 @@ export class CollaboratorListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCollaborators();
+    this.role = localStorage.getItem('userRole');
   }
 
   private getAllCollaborators = () => {

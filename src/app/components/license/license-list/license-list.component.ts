@@ -14,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LicenseListComponent implements OnInit {
   licenses: License[];
   errorMessage: string = '';
+  role: string;
 
   constructor(private repository: LicenseRepositoryService,
                private errorHandler: ErrorHandlerService,
@@ -21,6 +22,7 @@ export class LicenseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllLicenses();
+    this.role = localStorage.getItem('userRole');
   }
 
   private getAllLicenses = () => {

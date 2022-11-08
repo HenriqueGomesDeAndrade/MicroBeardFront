@@ -19,6 +19,7 @@ export class ServiceCreateComponent implements OnInit {
   errorMessage: string = '';
   serviceForm: FormGroup;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: ServiceRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -36,6 +37,13 @@ export class ServiceCreateComponent implements OnInit {
     });
 
     this.serviceForm.get('license').setValue(null)
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['service/list']);
   }
 
   validateControl = (controlName: string) => {

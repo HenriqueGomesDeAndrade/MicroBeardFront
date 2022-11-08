@@ -14,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ServiceListComponent implements OnInit {
   services: Service[];
   errorMessage: string = '';
+  role: string;
 
   constructor(private repository: ServiceRepositoryService,
                private errorHandler: ErrorHandlerService,
@@ -21,6 +22,7 @@ export class ServiceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllServices();
+    this.role = localStorage.getItem('userRole');
   }
 
   private getAllServices = () => {

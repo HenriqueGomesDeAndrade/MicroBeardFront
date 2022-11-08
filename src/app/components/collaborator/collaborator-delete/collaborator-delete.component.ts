@@ -15,6 +15,7 @@ import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/succe
 export class CollaboratorDeleteComponent implements OnInit {
   collaborator: Collaborator;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: CollaboratorRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -24,6 +25,13 @@ export class CollaboratorDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCollaboratorByCode();
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['collaborator/list']);
   }
 
   private getCollaboratorByCode = () => {

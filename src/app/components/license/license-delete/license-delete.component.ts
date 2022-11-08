@@ -15,6 +15,7 @@ import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/succe
 export class LicenseDeleteComponent implements OnInit {
   license: License;
   bsModalRef?: BsModalRef;
+  role: string;
 
   constructor(private repository: LicenseRepositoryService,
               private errorHandler: ErrorHandlerService,
@@ -24,6 +25,13 @@ export class LicenseDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLicenseByCode();
+    this.role = localStorage.getItem('userRole');
+  }
+
+  ngAfterContentChecked(): void {
+    this.role !== 'Collaborator' 
+    ? null
+    : this.router.navigate(['license/list']);
   }
 
   private getLicenseByCode = () => {
