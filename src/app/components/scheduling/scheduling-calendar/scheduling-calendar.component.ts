@@ -11,6 +11,9 @@ import { ErrorHandlerService } from 'src/app/shared/services/error-handler.servi
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { SchedulingForUpdate } from 'src/app/interfaces/scheduling/scheduling-update.model';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { SuccessModalComponent } from 'src/app/shared/modals/success-modal/success-modal.component';
 
 
 
@@ -62,13 +65,15 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
   events: CalendarEvent[] = [];
   refresh = new Subject<void>();
   activeDayIsOpen: boolean = true;
+  bsModalRef?: BsModalRef;
 
 
   constructor(private modal: NgbModal,
                 private repository: SchedulingRepositoryService,
                 private errorHandler: ErrorHandlerService,
                 private router: Router,
-                private datePipe: DatePipe,) {}
+                private datePipe: DatePipe,
+                private modalService: BsModalService) {}
 
   ngOnInit(): void {
     this.getAllSchedulings();    
@@ -104,7 +109,7 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
       ...this.events,
       {
         code: scheduling.code,
-        title: `${scheduling.title}   ${this.datePipe.transform(scheduling.date, 'HH:mm', 'UTC-6')} - ${this.datePipe.transform(scheduling.endDate, 'HH:mm', 'UTC-6')}`,
+        title: scheduling.title,
         start: new Date(scheduling.date+'-00:00'),
         end: new Date(scheduling.endDate+'-00:00'),
         cancelled: scheduling.cancelled,
@@ -113,10 +118,10 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         serviceCode: scheduling.serviceCode,
         collaboratorCode: scheduling.collaboratorCode,
         actions: this.actions,
-        draggable: false,
+        draggable: true,
         resizable: {
-          beforeStart: false,
-          afterEnd: false,
+          beforeStart: true,
+          afterEnd: true,
         },
       },
     ];
@@ -154,6 +159,40 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
         this.router.navigate([`/scheduling/delete/${event.code}`])
         break;
       }
+      case 'Dropped or resized':{
+        let schedulingForUpdate = this.mapToScheduling(event)
+        const apiUri: string = `Scheduling/${event.code}`;
+
+        this.repository.updateScheduling(apiUri, schedulingForUpdate)
+        .subscribe({
+          next: (_) => {
+            const config: ModalOptions = {
+              initialState: {
+                modalHeaderText: 'Mensagem de sucesso',
+                modalBodyText: 'Agendamento atualizado com sucesso',
+                okButtonText: 'OK'
+              }
+            };
+
+            this.bsModalRef = this.modalService.show(SuccessModalComponent, config);
+          },
+          error: (err: HttpErrorResponse) => this.errorHandler.handleError(err)
+        })
+        break;
+      }
+    }
+  }
+
+  mapToScheduling(event): SchedulingForUpdate{
+    
+    return {
+      title: event.title,
+      serviceCode: event.serviceCode,
+      contactCode: event.contactCode,
+      collaboratorCode: event.collaboratorCode,
+      date: event.start,
+      endDate: event.end,
+      cancelled: event.cancelled ? event.cancelled : false,
     }
   }
 
@@ -174,10 +213,13 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
           ...event,
           start: newStart,
           end: newEnd,
+          
         };
       }
       return iEvent;
     });
+    event.start = newStart,
+    event.end = newEnd
     this.handleEvent('Dropped or resized', event);
   }
 
