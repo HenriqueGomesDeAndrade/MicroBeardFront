@@ -176,7 +176,13 @@ export class SchedulingCalendarComponent implements OnInit, AfterViewInit {
 
             this.bsModalRef = this.modalService.show(SuccessModalComponent, config);
           },
-          error: (err: HttpErrorResponse) => this.errorHandler.handleError(err)
+          error: (err) => {
+            this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/scheduling/calendar']);
+            }); 
+            this.refreshView();
+            this.errorHandler.handleError(err)
+          }
         })
         break;
       }
