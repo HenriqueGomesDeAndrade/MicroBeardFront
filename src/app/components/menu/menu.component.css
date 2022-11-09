@@ -35,7 +35,11 @@ a{
   border: 1px solid rgb(0, 0, 0);
 }
 
+.col-logout {
+  text-align: end;
+}
+
 .logout a:hover{
   cursor: pointer;
-  color: rgb(25, 93, 176) ;
+  color: rgb(25, 93, 176);
 }
